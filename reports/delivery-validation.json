@@ -1,0 +1,245 @@
+{
+  "success": true,
+  "status": "succeeded",
+  "agent_id": "/root/verifier",
+  "independent_from_implementers": [
+    "/root/implementer"
+  ],
+  "started_at": "2026-11-13T17:09:18Z",
+  "finished_at": "2026-11-13T17:12:50.295646Z",
+  "archive": "dist/opem-mcp.zip",
+  "archive_sha256": "1ea16d1530d84ccf5b1cec384fc4befe37f8ccdd1dfce41404d6120f331d1a3c",
+  "packaged_files": {
+    "USAGE.md": "7751125d23a078770ad7c664b868df7c484de6ce35bf80add3c9868e676aa6e6",
+    "LICENSE": "7ed701f01492e23986c5062ba37309d95cea6ba19bc78f1cc86280a90140a515",
+    "THIRD_PARTY_NOTICES.md": "fa476fadfde07f3bf8ee4a3a84c84ffa2e61eff1c7c63e31147eb35bca902cf6",
+    "third_party/OPEM-LICENSE": "80e18d0b4e58cef4171bfd8e52a91f03e81b5a1ffade6f6a7be8fb29d458f8c6",
+    "third_party/Paper2Agent-LICENSE": "1075df19ebaccda19b4b7498ce113ef920368dd6db679b4eb041d7b774d499da",
+    "src/opem_mcp.py": "4d0ce7fdac1c67ffd8d2c55b8f8e2fc8ac2219d811edb795cd8137c7c97e1a28",
+    "src/tools/amphlett.py": "7d4ae068fd987d3401b7a609fbc3c0c37befa9470538b742972e44cdad2e734f",
+    "src/requirements.txt": "5df7c61ef917749b7d5598618f3fbc0771ed63bf1d4e7ce05ff8267414f06f75",
+    "scripts/run_polarization.py": "029a2ee20cd980d3fe413c4c8a5dbf7ca22e62e44cae775a656de549cca9b9e2",
+    "scripts/print_mcp_config.py": "7aa75bf3786d67ab9e73d2cce61304e523548d97322b03ff770e0c35cb274e5e",
+    "PROVENANCE.json": "bd723f6672aa0ac21d3cba162368fdbceb86692093b00307097fc984cc11ddab"
+  },
+  "archive_checks": {
+    "crc_passed": true,
+    "exact_manifest_file_set": true,
+    "file_count": 11,
+    "all_extracted_hashes_match": true,
+    "no_external_symlink_targets_or_path_traversal": true,
+    "no_examples_tests_notebooks_reports_agents_environments_caches_git_or_secret_files": true,
+    "packaged_files_unchanged_after_acceptance": true
+  },
+  "extraction_location": "/tmp/fuelcell delivery ng1ijcvu",
+  "package_root": "/tmp/fuelcell delivery ng1ijcvu/opem-mcp",
+  "path_with_spaces": true,
+  "python": "/tmp/fuelcell delivery ng1ijcvu/opem-mcp/.venv/bin/python",
+  "installation": {
+    "success": true,
+    "commands": [
+      {
+        "argv": [
+          "python3.12",
+          "-m",
+          "venv",
+          ".venv"
+        ],
+        "exit_status": 0
+      },
+      {
+        "argv": [
+          ".venv/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "-r",
+          "src/requirements.txt"
+        ],
+        "exit_status": 0
+      },
+      {
+        "argv": [
+          ".venv/bin/python",
+          "-m",
+          "pip",
+          "check"
+        ],
+        "exit_status": 0
+      }
+    ],
+    "working_directory": "/tmp/fuelcell delivery ng1ijcvu/opem-mcp",
+    "log": "reports/delivery-install.log",
+    "method": "Followed extracted USAGE.md python3.12 -m venv, .venv/bin/python -m pip install -r src/requirements.txt, and pip check.",
+    "build_specific_overrides_removed": [
+      "PYTHONPATH",
+      "PYTHONHOME"
+    ],
+    "inherited_proxy_CA_and_network_environment_preserved": true,
+    "source_provenance": {
+      "python": "/tmp/fuelcell delivery ng1ijcvu/opem-mcp/.venv/bin/python",
+      "version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "opem_module": "/tmp/fuelcell delivery ng1ijcvu/opem-mcp/.venv/lib/python3.12/site-packages/opem/Static/Amphlett.py",
+      "source_sha256": "fafd388f1f6fded85f745de39ec03267ab301708260ad96333b9aa333f816bd6",
+      "distribution_version": "1.4",
+      "direct_url": {
+        "url": "https://github.com/ECSIM/opem.git",
+        "vcs_info": {
+          "commit_id": "27d343fb966361a4e6cc99650241f651778fc50f",
+          "requested_revision": "27d343fb966361a4e6cc99650241f651778fc50f",
+          "vcs": "git"
+        }
+      },
+      "fastmcp_version": "4.0.3"
+    }
+  },
+  "runtime_acceptance": {
+    "report": "reports/delivery-stdio.json",
+    "cases": [
+      {
+        "name": "official-reference",
+        "tool": "opem_simulate_polarization",
+        "success": true,
+        "artifacts_checked": 7
+      },
+      {
+        "name": "temperature-353K",
+        "tool": "opem_simulate_polarization",
+        "success": true,
+        "artifacts_checked": 7
+      },
+      {
+        "name": "oxygen-partial-0-21atm",
+        "tool": "opem_simulate_polarization",
+        "success": true,
+        "artifacts_checked": 7
+      },
+      {
+        "name": "official-repeat",
+        "tool": "opem_simulate_polarization",
+        "success": true,
+        "artifacts_checked": 7
+      },
+      {
+        "name": "reject-out-of-domain-lambda",
+        "tool": "opem_simulate_polarization",
+        "success": true
+      },
+      {
+        "name": "reject-boolean-cell-count",
+        "tool": "opem_simulate_polarization",
+        "success": true
+      }
+    ],
+    "command": {
+      "argv": [
+        "/tmp/fuelcell delivery ng1ijcvu/opem-mcp/.venv/bin/python",
+        "/workspace/fuelcell-paper2agent/.agents/skills/paper2agent/paper2mcp/scripts/verify_mcp_server.py",
+        "--server",
+        "/tmp/fuelcell delivery ng1ijcvu/opem-mcp/src/opem_mcp.py",
+        "--expected",
+        "/workspace/fuelcell-paper2agent/reports/expected-mcp-tools.json",
+        "--cases",
+        "/workspace/fuelcell-paper2agent/reports/delivery-acceptance-cases.json",
+        "--require-all-tools",
+        "--report",
+        "/workspace/fuelcell-paper2agent/reports/delivery-stdio.json"
+      ],
+      "exit_status": 0,
+      "stdout": "/tmp/fuelcell delivery ng1ijcvu/stdio.stdout.log",
+      "stderr": "/tmp/fuelcell delivery ng1ijcvu/stdio.stderr.log"
+    },
+    "success": true,
+    "mode": "calls",
+    "require_all_tools": true,
+    "expected": [
+      "opem_simulate_polarization"
+    ],
+    "actual": [
+      "opem_simulate_polarization"
+    ],
+    "missing": [],
+    "unexpected": [],
+    "case_count": 6,
+    "scope": [
+      "real stdio startup and MCP handshake",
+      "required input schema and positive coverage for every delivered tool",
+      "official750-point source input",
+      "changed temperature353.15K and oxygen partial pressure0.21atm",
+      "lambda-out-of-domain and boolean-cell-count errors",
+      "repeat output isolation"
+    ]
+  },
+  "scientific_acceptance": {
+    "report": "reports/delivery-scientific-comparisons.json",
+    "command": {
+      "argv": [
+        "/tmp/fuelcell delivery ng1ijcvu/opem-mcp/.venv/bin/python",
+        "/tmp/fuelcell delivery ng1ijcvu/compare-delivery.py"
+      ],
+      "exit_status": 0,
+      "stdout": "/tmp/fuelcell delivery ng1ijcvu/scientific.stdout.log",
+      "stderr": "/tmp/fuelcell delivery ng1ijcvu/scientific.stderr.log"
+    },
+    "success": true,
+    "expected_results_from": "Direct opem.Static.Amphlett.Static_Analysis installed in the independently restored relocated runtime, not wrapper outputs.",
+    "relative_tolerance": 1e-12,
+    "absolute_tolerance": 1e-12,
+    "run_count": 5,
+    "counts": {
+      "native_numeric_values": 33760,
+      "chart_numeric_values": 33750,
+      "axis_numeric_values": 22500,
+      "csv_numeric_values": 45000
+    },
+    "native_CSV_all_bytes_match": true,
+    "all_HTML_chart_datasets_and_axis_arrays_match": true,
+    "repeat_output_directories_disjoint": true,
+    "test_harness_location": "/tmp/fuelcell delivery ng1ijcvu/compare-delivery.py",
+    "original_working_tree_not_used_as_runtime_dependency": true
+  },
+  "CLI_acceptance": {
+    "argv": [
+      "/tmp/fuelcell delivery ng1ijcvu/opem-mcp/.venv/bin/python",
+      "scripts/run_polarization.py",
+      "--input",
+      "parameters.json",
+      "--output",
+      "/tmp/fuelcell delivery ng1ijcvu/CLI outputs"
+    ],
+    "exit_status": 0,
+    "input_source": "JSON block in extracted USAGE.md",
+    "sample_count": 750,
+    "artifact_count": 7,
+    "stdout": "/tmp/fuelcell delivery ng1ijcvu/cli-output.json"
+  },
+  "client_configuration_acceptance": {
+    "codex_command_roundtrip": true,
+    "json_paths": true,
+    "toml_paths": true,
+    "paths_include_spaces": true,
+    "configuration_files": {
+      "codex": "/tmp/fuelcell delivery ng1ijcvu/config-codex.txt",
+      "json": "/tmp/fuelcell delivery ng1ijcvu/config-json.txt",
+      "toml": "/tmp/fuelcell delivery ng1ijcvu/config-toml.txt"
+    }
+  },
+  "executable_permissions": {
+    "launch_method": "Explicit .venv/bin/python for server and CLI scripts; no executable-bit restoration required.",
+    "actual_server_and_CLI_startup_passed": true
+  },
+  "evidence_hashes": {
+    "reports/delivery-install.log": "c1abd91e9df38878f7e2206bc80f3aa967e7e09a19a2ec31ab0bb845b7c0ead7",
+    "reports/delivery-stdio.json": "a32e50f9b9c57bf21a01a73383e0a79c57b064332973696ccf79b47dd039c3b5",
+    "reports/delivery-acceptance-cases.json": "3bae1da343ce9285fea58ba6ba1bd2ad18d3d2212883e7b72ad893ee52436fc4",
+    "reports/delivery-scientific-comparisons.json": "46a5c3ade7b1fda9754c90c83c49ed52687cae93b21bf1163723e2ca30567fed"
+  },
+  "limitations": [
+    "Linux x86_64 and Python3.12.14 execution validated; Windows commands and platform markers not Windows runtime verification.",
+    "Runtime restoration requires Git plus network access to GitHub and PyPI.",
+    "Selected static Amphlett model only; no experimental calibration, air-cooled thermal/water dynamic model, fan-power optimizer or CFD claim.",
+    "Native HTML numerical data and labels validated; upstream external-JavaScript browser rendering not performed.",
+    "Original52-test independent scientific suite was not rerun because exact verified production module hash was unchanged; this phase independently restored and exercised the actual ZIP."
+  ]
+}

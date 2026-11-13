@@ -1,0 +1,12 @@
+{
+  "language": "python",
+  "requires_gpu": false,
+  "gpu_requirement": "none",
+  "language_reason": "OPEM setup.py declares Python >=3.5 and exposes opem.Static.Amphlett.Static_Analysis as a library API. Selected source README Library section and opem/Static/Amphlett.py.",
+  "gpu_reason": "Selected Amphlett static model uses Python math functions; no GPU runtime or model artifacts.",
+  "repository": {
+    "url": "https://github.com/ECSIM/opem",
+    "commit": "27d343fb966361a4e6cc99650241f651778fc50f"
+  },
+  "requested_scope": "PEM hydrogen fuel cells and air-cooled/open-cathode research; initial runnable scope: Amphlett static polarization and source-supported loss analysis. Airflow/thermal/water dynamic modeling requires its own implementation and validation."
+}

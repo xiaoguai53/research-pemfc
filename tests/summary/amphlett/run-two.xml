@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="14" skipped="0" tests="52" time="2.666" timestamp="2026-11-13T17:03:52.243668+00:00" hostname="b0517a43691e"><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_all_values_and_native_figures_against_direct_source[official]" time="0.124"><failure message="AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}&#10;  &#10;  Extra items in the right set:&#10;  'Eta Ohmic'&#10;  'Power(Thermal)'&#10;  'Eta Conc'&#10;  'Linear-Apx'&#10;  'Efficiency'...&#10;  &#10;  ...Full output truncated, use '-vv' to show">name = 'official', changes = {}
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig0')
+
+    @pytest.mark.parametrize("name,changes", SCENARIOS, ids=[item[0] for item in SCENARIOS])
+    async def test_all_values_and_native_figures_against_direct_source(name, changes, tmp_path):
+        arguments = {**OFFICIAL, **changes}
+        expected = direct_source(arguments, tmp_path / "direct")
+        if name == "official":
+            compare_full(expected, json.loads(NATIVE_REFERENCE.read_text()))
+        preserved = deepcopy(arguments)
+        async with Client(amphlett.amphlett_mcp) as client:
+            response = await client.call_tool("opem_simulate_polarization", {
+                **arguments, "output_dir": str(tmp_path / "wrapped")})
+        assert arguments == preserved
+        data = response.data
+        files = native_artifacts(data)
+        assert len(files) == 7 and all(path.is_file() and path.is_absolute() for path in files.values())
+        actual = json.loads(files["native-result.json"].read_text())
+        compare_full(actual, expected)
+&gt;       verify_csv_and_charts(files, expected)
+
+tests/code/amphlett/test_opem_simulate_polarization.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+files = {'inputs.json': PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_f...per2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig0/wrapped/amphlett-jd98aqk0/upstream.log'), ...}
+expected = {'Status': True, 'P': [0.0, 0.10724845597135509, 0.20527680211240862, 0.2998007746964368, 0.3920352839475721, 0.482557...[1.19075, 1.0724845597135508, 1.026384010562043, 0.9993359156547894, 0.9800882098689302, 0.9651146179404801, ...], ...}
+
+    def verify_csv_and_charts(files, expected):
+        with files["polarization.csv"].open(newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        assert len(rows) == len(expected["I"])
+        columns = {
+            "I (A)": "I", "VStack (V)": "V", "Power-Stack (W)": "P",
+            "PEM Efficiency ()": "EFF", "Power-Thermal (W)": "Ph",
+            "Eta Activation (V)": "Eta_Active", "Eta Concentration (V)": "Eta_Conc",
+            "Eta Ohmic (V)": "Eta_Ohmic",
+        }
+        for column, field in columns.items():
+            compare_full([float(row[column]) for row in rows], expected[field])
+        html = files["polarization.html"].read_text()
+        datasets = {label: ast.literal_eval(values) for label, values in re.findall(
+            r"label: '([^']+)',\s*data: (\[[^\n]*\]),", html)}
+        chart_fields = {
+            "Power-Stack": "P", "Voltage-Stack": "V", "Linear-Apx": "VE",
+            "Eta Active": "Eta_Active", "Eta Conc": "Eta_Conc", "Eta Ohmic": "Eta_Ohmic",
+            "Efficiency": "EFF", "Efficiency vs Power": "EFF", "Power(Thermal)": "Ph",
+        }
+&gt;       assert set(datasets) == set(chart_fields)
+E       AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}
+E         
+E         Extra items in the right set:
+E         'Eta Ohmic'
+E         'Power(Thermal)'
+E         'Eta Conc'
+E         'Linear-Apx'
+E         'Efficiency'...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/code/amphlett/test_opem_simulate_polarization.py:98: AssertionError</failure></testcase><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_all_values_and_native_figures_against_direct_source[temperature]" time="0.075"><failure message="AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}&#10;  &#10;  Extra items in the right set:&#10;  'Eta Ohmic'&#10;  'Power(Thermal)'&#10;  'Eta Conc'&#10;  'Linear-Apx'&#10;  'Efficiency'...&#10;  &#10;  ...Full output truncated, use '-vv' to show">name = 'temperature', changes = {'temperature_K': 353.15}
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig1')
+
+    @pytest.mark.parametrize("name,changes", SCENARIOS, ids=[item[0] for item in SCENARIOS])
+    async def test_all_values_and_native_figures_against_direct_source(name, changes, tmp_path):
+        arguments = {**OFFICIAL, **changes}
+        expected = direct_source(arguments, tmp_path / "direct")
+        if name == "official":
+            compare_full(expected, json.loads(NATIVE_REFERENCE.read_text()))
+        preserved = deepcopy(arguments)
+        async with Client(amphlett.amphlett_mcp) as client:
+            response = await client.call_tool("opem_simulate_polarization", {
+                **arguments, "output_dir": str(tmp_path / "wrapped")})
+        assert arguments == preserved
+        data = response.data
+        files = native_artifacts(data)
+        assert len(files) == 7 and all(path.is_file() and path.is_absolute() for path in files.values())
+        actual = json.loads(files["native-result.json"].read_text())
+        compare_full(actual, expected)
+&gt;       verify_csv_and_charts(files, expected)
+
+tests/code/amphlett/test_opem_simulate_polarization.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+files = {'inputs.json': PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_f...per2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig1/wrapped/amphlett-vh_3o_z0/upstream.log'), ...}
+expected = {'Status': True, 'P': [0.0, 0.10871805200217646, 0.20795180516118547, 0.30358356683363086, 0.3968636562742868, 0.48838...[1.18225, 1.0871805200217646, 1.0397590258059273, 1.0119452227787695, 0.992159140685717, 0.9767717423594948, ...], ...}
+
+    def verify_csv_and_charts(files, expected):
+        with files["polarization.csv"].open(newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        assert len(rows) == len(expected["I"])
+        columns = {
+            "I (A)": "I", "VStack (V)": "V", "Power-Stack (W)": "P",
+            "PEM Efficiency ()": "EFF", "Power-Thermal (W)": "Ph",
+            "Eta Activation (V)": "Eta_Active", "Eta Concentration (V)": "Eta_Conc",
+            "Eta Ohmic (V)": "Eta_Ohmic",
+        }
+        for column, field in columns.items():
+            compare_full([float(row[column]) for row in rows], expected[field])
+        html = files["polarization.html"].read_text()
+        datasets = {label: ast.literal_eval(values) for label, values in re.findall(
+            r"label: '([^']+)',\s*data: (\[[^\n]*\]),", html)}
+        chart_fields = {
+            "Power-Stack": "P", "Voltage-Stack": "V", "Linear-Apx": "VE",
+            "Eta Active": "Eta_Active", "Eta Conc": "Eta_Conc", "Eta Ohmic": "Eta_Ohmic",
+            "Efficiency": "EFF", "Efficiency vs Power": "EFF", "Power(Thermal)": "Ph",
+        }
+&gt;       assert set(datasets) == set(chart_fields)
+E       AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}
+E         
+E         Extra items in the right set:
+E         'Eta Ohmic'
+E         'Power(Thermal)'
+E         'Eta Conc'
+E         'Linear-Apx'
+E         'Efficiency'...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/code/amphlett/test_opem_simulate_polarization.py:98: AssertionError</failure></testcase><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_all_values_and_native_figures_against_direct_source[oxygen]" time="0.081"><failure message="AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}&#10;  &#10;  Extra items in the right set:&#10;  'Eta Ohmic'&#10;  'Power(Thermal)'&#10;  'Eta Conc'&#10;  'Linear-Apx'&#10;  'Efficiency'...&#10;  &#10;  ...Full output truncated, use '-vv' to show">name = 'oxygen', changes = {'oxygen_partial_pressure_atm': 0.21}
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig2')
+
+    @pytest.mark.parametrize("name,changes", SCENARIOS, ids=[item[0] for item in SCENARIOS])
+    async def test_all_values_and_native_figures_against_direct_source(name, changes, tmp_path):
+        arguments = {**OFFICIAL, **changes}
+        expected = direct_source(arguments, tmp_path / "direct")
+        if name == "official":
+            compare_full(expected, json.loads(NATIVE_REFERENCE.read_text()))
+        preserved = deepcopy(arguments)
+        async with Client(amphlett.amphlett_mcp) as client:
+            response = await client.call_tool("opem_simulate_polarization", {
+                **arguments, "output_dir": str(tmp_path / "wrapped")})
+        assert arguments == preserved
+        data = response.data
+        files = native_artifacts(data)
+        assert len(files) == 7 and all(path.is_file() and path.is_absolute() for path in files.values())
+        actual = json.loads(files["native-result.json"].read_text())
+        compare_full(actual, expected)
+&gt;       verify_csv_and_charts(files, expected)
+
+tests/code/amphlett/test_opem_simulate_polarization.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+files = {'inputs.json': PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_f...per2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig2/wrapped/amphlett-udoo6bd_/upstream.log'), ...}
+expected = {'Status': True, 'P': [0.0, 0.10202483514678987, 0.19482956046327815, 0.28412991222274114, 0.37114080064931126, 0.4564...6404413, 1.0202483514678986, 0.9741478023163908, 0.9470997074091372, 0.9278520016232781, 0.9128784096948279, ...], ...}
+
+    def verify_csv_and_charts(files, expected):
+        with files["polarization.csv"].open(newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        assert len(rows) == len(expected["I"])
+        columns = {
+            "I (A)": "I", "VStack (V)": "V", "Power-Stack (W)": "P",
+            "PEM Efficiency ()": "EFF", "Power-Thermal (W)": "Ph",
+            "Eta Activation (V)": "Eta_Active", "Eta Concentration (V)": "Eta_Conc",
+            "Eta Ohmic (V)": "Eta_Ohmic",
+        }
+        for column, field in columns.items():
+            compare_full([float(row[column]) for row in rows], expected[field])
+        html = files["polarization.html"].read_text()
+        datasets = {label: ast.literal_eval(values) for label, values in re.findall(
+            r"label: '([^']+)',\s*data: (\[[^\n]*\]),", html)}
+        chart_fields = {
+            "Power-Stack": "P", "Voltage-Stack": "V", "Linear-Apx": "VE",
+            "Eta Active": "Eta_Active", "Eta Conc": "Eta_Conc", "Eta Ohmic": "Eta_Ohmic",
+            "Efficiency": "EFF", "Efficiency vs Power": "EFF", "Power(Thermal)": "Ph",
+        }
+&gt;       assert set(datasets) == set(chart_fields)
+E       AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}
+E         
+E         Extra items in the right set:
+E         'Eta Ohmic'
+E         'Power(Thermal)'
+E         'Eta Conc'
+E         'Linear-Apx'
+E         'Efficiency'...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/code/amphlett/test_opem_simulate_polarization.py:98: AssertionError</failure></testcase><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_all_values_and_native_figures_against_direct_source[hydrogen]" time="0.068"><failure message="AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}&#10;  &#10;  Extra items in the right set:&#10;  'Eta Ohmic'&#10;  'Power(Thermal)'&#10;  'Eta Conc'&#10;  'Linear-Apx'&#10;  'Efficiency'...&#10;  &#10;  ...Full output truncated, use '-vv' to show">name = 'hydrogen', changes = {'hydrogen_partial_pressure_atm': 1.5}
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig3')
+
+    @pytest.mark.parametrize("name,changes", SCENARIOS, ids=[item[0] for item in SCENARIOS])
+    async def test_all_values_and_native_figures_against_direct_source(name, changes, tmp_path):
+        arguments = {**OFFICIAL, **changes}
+        expected = direct_source(arguments, tmp_path / "direct")
+        if name == "official":
+            compare_full(expected, json.loads(NATIVE_REFERENCE.read_text()))
+        preserved = deepcopy(arguments)
+        async with Client(amphlett.amphlett_mcp) as client:
+            response = await client.call_tool("opem_simulate_polarization", {
+                **arguments, "output_dir": str(tmp_path / "wrapped")})
+        assert arguments == preserved
+        data = response.data
+        files = native_artifacts(data)
+        assert len(files) == 7 and all(path.is_file() and path.is_absolute() for path in files.values())
+        actual = json.loads(files["native-result.json"].read_text())
+        compare_full(actual, expected)
+&gt;       verify_csv_and_charts(files, expected)
+
+tests/code/amphlett/test_opem_simulate_polarization.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+files = {'inputs.json': PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_f...per2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig3/wrapped/amphlett-1i1t5flg/upstream.log'), ...}
+expected = {'Status': True, 'P': [0.0, 0.10844613308005678, 0.20767215632981198, 0.3033938060225419, 0.39682599238237887, 0.48854...09575823, 1.0844613308005677, 1.0383607816490599, 1.0113126867418063, 0.9920649809559471, 0.977091389027497, ...], ...}
+
+    def verify_csv_and_charts(files, expected):
+        with files["polarization.csv"].open(newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        assert len(rows) == len(expected["I"])
+        columns = {
+            "I (A)": "I", "VStack (V)": "V", "Power-Stack (W)": "P",
+            "PEM Efficiency ()": "EFF", "Power-Thermal (W)": "Ph",
+            "Eta Activation (V)": "Eta_Active", "Eta Concentration (V)": "Eta_Conc",
+            "Eta Ohmic (V)": "Eta_Ohmic",
+        }
+        for column, field in columns.items():
+            compare_full([float(row[column]) for row in rows], expected[field])
+        html = files["polarization.html"].read_text()
+        datasets = {label: ast.literal_eval(values) for label, values in re.findall(
+            r"label: '([^']+)',\s*data: (\[[^\n]*\]),", html)}
+        chart_fields = {
+            "Power-Stack": "P", "Voltage-Stack": "V", "Linear-Apx": "VE",
+            "Eta Active": "Eta_Active", "Eta Conc": "Eta_Conc", "Eta Ohmic": "Eta_Ohmic",
+            "Efficiency": "EFF", "Efficiency vs Power": "EFF", "Power(Thermal)": "Ph",
+        }
+&gt;       assert set(datasets) == set(chart_fields)
+E       AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}
+E         
+E         Extra items in the right set:
+E         'Eta Ohmic'
+E         'Power(Thermal)'
+E         'Eta Conc'
+E         'Linear-Apx'
+E         'Efficiency'...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/code/amphlett/test_opem_simulate_polarization.py:98: AssertionError</failure></testcase><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_all_values_and_native_figures_against_direct_source[resistance]" time="0.070"><failure message="AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}&#10;  &#10;  Extra items in the right set:&#10;  'Eta Ohmic'&#10;  'Power(Thermal)'&#10;  'Eta Conc'&#10;  'Linear-Apx'&#10;  'Efficiency'...&#10;  &#10;  ...Full output truncated, use '-vv' to show">name = 'resistance', changes = {'electronic_resistance_ohm': 0.002}
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig4')
+
+    @pytest.mark.parametrize("name,changes", SCENARIOS, ids=[item[0] for item in SCENARIOS])
+    async def test_all_values_and_native_figures_against_direct_source(name, changes, tmp_path):
+        arguments = {**OFFICIAL, **changes}
+        expected = direct_source(arguments, tmp_path / "direct")
+        if name == "official":
+            compare_full(expected, json.loads(NATIVE_REFERENCE.read_text()))
+        preserved = deepcopy(arguments)
+        async with Client(amphlett.amphlett_mcp) as client:
+            response = await client.call_tool("opem_simulate_polarization", {
+                **arguments, "output_dir": str(tmp_path / "wrapped")})
+        assert arguments == preserved
+        data = response.data
+        files = native_artifacts(data)
+        assert len(files) == 7 and all(path.is_file() and path.is_absolute() for path in files.values())
+        actual = json.loads(files["native-result.json"].read_text())
+        compare_full(actual, expected)
+&gt;       verify_csv_and_charts(files, expected)
+
+tests/code/amphlett/test_opem_simulate_polarization.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+files = {'inputs.json': PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_f...per2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig4/wrapped/amphlett-6pejs_z8/upstream.log'), ...}
+expected = {'Status': True, 'P': [0.0, 0.1072284559713551, 0.20519680211240862, 0.2996207746964368, 0.3917152839475721, 0.4820573...[1.19075, 1.0722845597135509, 1.025984010562043, 0.9987359156547894, 0.9792882098689302, 0.9641146179404801, ...], ...}
+
+    def verify_csv_and_charts(files, expected):
+        with files["polarization.csv"].open(newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        assert len(rows) == len(expected["I"])
+        columns = {
+            "I (A)": "I", "VStack (V)": "V", "Power-Stack (W)": "P",
+            "PEM Efficiency ()": "EFF", "Power-Thermal (W)": "Ph",
+            "Eta Activation (V)": "Eta_Active", "Eta Concentration (V)": "Eta_Conc",
+            "Eta Ohmic (V)": "Eta_Ohmic",
+        }
+        for column, field in columns.items():
+            compare_full([float(row[column]) for row in rows], expected[field])
+        html = files["polarization.html"].read_text()
+        datasets = {label: ast.literal_eval(values) for label, values in re.findall(
+            r"label: '([^']+)',\s*data: (\[[^\n]*\]),", html)}
+        chart_fields = {
+            "Power-Stack": "P", "Voltage-Stack": "V", "Linear-Apx": "VE",
+            "Eta Active": "Eta_Active", "Eta Conc": "Eta_Conc", "Eta Ohmic": "Eta_Ohmic",
+            "Efficiency": "EFF", "Efficiency vs Power": "EFF", "Power(Thermal)": "Ph",
+        }
+&gt;       assert set(datasets) == set(chart_fields)
+E       AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}
+E         
+E         Extra items in the right set:
+E         'Eta Ohmic'
+E         'Power(Thermal)'
+E         'Eta Conc'
+E         'Linear-Apx'
+E         'Efficiency'...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/code/amphlett/test_opem_simulate_polarization.py:98: AssertionError</failure></testcase><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_all_values_and_native_figures_against_direct_source[stack]" time="0.067"><failure message="AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}&#10;  &#10;  Extra items in the right set:&#10;  'Eta Ohmic'&#10;  'Power(Thermal)'&#10;  'Eta Conc'&#10;  'Linear-Apx'&#10;  'Efficiency'...&#10;  &#10;  ...Full output truncated, use '-vv' to show">name = 'stack', changes = {'cell_count': 5}
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig5')
+
+    @pytest.mark.parametrize("name,changes", SCENARIOS, ids=[item[0] for item in SCENARIOS])
+    async def test_all_values_and_native_figures_against_direct_source(name, changes, tmp_path):
+        arguments = {**OFFICIAL, **changes}
+        expected = direct_source(arguments, tmp_path / "direct")
+        if name == "official":
+            compare_full(expected, json.loads(NATIVE_REFERENCE.read_text()))
+        preserved = deepcopy(arguments)
+        async with Client(amphlett.amphlett_mcp) as client:
+            response = await client.call_tool("opem_simulate_polarization", {
+                **arguments, "output_dir": str(tmp_path / "wrapped")})
+        assert arguments == preserved
+        data = response.data
+        files = native_artifacts(data)
+        assert len(files) == 7 and all(path.is_file() and path.is_absolute() for path in files.values())
+        actual = json.loads(files["native-result.json"].read_text())
+        compare_full(actual, expected)
+&gt;       verify_csv_and_charts(files, expected)
+
+tests/code/amphlett/test_opem_simulate_polarization.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+files = {'inputs.json': PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_f...per2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig5/wrapped/amphlett-bd9r3e_c/upstream.log'), ...}
+expected = {'Status': True, 'P': [0.0, 0.5362422798567754, 1.026384010562043, 1.499003873482184, 1.9601764197378604, 2.4127865448...49999999999, 5.362422798567755, 5.131920052810215, 4.996679578273947, 4.900441049344651, 4.8255730897024005, ...], ...}
+
+    def verify_csv_and_charts(files, expected):
+        with files["polarization.csv"].open(newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        assert len(rows) == len(expected["I"])
+        columns = {
+            "I (A)": "I", "VStack (V)": "V", "Power-Stack (W)": "P",
+            "PEM Efficiency ()": "EFF", "Power-Thermal (W)": "Ph",
+            "Eta Activation (V)": "Eta_Active", "Eta Concentration (V)": "Eta_Conc",
+            "Eta Ohmic (V)": "Eta_Ohmic",
+        }
+        for column, field in columns.items():
+            compare_full([float(row[column]) for row in rows], expected[field])
+        html = files["polarization.html"].read_text()
+        datasets = {label: ast.literal_eval(values) for label, values in re.findall(
+            r"label: '([^']+)',\s*data: (\[[^\n]*\]),", html)}
+        chart_fields = {
+            "Power-Stack": "P", "Voltage-Stack": "V", "Linear-Apx": "VE",
+            "Eta Active": "Eta_Active", "Eta Conc": "Eta_Conc", "Eta Ohmic": "Eta_Ohmic",
+            "Efficiency": "EFF", "Efficiency vs Power": "EFF", "Power(Thermal)": "Ph",
+        }
+&gt;       assert set(datasets) == set(chart_fields)
+E       AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}
+E         
+E         Extra items in the right set:
+E         'Eta Ohmic'
+E         'Power(Thermal)'
+E         'Eta Conc'
+E         'Linear-Apx'
+E         'Efficiency'...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/code/amphlett/test_opem_simulate_polarization.py:98: AssertionError</failure></testcase><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_all_values_and_native_figures_against_direct_source[area]" time="0.069"><failure message="AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}&#10;  &#10;  Extra items in the right set:&#10;  'Eta Ohmic'&#10;  'Power(Thermal)'&#10;  'Eta Conc'&#10;  'Linear-Apx'&#10;  'Efficiency'...&#10;  &#10;  ...Full output truncated, use '-vv' to show">name = 'area', changes = {'active_area_cm2': 60.0}
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig6')
+
+    @pytest.mark.parametrize("name,changes", SCENARIOS, ids=[item[0] for item in SCENARIOS])
+    async def test_all_values_and_native_figures_against_direct_source(name, changes, tmp_path):
+        arguments = {**OFFICIAL, **changes}
+        expected = direct_source(arguments, tmp_path / "direct")
+        if name == "official":
+            compare_full(expected, json.loads(NATIVE_REFERENCE.read_text()))
+        preserved = deepcopy(arguments)
+        async with Client(amphlett.amphlett_mcp) as client:
+            response = await client.call_tool("opem_simulate_polarization", {
+                **arguments, "output_dir": str(tmp_path / "wrapped")})
+        assert arguments == preserved
+        data = response.data
+        files = native_artifacts(data)
+        assert len(files) == 7 and all(path.is_file() and path.is_absolute() for path in files.values())
+        actual = json.loads(files["native-result.json"].read_text())
+        compare_full(actual, expected)
+&gt;       verify_csv_and_charts(files, expected)
+
+tests/code/amphlett/test_opem_simulate_polarization.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+files = {'inputs.json': PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_f...per2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig6/wrapped/amphlett-rgnmmfei/upstream.log'), ...}
+expected = {'Status': True, 'P': [0.0, 0.10842091414287874, 0.20762782873332575, 0.30333649215835085, 0.39676182679028404, 0.4884...1.19075, 1.0842091414287873, 1.0381391436666287, 1.0111216405278363, 0.9919045669757101, 0.9769616478368199, ...], ...}
+
+    def verify_csv_and_charts(files, expected):
+        with files["polarization.csv"].open(newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        assert len(rows) == len(expected["I"])
+        columns = {
+            "I (A)": "I", "VStack (V)": "V", "Power-Stack (W)": "P",
+            "PEM Efficiency ()": "EFF", "Power-Thermal (W)": "Ph",
+            "Eta Activation (V)": "Eta_Active", "Eta Concentration (V)": "Eta_Conc",
+            "Eta Ohmic (V)": "Eta_Ohmic",
+        }
+        for column, field in columns.items():
+            compare_full([float(row[column]) for row in rows], expected[field])
+        html = files["polarization.html"].read_text()
+        datasets = {label: ast.literal_eval(values) for label, values in re.findall(
+            r"label: '([^']+)',\s*data: (\[[^\n]*\]),", html)}
+        chart_fields = {
+            "Power-Stack": "P", "Voltage-Stack": "V", "Linear-Apx": "VE",
+            "Eta Active": "Eta_Active", "Eta Conc": "Eta_Conc", "Eta Ohmic": "Eta_Ohmic",
+            "Efficiency": "EFF", "Efficiency vs Power": "EFF", "Power(Thermal)": "Ph",
+        }
+&gt;       assert set(datasets) == set(chart_fields)
+E       AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}
+E         
+E         Extra items in the right set:
+E         'Eta Ohmic'
+E         'Power(Thermal)'
+E         'Eta Conc'
+E         'Linear-Apx'
+E         'Efficiency'...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/code/amphlett/test_opem_simulate_polarization.py:98: AssertionError</failure></testcase><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_all_values_and_native_figures_against_direct_source[thickness]" time="0.068"><failure message="AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}&#10;  &#10;  Extra items in the right set:&#10;  'Eta Ohmic'&#10;  'Power(Thermal)'&#10;  'Eta Conc'&#10;  'Linear-Apx'&#10;  'Efficiency'...&#10;  &#10;  ...Full output truncated, use '-vv' to show">name = 'thickness', changes = {'membrane_thickness_cm': 0.02}
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig7')
+
+    @pytest.mark.parametrize("name,changes", SCENARIOS, ids=[item[0] for item in SCENARIOS])
+    async def test_all_values_and_native_figures_against_direct_source(name, changes, tmp_path):
+        arguments = {**OFFICIAL, **changes}
+        expected = direct_source(arguments, tmp_path / "direct")
+        if name == "official":
+            compare_full(expected, json.loads(NATIVE_REFERENCE.read_text()))
+        preserved = deepcopy(arguments)
+        async with Client(amphlett.amphlett_mcp) as client:
+            response = await client.call_tool("opem_simulate_polarization", {
+                **arguments, "output_dir": str(tmp_path / "wrapped")})
+        assert arguments == preserved
+        data = response.data
+        files = native_artifacts(data)
+        assert len(files) == 7 and all(path.is_file() and path.is_absolute() for path in files.values())
+        actual = json.loads(files["native-result.json"].read_text())
+        compare_full(actual, expected)
+&gt;       verify_csv_and_charts(files, expected)
+
+tests/code/amphlett/test_opem_simulate_polarization.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+files = {'inputs.json': PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_f...per2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig7/wrapped/amphlett-hsofqhe4/upstream.log'), ...}
+expected = {'Status': True, 'P': [0.0, 0.10724629057774526, 0.20526813772651753, 0.299781273497639, 0.39200060388633595, 0.482503...1.19075, 1.0724629057774526, 1.0263406886325876, 0.9992709116587968, 0.9800015097158399, 0.9650062075211816, ...], ...}
+
+    def verify_csv_and_charts(files, expected):
+        with files["polarization.csv"].open(newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        assert len(rows) == len(expected["I"])
+        columns = {
+            "I (A)": "I", "VStack (V)": "V", "Power-Stack (W)": "P",
+            "PEM Efficiency ()": "EFF", "Power-Thermal (W)": "Ph",
+            "Eta Activation (V)": "Eta_Active", "Eta Concentration (V)": "Eta_Conc",
+            "Eta Ohmic (V)": "Eta_Ohmic",
+        }
+        for column, field in columns.items():
+            compare_full([float(row[column]) for row in rows], expected[field])
+        html = files["polarization.html"].read_text()
+        datasets = {label: ast.literal_eval(values) for label, values in re.findall(
+            r"label: '([^']+)',\s*data: (\[[^\n]*\]),", html)}
+        chart_fields = {
+            "Power-Stack": "P", "Voltage-Stack": "V", "Linear-Apx": "VE",
+            "Eta Active": "Eta_Active", "Eta Conc": "Eta_Conc", "Eta Ohmic": "Eta_Ohmic",
+            "Efficiency": "EFF", "Efficiency vs Power": "EFF", "Power(Thermal)": "Ph",
+        }
+&gt;       assert set(datasets) == set(chart_fields)
+E       AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}
+E         
+E         Extra items in the right set:
+E         'Eta Ohmic'
+E         'Power(Thermal)'
+E         'Eta Conc'
+E         'Linear-Apx'
+E         'Efficiency'...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/code/amphlett/test_opem_simulate_polarization.py:98: AssertionError</failure></testcase><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_all_values_and_native_figures_against_direct_source[hydration]" time="0.070"><failure message="AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}&#10;  &#10;  Extra items in the right set:&#10;  'Eta Ohmic'&#10;  'Power(Thermal)'&#10;  'Eta Conc'&#10;  'Linear-Apx'&#10;  'Efficiency'...&#10;  &#10;  ...Full output truncated, use '-vv' to show">name = 'hydration', changes = {'membrane_water_content': 18}
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig8')
+
+    @pytest.mark.parametrize("name,changes", SCENARIOS, ids=[item[0] for item in SCENARIOS])
+    async def test_all_values_and_native_figures_against_direct_source(name, changes, tmp_path):
+        arguments = {**OFFICIAL, **changes}
+        expected = direct_source(arguments, tmp_path / "direct")
+        if name == "official":
+            compare_full(expected, json.loads(NATIVE_REFERENCE.read_text()))
+        preserved = deepcopy(arguments)
+        async with Client(amphlett.amphlett_mcp) as client:
+            response = await client.call_tool("opem_simulate_polarization", {
+                **arguments, "output_dir": str(tmp_path / "wrapped")})
+        assert arguments == preserved
+        data = response.data
+        files = native_artifacts(data)
+        assert len(files) == 7 and all(path.is_file() and path.is_absolute() for path in files.values())
+        actual = json.loads(files["native-result.json"].read_text())
+        compare_full(actual, expected)
+&gt;       verify_csv_and_charts(files, expected)
+
+tests/code/amphlett/test_opem_simulate_polarization.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+files = {'inputs.json': PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_f...per2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig8/wrapped/amphlett-r1fvjfk3/upstream.log'), ...}
+expected = {'Status': True, 'P': [0.0, 0.10724340990826714, 0.20525660441050217, 0.2997552995738273, 0.3919543853723718, 0.482430...1.19075, 1.0724340990826713, 1.0262830220525108, 0.9991843319127577, 0.9798859634309295, 0.9648616412305389, ...], ...}
+
+    def verify_csv_and_charts(files, expected):
+        with files["polarization.csv"].open(newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        assert len(rows) == len(expected["I"])
+        columns = {
+            "I (A)": "I", "VStack (V)": "V", "Power-Stack (W)": "P",
+            "PEM Efficiency ()": "EFF", "Power-Thermal (W)": "Ph",
+            "Eta Activation (V)": "Eta_Active", "Eta Concentration (V)": "Eta_Conc",
+            "Eta Ohmic (V)": "Eta_Ohmic",
+        }
+        for column, field in columns.items():
+            compare_full([float(row[column]) for row in rows], expected[field])
+        html = files["polarization.html"].read_text()
+        datasets = {label: ast.literal_eval(values) for label, values in re.findall(
+            r"label: '([^']+)',\s*data: (\[[^\n]*\]),", html)}
+        chart_fields = {
+            "Power-Stack": "P", "Voltage-Stack": "V", "Linear-Apx": "VE",
+            "Eta Active": "Eta_Active", "Eta Conc": "Eta_Conc", "Eta Ohmic": "Eta_Ohmic",
+            "Efficiency": "EFF", "Efficiency vs Power": "EFF", "Power(Thermal)": "Ph",
+        }
+&gt;       assert set(datasets) == set(chart_fields)
+E       AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}
+E         
+E         Extra items in the right set:
+E         'Eta Ohmic'
+E         'Power(Thermal)'
+E         'Eta Conc'
+E         'Linear-Apx'
+E         'Efficiency'...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/code/amphlett/test_opem_simulate_polarization.py:98: AssertionError</failure></testcase><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_all_values_and_native_figures_against_direct_source[density_cap]" time="0.059"><failure message="AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}&#10;  &#10;  Extra items in the right set:&#10;  'Eta Ohmic'&#10;  'Power(Thermal)'&#10;  'Eta Conc'&#10;  'Linear-Apx'&#10;  'Efficiency'...&#10;  &#10;  ...Full output truncated, use '-vv' to show">name = 'density_cap', changes = {'max_current_density_A_cm2': 1.2}
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig9')
+
+    @pytest.mark.parametrize("name,changes", SCENARIOS, ids=[item[0] for item in SCENARIOS])
+    async def test_all_values_and_native_figures_against_direct_source(name, changes, tmp_path):
+        arguments = {**OFFICIAL, **changes}
+        expected = direct_source(arguments, tmp_path / "direct")
+        if name == "official":
+            compare_full(expected, json.loads(NATIVE_REFERENCE.read_text()))
+        preserved = deepcopy(arguments)
+        async with Client(amphlett.amphlett_mcp) as client:
+            response = await client.call_tool("opem_simulate_polarization", {
+                **arguments, "output_dir": str(tmp_path / "wrapped")})
+        assert arguments == preserved
+        data = response.data
+        files = native_artifacts(data)
+        assert len(files) == 7 and all(path.is_file() and path.is_absolute() for path in files.values())
+        actual = json.loads(files["native-result.json"].read_text())
+        compare_full(actual, expected)
+&gt;       verify_csv_and_charts(files, expected)
+
+tests/code/amphlett/test_opem_simulate_polarization.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+files = {'inputs.json': PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_f...per2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig9/wrapped/amphlett-6bax9p9e/upstream.log'), ...}
+expected = {'Status': True, 'P': [0.0, 0.10724796824861074, 0.20527484832114348, 0.2997963721209306, 0.392027445475988, 0.4825450...: [1.19075, 1.0724796824861074, 1.0263742416057173, 0.999321240403102, 0.98006861368997, 0.9650900861365096, ...], ...}
+
+    def verify_csv_and_charts(files, expected):
+        with files["polarization.csv"].open(newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        assert len(rows) == len(expected["I"])
+        columns = {
+            "I (A)": "I", "VStack (V)": "V", "Power-Stack (W)": "P",
+            "PEM Efficiency ()": "EFF", "Power-Thermal (W)": "Ph",
+            "Eta Activation (V)": "Eta_Active", "Eta Concentration (V)": "Eta_Conc",
+            "Eta Ohmic (V)": "Eta_Ohmic",
+        }
+        for column, field in columns.items():
+            compare_full([float(row[column]) for row in rows], expected[field])
+        html = files["polarization.html"].read_text()
+        datasets = {label: ast.literal_eval(values) for label, values in re.findall(
+            r"label: '([^']+)',\s*data: (\[[^\n]*\]),", html)}
+        chart_fields = {
+            "Power-Stack": "P", "Voltage-Stack": "V", "Linear-Apx": "VE",
+            "Eta Active": "Eta_Active", "Eta Conc": "Eta_Conc", "Eta Ohmic": "Eta_Ohmic",
+            "Efficiency": "EFF", "Efficiency vs Power": "EFF", "Power(Thermal)": "Ph",
+        }
+&gt;       assert set(datasets) == set(chart_fields)
+E       AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}
+E         
+E         Extra items in the right set:
+E         'Eta Ohmic'
+E         'Power(Thermal)'
+E         'Eta Conc'
+E         'Linear-Apx'
+E         'Efficiency'...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/code/amphlett/test_opem_simulate_polarization.py:98: AssertionError</failure></testcase><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_all_values_and_native_figures_against_direct_source[current_sweep]" time="0.013"><failure message="AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}&#10;  &#10;  Extra items in the right set:&#10;  'Eta Ohmic'&#10;  'Power(Thermal)'&#10;  'Eta Conc'&#10;  'Linear-Apx'&#10;  'Efficiency'...&#10;  &#10;  ...Full output truncated, use '-vv' to show">name = 'current_sweep'
+changes = {'current_start_A': 5, 'current_stop_A': 15, 'current_step_A': 0.5}
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig10')
+
+    @pytest.mark.parametrize("name,changes", SCENARIOS, ids=[item[0] for item in SCENARIOS])
+    async def test_all_values_and_native_figures_against_direct_source(name, changes, tmp_path):
+        arguments = {**OFFICIAL, **changes}
+        expected = direct_source(arguments, tmp_path / "direct")
+        if name == "official":
+            compare_full(expected, json.loads(NATIVE_REFERENCE.read_text()))
+        preserved = deepcopy(arguments)
+        async with Client(amphlett.amphlett_mcp) as client:
+            response = await client.call_tool("opem_simulate_polarization", {
+                **arguments, "output_dir": str(tmp_path / "wrapped")})
+        assert arguments == preserved
+        data = response.data
+        files = native_artifacts(data)
+        assert len(files) == 7 and all(path.is_file() and path.is_absolute() for path in files.values())
+        actual = json.loads(files["native-result.json"].read_text())
+        compare_full(actual, expected)
+&gt;       verify_csv_and_charts(files, expected)
+
+tests/code/amphlett/test_opem_simulate_polarization.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+files = {'inputs.json': PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_all_values_and_native_f...er2agent/tests/results/amphlett/run-two/test_all_values_and_native_fig10/wrapped/amphlett-dj4ylrr1/upstream.log'), ...}
+expected = {'Status': True, 'P': [4.018415810704825, 4.379976080824402, 4.7374865361149885, 5.091192741022596, 5.441301272005159,...62140965, 0.7963592874226186, 0.789581089352498, 0.7832604216957839, 0.7773287531435942, 0.7717317432278797, ...], ...}
+
+    def verify_csv_and_charts(files, expected):
+        with files["polarization.csv"].open(newline="") as stream:
+            rows = list(csv.DictReader(stream))
+        assert len(rows) == len(expected["I"])
+        columns = {
+            "I (A)": "I", "VStack (V)": "V", "Power-Stack (W)": "P",
+            "PEM Efficiency ()": "EFF", "Power-Thermal (W)": "Ph",
+            "Eta Activation (V)": "Eta_Active", "Eta Concentration (V)": "Eta_Conc",
+            "Eta Ohmic (V)": "Eta_Ohmic",
+        }
+        for column, field in columns.items():
+            compare_full([float(row[column]) for row in rows], expected[field])
+        html = files["polarization.html"].read_text()
+        datasets = {label: ast.literal_eval(values) for label, values in re.findall(
+            r"label: '([^']+)',\s*data: (\[[^\n]*\]),", html)}
+        chart_fields = {
+            "Power-Stack": "P", "Voltage-Stack": "V", "Linear-Apx": "VE",
+            "Eta Active": "Eta_Active", "Eta Conc": "Eta_Conc", "Eta Ohmic": "Eta_Ohmic",
+            "Efficiency": "EFF", "Efficiency vs Power": "EFF", "Power(Thermal)": "Ph",
+        }
+&gt;       assert set(datasets) == set(chart_fields)
+E       AssertionError: assert set() == {'Efficiency'...ear-Apx', ...}
+E         
+E         Extra items in the right set:
+E         'Eta Ohmic'
+E         'Power(Thermal)'
+E         'Eta Conc'
+E         'Linear-Apx'
+E         'Efficiency'...
+E         
+E         ...Full output truncated, use '-vv' to show
+
+tests/code/amphlett/test_opem_simulate_polarization.py:98: AssertionError</failure></testcase><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes0-strictly positive]" time="0.069" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes1-finite]" time="0.007"><failure message="AssertionError: Regex pattern did not match.&#10;  Expected regex: 'finite'&#10;  Actual message: '1 validation error for call[opem_simulate_polarization]\ntemperature_K\n  Value error, Physical numeric parameters must be numbers, not booleans or strings. [type=value_error, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error'">changes = {'temperature_K': nan}, message = 'finite'
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_invalid_inputs_are_mcp_er1')
+
+    @pytest.mark.parametrize("changes,message", INVALIDS)
+    async def test_invalid_inputs_are_mcp_errors(changes, message, tmp_path):
+        async with Client(amphlett.amphlett_mcp) as client:
+&gt;           with pytest.raises(ToolError, match=re.escape(message)):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError: Regex pattern did not match.
+E             Expected regex: 'finite'
+E             Actual message: '1 validation error for call[opem_simulate_polarization]\ntemperature_K\n  Value error, Physical numeric parameters must be numbers, not booleans or strings. [type=value_error, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error'
+
+tests/code/amphlett/test_opem_simulate_polarization.py:181: AssertionError</failure></testcase><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes2-finite]" time="0.082"><failure message="AssertionError: Regex pattern did not match.&#10;  Expected regex: 'finite'&#10;  Actual message: '1 validation error for call[opem_simulate_polarization]\ntemperature_K\n  Value error, Physical numeric parameters must be numbers, not booleans or strings. [type=value_error, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error'">changes = {'temperature_K': inf}, message = 'finite'
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_invalid_inputs_are_mcp_er2')
+
+    @pytest.mark.parametrize("changes,message", INVALIDS)
+    async def test_invalid_inputs_are_mcp_errors(changes, message, tmp_path):
+        async with Client(amphlett.amphlett_mcp) as client:
+&gt;           with pytest.raises(ToolError, match=re.escape(message)):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError: Regex pattern did not match.
+E             Expected regex: 'finite'
+E             Actual message: '1 validation error for call[opem_simulate_polarization]\ntemperature_K\n  Value error, Physical numeric parameters must be numbers, not booleans or strings. [type=value_error, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error'
+
+tests/code/amphlett/test_opem_simulate_polarization.py:181: AssertionError</failure></testcase><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes3-strictly positive]" time="0.014" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes4-strictly positive]" time="0.014" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes5-strictly positive]" time="0.015" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes6-strictly positive]" time="0.016" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes7-strictly positive]" time="0.014" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes8-between 14 and 23]" time="0.015" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes9-between 14 and 23]" time="0.015" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes10-positive integer]" time="0.017" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes11-positive integer]" time="0.006" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes12-nonnegative]" time="0.013" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes13-start &gt;= 0]" time="0.013" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes14-step &gt; 0]" time="0.014" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes15-step &gt; 0]" time="0.013" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes16-stop &gt; start]" time="0.013" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes17-at least two samples]" time="0.015" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes18-does not advance]" time="0.014" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes19-10000]" time="0.014" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes20-not booleans or strings]" time="0.005" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_invalid_inputs_are_mcp_errors[changes21-positive integer]" time="0.005" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_boolean_is_never_coerced_to_physical_parameter[temperature_K]" time="0.005" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_boolean_is_never_coerced_to_physical_parameter[hydrogen_partial_pressure_atm]" time="0.005" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_boolean_is_never_coerced_to_physical_parameter[oxygen_partial_pressure_atm]" time="0.005" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_boolean_is_never_coerced_to_physical_parameter[active_area_cm2]" time="0.005" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_boolean_is_never_coerced_to_physical_parameter[membrane_thickness_cm]" time="0.006" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_boolean_is_never_coerced_to_physical_parameter[membrane_water_content]" time="0.006" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_boolean_is_never_coerced_to_physical_parameter[cell_count]" time="0.006" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_boolean_is_never_coerced_to_physical_parameter[current_start_A]" time="0.006" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_boolean_is_never_coerced_to_physical_parameter[current_stop_A]" time="0.006" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_boolean_is_never_coerced_to_physical_parameter[current_step_A]" time="0.005" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_boolean_is_never_coerced_to_physical_parameter[max_current_density_A_cm2]" time="0.005" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_boolean_is_never_coerced_to_physical_parameter[electronic_resistance_ohm]" time="0.005" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_schema_and_required_input_contract" time="0.003"><failure message="assert False&#10; +  where False = all(&lt;generator object test_schema_and_required_input_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x7f9229531b10&gt;)">tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/amphlett/run-two/test_schema_and_required_input0')
+
+    async def test_schema_and_required_input_contract(tmp_path):
+        async with Client(amphlett.amphlett_mcp) as client:
+            tools = await client.list_tools()
+            assert [tool.name for tool in tools] == ["opem_simulate_polarization"]
+            schema = tools[0].inputSchema
+            assert set(schema["required"]) == REQUIRED
+            assert set(schema["properties"]) == set(OFFICIAL) | {"output_dir"}
+&gt;           assert all(field.get("description") for field in schema["properties"].values())
+E           assert False
+E            +  where False = all(&lt;generator object test_schema_and_required_input_contract.&lt;locals&gt;.&lt;genexpr&gt; at 0x7f9229531b10&gt;)
+
+tests/code/amphlett/test_opem_simulate_polarization.py:201: AssertionError</failure></testcase><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_default_resistance_repeat_isolation_and_input_preservation" time="0.075" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_swallowed_upstream_failures_are_not_success[status]" time="0.022" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_swallowed_upstream_failures_are_not_success[missing-array]" time="0.021" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_swallowed_upstream_failures_are_not_success[nonfinite-array]" time="0.026" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_swallowed_upstream_failures_are_not_success[nonfinite-fit]" time="0.027" /><testcase classname="tests.code.amphlett.test_opem_simulate_polarization" name="test_source_reuse_and_tool_format" time="0.003" /></testsuite></testsuites>

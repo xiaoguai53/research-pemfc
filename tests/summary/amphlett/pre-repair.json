@@ -1,0 +1,22 @@
+{
+  "observed_at_utc": "2026-11-13T17:00:10.448140+00:00",
+  "original_module_sha256": "017b6ee001ea636d02dc0797337f7d989ae3521984e3b99c8d2f443ff2e86033",
+  "observations": [
+    {
+      "parameter": "cell_count",
+      "json_value": true,
+      "result": "accepted; converted to 1; sample_count750"
+    },
+    {
+      "parameter": "hydrogen_partial_pressure_atm",
+      "json_value": true,
+      "result": "accepted; converted to1.0; sample_count750"
+    },
+    {
+      "parameter": "current_start_A",
+      "json_value": true,
+      "result": "accepted; converted to1.0; sample_count740"
+    }
+  ],
+  "repair": "Add pydantic.Strict metadata to numeric Annotated scalars, keeping flat schema and original scientific API unchanged."
+}

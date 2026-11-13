@@ -1,0 +1,79 @@
+{
+  "scan_metadata": {
+    "repository_name": "opem",
+    "repository_url": "https://github.com/ECSIM/opem",
+    "repository_commit": "27d343fb966361a4e6cc99650241f651778fc50f",
+    "paper_name": "OPEM: Open Source PEM Cell Simulation Tool",
+    "scan_date": "2026-11-14",
+    "timezone": "Asia/Shanghai",
+    "scan_completed_at_utc": "2026-11-13T16:49:24.737998Z",
+    "evaluated_source_files": 8,
+    "included_source_files": 1,
+    "success": true,
+    "explanation": "Bounded first migration of the documented Amphlett static PEMFC API. One independently useful curve operation also returns the source-supported loss components. Air-cooled/open-cathode dynamics are deferred rather than inferred from a static model.",
+    "source_files_inspected": [
+      "README.md",
+      "Documents/Amphlett.ipynb",
+      "test/test_Amphlett.py",
+      "opem/Static/Amphlett.py",
+      "opem/Params.py",
+      "opem/Functions.py",
+      "opem/__main__.py",
+      "opem/Dynamic/Padulles_Amphlett.py"
+    ]
+  },
+  "tutorials": [
+    {
+      "id": "amphlett_reference",
+      "module": "amphlett",
+      "path": "Documents/Amphlett.ipynb",
+      "title": "Amphlett Static Model — Full Run",
+      "description": "Run the existing static polarization API with the official Full Run input vector and preserve native voltage, power, efficiency, and loss outputs.",
+      "type": "notebook",
+      "include_in_tools": true,
+      "reason_for_include_or_exclude": "Complete reusable PEMFC curve analysis on new physical operating parameters, using an existing public callable and directly reproducible official inputs. The reference executor may use a native Python driver extracted from cells65 and67/69 without executing installation/plot scaffolding.",
+      "source_sha256": "f358a34a4d943c22d8a081deec96da7fb1cf90a401d4e12cb70ef771052ab7db",
+      "reference_source_sections": [
+        "Full Run: cells65,67,69",
+        "Plot: cells78-82 only if plot outputs are included in execution scope"
+      ],
+      "suggested_tools": [
+        {
+          "tool_name": "opem_simulate_polarization",
+          "source_section": "Full Run / opem.Static.Amphlett.Static_Analysis",
+          "description": "Simulate a user-parameterized static hydrogen/oxygen PEMFC current sweep; return source-native stack voltage, stack power, native efficiency, losses, and optional native report files.",
+          "primary_input": {
+            "T": "cell operating temperature [K]",
+            "PH2": "hydrogen partial pressure [atm]",
+            "PO2": "oxygen partial pressure [atm], not cathode total pressure",
+            "A": "cell active area [cm^2]",
+            "l": "membrane thickness [cm]",
+            "lambda": "documented adjustable membrane parameter [14,23], dimensionless",
+            "N": "number of series cells, positive integer",
+            "R": "electronic resistance [ohm], native default 0",
+            "JMax": "maximum current density [A/cm^2]",
+            "i-start": "current start [A]",
+            "i-stop": "exclusive current stop [A], capped natively at A*JMax",
+            "i-step": "current increment [A]",
+            "Name": "report basename [string]"
+          },
+          "outputs": {
+            "I": "current array [A]",
+            "V": "stack voltage array [V]",
+            "P": "stack power array [W]",
+            "EFF": "native fractional electrical efficiency array",
+            "Ph": "native thermal-power proxy [W] using upstream Eth=1.23 V; not a validated stack heat-rejection model",
+            "Eta_Active": "single-cell activation loss [V]",
+            "Eta_Conc": "single-cell concentration loss [V]",
+            "Eta_Ohmic": "single-cell ohmic loss [V]",
+            "VE": "linear approximation to stack voltage [V]",
+            "V0": "linear approximation intercept [V]",
+            "K": "native linear-fit slope",
+            "Status": "native success boolean"
+          },
+          "applicable_to_new_data": true
+        }
+      ]
+    }
+  ]
+}

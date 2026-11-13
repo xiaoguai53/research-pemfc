@@ -1,0 +1,248 @@
+[
+  {
+    "name": "official-reference",
+    "tool": "opem_simulate_polarization",
+    "arguments": {
+      "temperature_K": 343.15,
+      "hydrogen_partial_pressure_atm": 1,
+      "oxygen_partial_pressure_atm": 1,
+      "active_area_cm2": 50.6,
+      "membrane_thickness_cm": 0.0178,
+      "membrane_water_content": 23,
+      "cell_count": 1,
+      "current_start_A": 0,
+      "current_stop_A": 75,
+      "current_step_A": 0.1,
+      "max_current_density_A_cm2": 1.5,
+      "electronic_resistance_ohm": 0,
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/outputs/acceptance"
+    },
+    "required_inputs": [
+      "active_area_cm2",
+      "cell_count",
+      "current_start_A",
+      "current_step_A",
+      "current_stop_A",
+      "hydrogen_partial_pressure_atm",
+      "max_current_density_A_cm2",
+      "membrane_thickness_cm",
+      "membrane_water_content",
+      "oxygen_partial_pressure_atm",
+      "temperature_K"
+    ],
+    "expected_subset": {
+      "summary": {
+        "sample_count": 750,
+        "first_current_A": 0,
+        "last_current_A": 74.9
+      },
+      "source": {
+        "pinned_commit": "27d343fb966361a4e6cc99650241f651778fc50f"
+      }
+    },
+    "min_artifacts": 7,
+    "artifact_root": "/workspace/fuelcell-paper2agent/tmp/outputs/acceptance",
+    "unique_artifacts": true
+  },
+  {
+    "name": "temperature-353K",
+    "tool": "opem_simulate_polarization",
+    "arguments": {
+      "temperature_K": 353.15,
+      "hydrogen_partial_pressure_atm": 1,
+      "oxygen_partial_pressure_atm": 1,
+      "active_area_cm2": 50.6,
+      "membrane_thickness_cm": 0.0178,
+      "membrane_water_content": 23,
+      "cell_count": 1,
+      "current_start_A": 0,
+      "current_stop_A": 75,
+      "current_step_A": 0.1,
+      "max_current_density_A_cm2": 1.5,
+      "electronic_resistance_ohm": 0,
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/outputs/acceptance"
+    },
+    "required_inputs": [
+      "active_area_cm2",
+      "cell_count",
+      "current_start_A",
+      "current_step_A",
+      "current_stop_A",
+      "hydrogen_partial_pressure_atm",
+      "max_current_density_A_cm2",
+      "membrane_thickness_cm",
+      "membrane_water_content",
+      "oxygen_partial_pressure_atm",
+      "temperature_K"
+    ],
+    "expected_subset": {
+      "summary": {
+        "sample_count": 750,
+        "first_current_A": 0,
+        "last_current_A": 74.9
+      },
+      "source": {
+        "pinned_commit": "27d343fb966361a4e6cc99650241f651778fc50f"
+      }
+    },
+    "min_artifacts": 7,
+    "artifact_root": "/workspace/fuelcell-paper2agent/tmp/outputs/acceptance",
+    "unique_artifacts": true
+  },
+  {
+    "name": "oxygen-partial-0-21atm",
+    "tool": "opem_simulate_polarization",
+    "arguments": {
+      "temperature_K": 343.15,
+      "hydrogen_partial_pressure_atm": 1,
+      "oxygen_partial_pressure_atm": 0.21,
+      "active_area_cm2": 50.6,
+      "membrane_thickness_cm": 0.0178,
+      "membrane_water_content": 23,
+      "cell_count": 1,
+      "current_start_A": 0,
+      "current_stop_A": 75,
+      "current_step_A": 0.1,
+      "max_current_density_A_cm2": 1.5,
+      "electronic_resistance_ohm": 0,
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/outputs/acceptance"
+    },
+    "required_inputs": [
+      "active_area_cm2",
+      "cell_count",
+      "current_start_A",
+      "current_step_A",
+      "current_stop_A",
+      "hydrogen_partial_pressure_atm",
+      "max_current_density_A_cm2",
+      "membrane_thickness_cm",
+      "membrane_water_content",
+      "oxygen_partial_pressure_atm",
+      "temperature_K"
+    ],
+    "expected_subset": {
+      "summary": {
+        "sample_count": 750,
+        "first_current_A": 0,
+        "last_current_A": 74.9
+      },
+      "source": {
+        "pinned_commit": "27d343fb966361a4e6cc99650241f651778fc50f"
+      }
+    },
+    "min_artifacts": 7,
+    "artifact_root": "/workspace/fuelcell-paper2agent/tmp/outputs/acceptance",
+    "unique_artifacts": true
+  },
+  {
+    "name": "official-repeat",
+    "tool": "opem_simulate_polarization",
+    "arguments": {
+      "temperature_K": 343.15,
+      "hydrogen_partial_pressure_atm": 1,
+      "oxygen_partial_pressure_atm": 1,
+      "active_area_cm2": 50.6,
+      "membrane_thickness_cm": 0.0178,
+      "membrane_water_content": 23,
+      "cell_count": 1,
+      "current_start_A": 0,
+      "current_stop_A": 75,
+      "current_step_A": 0.1,
+      "max_current_density_A_cm2": 1.5,
+      "electronic_resistance_ohm": 0,
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/outputs/acceptance"
+    },
+    "required_inputs": [
+      "active_area_cm2",
+      "cell_count",
+      "current_start_A",
+      "current_step_A",
+      "current_stop_A",
+      "hydrogen_partial_pressure_atm",
+      "max_current_density_A_cm2",
+      "membrane_thickness_cm",
+      "membrane_water_content",
+      "oxygen_partial_pressure_atm",
+      "temperature_K"
+    ],
+    "expected_subset": {
+      "summary": {
+        "sample_count": 750,
+        "first_current_A": 0,
+        "last_current_A": 74.9
+      },
+      "source": {
+        "pinned_commit": "27d343fb966361a4e6cc99650241f651778fc50f"
+      }
+    },
+    "min_artifacts": 7,
+    "artifact_root": "/workspace/fuelcell-paper2agent/tmp/outputs/acceptance",
+    "unique_artifacts": true
+  },
+  {
+    "name": "reject-out-of-domain-lambda",
+    "tool": "opem_simulate_polarization",
+    "arguments": {
+      "temperature_K": 343.15,
+      "hydrogen_partial_pressure_atm": 1,
+      "oxygen_partial_pressure_atm": 1,
+      "active_area_cm2": 50.6,
+      "membrane_thickness_cm": 0.0178,
+      "membrane_water_content": 13,
+      "cell_count": 1,
+      "current_start_A": 0,
+      "current_stop_A": 75,
+      "current_step_A": 0.1,
+      "max_current_density_A_cm2": 1.5,
+      "electronic_resistance_ohm": 0,
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/outputs/acceptance"
+    },
+    "required_inputs": [
+      "active_area_cm2",
+      "cell_count",
+      "current_start_A",
+      "current_step_A",
+      "current_stop_A",
+      "hydrogen_partial_pressure_atm",
+      "max_current_density_A_cm2",
+      "membrane_thickness_cm",
+      "membrane_water_content",
+      "oxygen_partial_pressure_atm",
+      "temperature_K"
+    ],
+    "error_contains": "between 14 and 23"
+  },
+  {
+    "name": "reject-boolean-cell-count",
+    "tool": "opem_simulate_polarization",
+    "arguments": {
+      "temperature_K": 343.15,
+      "hydrogen_partial_pressure_atm": 1,
+      "oxygen_partial_pressure_atm": 1,
+      "active_area_cm2": 50.6,
+      "membrane_thickness_cm": 0.0178,
+      "membrane_water_content": 23,
+      "cell_count": true,
+      "current_start_A": 0,
+      "current_stop_A": 75,
+      "current_step_A": 0.1,
+      "max_current_density_A_cm2": 1.5,
+      "electronic_resistance_ohm": 0,
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/outputs/acceptance"
+    },
+    "required_inputs": [
+      "active_area_cm2",
+      "cell_count",
+      "current_start_A",
+      "current_step_A",
+      "current_stop_A",
+      "hydrogen_partial_pressure_atm",
+      "max_current_density_A_cm2",
+      "membrane_thickness_cm",
+      "membrane_water_content",
+      "oxygen_partial_pressure_atm",
+      "temperature_K"
+    ],
+    "error_contains": "positive integer"
+  }
+]

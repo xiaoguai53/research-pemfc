@@ -1,0 +1,53 @@
+[11/13/26 17:07:54] INFO     Starting MCP server 'Hydrogen Fuel transport.py:242
+                             Cell Research' with transport                      
+                             'stdio'                                            
+[11/13/26 17:07:55] Error calling tool 'opem_simulate_polarization'             
+                    ╭─────────── Traceback (most recent call last) ────────────╮
+                    │ /tmp/fuelcell-clean-_abo3dmo/venv/lib/python3.12/site-pa │
+                    │ ckages/fastmcp/server/server.py:1492 in call_tool        │
+                    │                                                          │
+                    │ /tmp/fuelcell-clean-_abo3dmo/venv/lib/python3.12/site-pa │
+                    │ ckages/fastmcp/tools/base.py:440 in _run                 │
+                    │                                                          │
+                    │                 ... 8 frames hidden ...                  │
+                    │                                                          │
+                    │ /tmp/fuelcell-clean-_abo3dmo/venv/lib/python3.12/site-pa │
+                    │ ckages/fastmcp/tools/function_tool.py:89 in wrapper      │
+                    │                                                          │
+                    │ /workspace/fuelcell-paper2agent/src/tools/amphlett.py:85 │
+                    │ in opem_simulate_polarization                            │
+                    │                                                          │
+                    │    82 │   if not isinstance(cell_count, int) or isinstan │
+                    │       1:                                                 │
+                    │    83 │   │   raise ValueError("cell_count must be a pos │
+                    │    84 │   if not 14 <= membrane_water_content <= 23:     │
+                    │ ❱  85 │   │   raise ValueError("membrane_water_content ( │
+                    │       upstream silently changes out-of-range values.")   │
+                    │    86 │   if electronic_resistance_ohm < 0:              │
+                    │    87 │   │   raise ValueError("electronic_resistance_oh │
+                    │    88 │   if current_start_A < 0 or current_step_A <= 0  │
+                    ╰──────────────────────────────────────────────────────────╯
+                    ValueError: membrane_water_content (lambda) must be between 
+                    14 and 23; upstream silently changes out-of-range values.   
+                    Error calling tool 'opem_simulate_polarization'             
+[11/13/26 17:07:55] WARNING  Invalid arguments for tool           server.py:1505
+                             'opem_simulate_polarization':                      
+                             [{'type': 'value_error', 'loc':                    
+                             ('cell_count',), 'msg': 'Value                     
+                             error, cell_count must be a positive               
+                             integer, not a boolean, string, or                 
+                             float.', 'input': True, 'ctx':                     
+                             {'error': ValueError('cell_count                   
+                             must be a positive integer, not a                  
+                             boolean, string, or float.')}}]                    
+                    WARNING  Invalid arguments for tool           server.py:1505
+                             'opem_simulate_polarization':                      
+                             [{'type': 'value_error', 'loc':                    
+                             ('cell_count',), 'msg': 'Value                     
+                             error, cell_count must be a positive               
+                             integer, not a boolean, string, or                 
+                             float.', 'input': True, 'ctx':                     
+                             {'error': ValueError('cell_count                   
+                             must be a positive integer, not a                  
+                             boolean, string, or float.')}}]                    
+{"success": true, "mode": "calls", "cases_checked": 6, "report": "reports/mcp-clean-environment.json"}

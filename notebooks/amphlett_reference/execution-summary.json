@@ -1,0 +1,106 @@
+{
+  "status": "succeeded",
+  "started_at": "2026-11-13T16:52:45.045682Z",
+  "finished_at": "2026-11-13T16:52:45.177381Z",
+  "repository": {
+    "url": "https://github.com/ECSIM/opem",
+    "commit": "27d343fb966361a4e6cc99650241f651778fc50f"
+  },
+  "runtime": {
+    "python": "/workspace/fuelcell-paper2agent/opem-env/bin/python",
+    "python_version": "3.12.14",
+    "opem_version": "1.4",
+    "installed_implementation": "/workspace/fuelcell-paper2agent/opem-env/lib/python3.12/site-packages/opem/Static/Amphlett.py",
+    "installed_implementation_sha256": "fafd388f1f6fded85f745de39ec03267ab301708260ad96333b9aa333f816bd6"
+  },
+  "source_hashes": {
+    "repo/opem/Documents/Amphlett.ipynb": "f358a34a4d943c22d8a081deec96da7fb1cf90a401d4e12cb70ef771052ab7db",
+    "repo/opem/opem/Static/Amphlett.py": "fafd388f1f6fded85f745de39ec03267ab301708260ad96333b9aa333f816bd6",
+    "repo/opem/opem/Functions.py": "b432477f784f84dffea4cd2897d0c2f35f15980f192da8b6d2685d2a5bb31ff8",
+    "repo/opem/opem/Params.py": "88c914ec1ccdb0c948ddeed145c9424f57169f9cec75be5ac198d822ce14dba3",
+    "repo/opem/test/test_Amphlett.py": "e38e4739508f12065c51488d07b60b762cedb3bea9e6512b48d9a210579f70cd"
+  },
+  "scenarios": {
+    "official": {
+      "provenance": "Exact official Full Run vector from notebook cell 65, also README Library example.",
+      "input_path": "notebooks/amphlett_reference/data/official.json",
+      "result_path": "notebooks/amphlett_reference/outputs/official/native-result.json",
+      "replay_result_path": "notebooks/amphlett_reference/outputs/official/replay-result.json",
+      "sample_count": 750,
+      "first_current_A": 0,
+      "last_current_A": 74.9,
+      "first_voltage_V": 1.19075,
+      "last_voltage_V": 0.36467510365006117,
+      "max_stack_power_W": 29.399736050325846,
+      "native_reports": [
+        "notebooks/amphlett_reference/outputs/official/Amphlett/Amphlett_Test.csv",
+        "notebooks/amphlett_reference/outputs/official/Amphlett/Amphlett_Test.html",
+        "notebooks/amphlett_reference/outputs/official/Amphlett/Amphlett_Test.opem"
+      ],
+      "replay": {
+        "passed": true,
+        "numerical_values_checked": 6752,
+        "relative_tolerance": 1e-12,
+        "absolute_tolerance": 1e-12,
+        "reason": "Same deterministic implementation and saved input; no stochastic component or independent numerical method."
+      }
+    },
+    "temperature_353_15K": {
+      "provenance": "Changed-input scenario; only operating temperature changed from official vector. Not a hardware-validated case.",
+      "input_path": "notebooks/amphlett_reference/data/temperature_353_15K.json",
+      "result_path": "notebooks/amphlett_reference/outputs/temperature_353_15K/native-result.json",
+      "replay_result_path": "notebooks/amphlett_reference/outputs/temperature_353_15K/replay-result.json",
+      "sample_count": 750,
+      "first_current_A": 0,
+      "last_current_A": 74.9,
+      "first_voltage_V": 1.18225,
+      "last_voltage_V": 0.3832745052407567,
+      "max_stack_power_W": 30.544892464386802,
+      "native_reports": [
+        "notebooks/amphlett_reference/outputs/temperature_353_15K/Amphlett/Amphlett_Test.csv",
+        "notebooks/amphlett_reference/outputs/temperature_353_15K/Amphlett/Amphlett_Test.html",
+        "notebooks/amphlett_reference/outputs/temperature_353_15K/Amphlett/Amphlett_Test.opem"
+      ],
+      "replay": {
+        "passed": true,
+        "numerical_values_checked": 6752,
+        "relative_tolerance": 1e-12,
+        "absolute_tolerance": 1e-12,
+        "reason": "Same deterministic implementation and saved input; no stochastic component or independent numerical method."
+      }
+    },
+    "oxygen_partial_pressure_0_21atm": {
+      "provenance": "Changed-input scenario; prescribed oxygen partial pressure 0.21 atm, not a complete humid-air or air-cooled system model.",
+      "input_path": "notebooks/amphlett_reference/data/oxygen_partial_pressure_0_21atm.json",
+      "result_path": "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/native-result.json",
+      "replay_result_path": "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/replay-result.json",
+      "sample_count": 750,
+      "first_current_A": 0,
+      "last_current_A": 74.9,
+      "first_voltage_V": 1.1792145486404413,
+      "last_voltage_V": 0.31243889540440895,
+      "max_stack_power_W": 25.968699545016445,
+      "native_reports": [
+        "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/Amphlett/Amphlett_Test.csv",
+        "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/Amphlett/Amphlett_Test.html",
+        "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/Amphlett/Amphlett_Test.opem"
+      ],
+      "replay": {
+        "passed": true,
+        "numerical_values_checked": 6752,
+        "relative_tolerance": 1e-12,
+        "absolute_tolerance": 1e-12,
+        "reason": "Same deterministic implementation and saved input; no stochastic component or independent numerical method."
+      }
+    }
+  },
+  "figures": {
+    "format": "source-native HTML chart definitions",
+    "files": [
+      "notebooks/amphlett_reference/outputs/official/Amphlett/Amphlett_Test.html",
+      "notebooks/amphlett_reference/outputs/temperature_353_15K/Amphlett/Amphlett_Test.html",
+      "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/Amphlett/Amphlett_Test.html"
+    ],
+    "notes": "Preserved the charts generated by selected native Full Run; notebook Plot section was not selected. Raster image extraction is not applicable. HTML charts require their upstream remote JavaScript dependencies."
+  }
+}

@@ -1,0 +1,1 @@
+time_s,current_A,stack_voltage_V,cell_count,active_area_cm2,stack_temperature_C,ambient_temperature_C,ambient_rh_fraction,fan_pwm_fraction,fan_speed_rpm,air_velocity_m_s,fan_power_W,hydrogen_pressure_kPa_abs,purge_active,notes

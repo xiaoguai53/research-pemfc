@@ -1,0 +1,84 @@
+{
+  "success": true,
+  "runtime_python": "/tmp/fuelcell delivery ng1ijcvu/opem-mcp/.venv/bin/python",
+  "scientific_implementation_origin": "/tmp/fuelcell delivery ng1ijcvu/opem-mcp/.venv/lib/python3.12/site-packages/opem/Static/Amphlett.py",
+  "expected_results_from": "Direct opem.Static.Amphlett.Static_Analysis installed in the independently restored relocated runtime, not wrapper outputs.",
+  "relative_tolerance": 1e-12,
+  "absolute_tolerance": 1e-12,
+  "runs": [
+    {
+      "run": "/tmp/fuelcell delivery ng1ijcvu/acceptance outputs/amphlett-gnwih2jo",
+      "origin": "stdio",
+      "T_K": 353.15,
+      "PO2_atm": 1.0,
+      "samples": 750,
+      "native_JSON_full_match": true,
+      "native_CSV_all_bytes_match": true,
+      "all9_HTML_datasets_match": true,
+      "all6_axis_arrays_match": true,
+      "direct_source_result": "/tmp/fuelcell delivery ng1ijcvu/direct-source references/0/source-result.json",
+      "max_power_W": 30.544892464386802
+    },
+    {
+      "run": "/tmp/fuelcell delivery ng1ijcvu/acceptance outputs/amphlett-ovwcuhy7",
+      "origin": "stdio",
+      "T_K": 343.15,
+      "PO2_atm": 0.21,
+      "samples": 750,
+      "native_JSON_full_match": true,
+      "native_CSV_all_bytes_match": true,
+      "all9_HTML_datasets_match": true,
+      "all6_axis_arrays_match": true,
+      "direct_source_result": "/tmp/fuelcell delivery ng1ijcvu/direct-source references/1/source-result.json",
+      "max_power_W": 25.968699545016445
+    },
+    {
+      "run": "/tmp/fuelcell delivery ng1ijcvu/acceptance outputs/amphlett-y08x1pfd",
+      "origin": "stdio",
+      "T_K": 343.15,
+      "PO2_atm": 1.0,
+      "samples": 750,
+      "native_JSON_full_match": true,
+      "native_CSV_all_bytes_match": true,
+      "all9_HTML_datasets_match": true,
+      "all6_axis_arrays_match": true,
+      "direct_source_result": "/tmp/fuelcell delivery ng1ijcvu/direct-source references/2/source-result.json",
+      "max_power_W": 29.399736050325846
+    },
+    {
+      "run": "/tmp/fuelcell delivery ng1ijcvu/acceptance outputs/amphlett-ztxvuca2",
+      "origin": "stdio",
+      "T_K": 343.15,
+      "PO2_atm": 1.0,
+      "samples": 750,
+      "native_JSON_full_match": true,
+      "native_CSV_all_bytes_match": true,
+      "all9_HTML_datasets_match": true,
+      "all6_axis_arrays_match": true,
+      "direct_source_result": "/tmp/fuelcell delivery ng1ijcvu/direct-source references/3/source-result.json",
+      "max_power_W": 29.399736050325846
+    },
+    {
+      "run": "/tmp/fuelcell delivery ng1ijcvu/CLI outputs/amphlett-bztd5nca",
+      "origin": "CLI",
+      "T_K": 343.15,
+      "PO2_atm": 1.0,
+      "samples": 750,
+      "native_JSON_full_match": true,
+      "native_CSV_all_bytes_match": true,
+      "all9_HTML_datasets_match": true,
+      "all6_axis_arrays_match": true,
+      "direct_source_result": "/tmp/fuelcell delivery ng1ijcvu/direct-source references/4/source-result.json",
+      "max_power_W": 29.399736050325846
+    }
+  ],
+  "counts": {
+    "native_numeric_values": 33760,
+    "chart_numeric_values": 33750,
+    "axis_numeric_values": 22500,
+    "csv_numeric_values": 45000
+  },
+  "repeat_directories_disjoint": true,
+  "packaged_runtime_hashes_unchanged": true,
+  "visual_scope": "HTML chart numerical data/labels checked; external-JavaScript browser rendering not performed."
+}

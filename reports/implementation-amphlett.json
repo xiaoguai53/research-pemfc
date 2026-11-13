@@ -1,0 +1,132 @@
+{
+  "status": "succeeded",
+  "agent_id": "/root/implementer",
+  "started_at": "2026-11-13T16:54:16.345135546Z",
+  "finished_at": "2026-11-13T16:57:49.666569Z",
+  "implementation_run_id": "implement_amphlett_attempt_one",
+  "module": "amphlett",
+  "tools": [
+    "opem_simulate_polarization"
+  ],
+  "source_binding": {
+    "repository": "https://github.com/ECSIM/opem",
+    "commit": "27d343fb966361a4e6cc99650241f651778fc50f",
+    "callable": "opem.Static.Amphlett.Static_Analysis",
+    "implementation": "opem/Static/Amphlett.py",
+    "reference_source": "Documents/Amphlett.ipynb Full Run cells65,67/69",
+    "reference_execution_report": "reports/executed_notebook_amphlett_reference.json",
+    "reference_input": "notebooks/amphlett_reference/data/official.json",
+    "reference_result": "notebooks/amphlett_reference/outputs/official/native-result.json"
+  },
+  "parameter_contract": {
+    "required": [
+      "temperature_K",
+      "hydrogen_partial_pressure_atm",
+      "oxygen_partial_pressure_atm",
+      "active_area_cm2",
+      "membrane_thickness_cm",
+      "membrane_water_content",
+      "cell_count",
+      "current_start_A",
+      "current_stop_A",
+      "current_step_A",
+      "max_current_density_A_cm2"
+    ],
+    "optional": {
+      "electronic_resistance_ohm": 0,
+      "output_dir": null
+    },
+    "source_mapping": {
+      "temperature_K": "T",
+      "hydrogen_partial_pressure_atm": "PH2",
+      "oxygen_partial_pressure_atm": "PO2",
+      "active_area_cm2": "A",
+      "membrane_thickness_cm": "l",
+      "membrane_water_content": "lambda",
+      "cell_count": "N",
+      "current_start_A": "i-start",
+      "current_stop_A": "i-stop",
+      "current_step_A": "i-step",
+      "max_current_density_A_cm2": "JMax",
+      "electronic_resistance_ohm": "R"
+    },
+    "defaults_reason": "Only scientific default R=0 is preserved from Amphlett_Params_Default. No demonstration scientific vector is used as a default. Optional output directory resolves to cwd/results; fixed internal Name=polarization changes report filenames only."
+  },
+  "adaptations": [
+    "Validate finite values, positive physical domains, nonnegative electronic resistance, integer cell count and increasing nonnegative sweep.",
+    "Reject lambda outside14..23 instead of accepting upstream filter_lambda silent replacement; the scientific implementation is unchanged.",
+    "Use the actual upstream get_precision/rounder helpers to reject nonadvancing sweeps and fewer than two points needed by native linear fit.",
+    "Operational limit10,000samples protects accidental oversized calls; this is documented resource policy, not a new model domain.",
+    "Call Static_Analysis exactly once with a fresh native input dict, TestMode=True, PrintMode=False, ReportMode=True, and invocation-specific Folder.",
+    "Serialize source calls while capturing stdout/stderr into upstream.log; source errors can print despite PrintMode=False.",
+    "Reject incomplete/nonfinite native arrays or fit scalars rather than treating swallowed source failures as valid scientific results.",
+    "Retain complete original result dictionary as native-result.json, native reports and inputs; return concise summaries and absolute artifact paths, not curve arrays over MCP.",
+    "Preserve provenance and explicit scope/units warnings. Compact maximum is the maximum sampled native P output, not an invented optimization algorithm."
+  ],
+  "scientific_transformations": "None; model formulas and native result arrays are not modified or recomputed.",
+  "artifact_contract": {
+    "fresh_directory": "<output_dir or cwd/results>/amphlett-<collision-resistant id>",
+    "files": [
+      "inputs.json",
+      "native-result.json",
+      "provenance.json",
+      "upstream.log",
+      "Amphlett/polarization.csv",
+      "Amphlett/polarization.html",
+      "Amphlett/polarization.opem"
+    ],
+    "protocol_fields": [
+      "message",
+      "reference",
+      "artifacts",
+      "summary",
+      "source",
+      "warnings"
+    ],
+    "full_native_arrays_in_protocol": false
+  },
+  "checks": [
+    {
+      "command": "opem-env/bin/python -m py_compile src/tools/amphlett.py",
+      "exit_status": 0
+    },
+    {
+      "command": "opem-env/bin/python inline async FastMCP Client(amphlett_mcp), list_tools and call_tool with official input",
+      "exit_status": 0,
+      "inventory": [
+        "opem_simulate_polarization"
+      ],
+      "sample_count": 750,
+      "artifact_count": 7,
+      "native_result_equal_to_saved_reference": true,
+      "max_sampled_stack_power_W": 29.399736050325846,
+      "current_at_max_sampled_power_A": 66.7,
+      "temporary_output_policy": "TemporaryDirectory under /tmp; smoke outputs removed after comparison; immutable official source evidence remains under notebooks/amphlett_reference/."
+    }
+  ],
+  "runtime": {
+    "python": "/workspace/fuelcell-paper2agent/opem-env/bin/python",
+    "fastmcp": "4.0.3",
+    "opem": "1.4"
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "succeeded",
+      "note": "Initial implementation passed import and real in-process MCP official-vector smoke; independent verifier remains required."
+    }
+  ],
+  "produced_files": {
+    "src/tools/amphlett.py": "017b6ee001ea636d02dc0797337f7d989ae3521984e3b99c8d2f443ff2e86033"
+  },
+  "owned_paths": [
+    "src/tools/amphlett.py",
+    "reports/implementation-amphlett.json"
+  ],
+  "limitations": [
+    "Development smoke is not independent scientific verification, real stdio acceptance, clean-environment or ZIP relocation validation.",
+    "OPEM static prescribedT/lambda model does not solve air-cooled thermal balance, fan power, water dynamics or spatial gradients.",
+    "PO2 is species partial pressure, Ph uses native fixedEth=1.23 and is not a validated fan-sizing heat load.",
+    "Source-native HTML reports require external JavaScript. Only Linux Python3.12 was exercised at this stage."
+  ]
+}

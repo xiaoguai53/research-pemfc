@@ -1,0 +1,57 @@
+{
+  "message": "Computed the original OPEM Amphlett static PEMFC model; full curves are in the returned artifacts.",
+  "reference": "https://github.com/ECSIM/opem/blob/27d343fb966361a4e6cc99650241f651778fc50f/Documents/Amphlett.ipynb",
+  "artifacts": [
+    {
+      "description": "Preserved native model inputs with original units",
+      "path": "/workspace/fuelcell-paper2agent/tmp/outputs/cli-demo/amphlett-zbd850re/inputs.json"
+    },
+    {
+      "description": "Complete unmodified native result dictionary including all curve arrays",
+      "path": "/workspace/fuelcell-paper2agent/tmp/outputs/cli-demo/amphlett-zbd850re/native-result.json"
+    },
+    {
+      "description": "Source identity, units and model limitations",
+      "path": "/workspace/fuelcell-paper2agent/tmp/outputs/cli-demo/amphlett-zbd850re/provenance.json"
+    },
+    {
+      "description": "Captured upstream diagnostics",
+      "path": "/workspace/fuelcell-paper2agent/tmp/outputs/cli-demo/amphlett-zbd850re/upstream.log"
+    },
+    {
+      "description": "Native OPEM data CSV",
+      "path": "/workspace/fuelcell-paper2agent/tmp/outputs/cli-demo/amphlett-zbd850re/Amphlett/polarization.csv"
+    },
+    {
+      "description": "Native OPEM interactive chart report",
+      "path": "/workspace/fuelcell-paper2agent/tmp/outputs/cli-demo/amphlett-zbd850re/Amphlett/polarization.html"
+    },
+    {
+      "description": "Native OPEM text report",
+      "path": "/workspace/fuelcell-paper2agent/tmp/outputs/cli-demo/amphlett-zbd850re/Amphlett/polarization.opem"
+    }
+  ],
+  "summary": {
+    "sample_count": 750,
+    "first_current_A": 0.0,
+    "last_current_A": 74.9,
+    "effective_exclusive_stop_A": 75.0,
+    "max_sampled_stack_power_W": 29.399736050325846,
+    "current_at_max_sampled_power_A": 66.7,
+    "stack_voltage_at_max_sampled_power_V": 0.44077565292842347,
+    "native_efficiency_at_max_sampled_power": 0.2825484954669381
+  },
+  "source": {
+    "repository": "https://github.com/ECSIM/opem",
+    "pinned_commit": "27d343fb966361a4e6cc99650241f651778fc50f",
+    "callable": "opem.Static.Amphlett.Static_Analysis",
+    "installed_version": "1.4",
+    "implementation_sha256": "fafd388f1f6fded85f745de39ec03267ab301708260ad96333b9aa333f816bd6"
+  },
+  "warnings": [
+    "Static prescribed-temperature/lambda PEMFC model; no air-cooled thermal/water dynamics or fan power.",
+    "PO2 is oxygen partial pressure. The native Ph uses fixed Eth=1.23 V and is not a validated fan-sizing heat load.",
+    "Stack voltage/power are returned; activation, ohmic and concentration losses are single-cell values.",
+    "Native HTML charts require their upstream external JavaScript dependencies."
+  ]
+}

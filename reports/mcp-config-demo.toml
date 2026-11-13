@@ -1,0 +1,3 @@
+[mcp_servers.fuelcell]
+command = "/workspace/fuelcell-paper2agent/opem-env/bin/python"
+args = ["/workspace/fuelcell-paper2agent/src/opem_mcp.py"]

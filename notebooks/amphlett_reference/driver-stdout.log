@@ -1,0 +1,6 @@
+{
+  "status": "succeeded",
+  "scenario_count": 3,
+  "samples_each": 750,
+  "summary": "/workspace/fuelcell-paper2agent/notebooks/amphlett_reference/execution-summary.json"
+}

@@ -1,0 +1,70 @@
+{
+  "validator": "paper2agent-workflow",
+  "schema_version": 1,
+  "success": true,
+  "through": "complete",
+  "errors": [],
+  "passed_assignments": [
+    {
+      "role": "environment",
+      "task": "project",
+      "run_id": "environment_attempt_one"
+    },
+    {
+      "role": "executor",
+      "task": "amphlett_reference",
+      "run_id": "execute_amphlett_reference_attempt_one"
+    },
+    {
+      "role": "implementer",
+      "task": "amphlett",
+      "run_id": "implement_amphlett_attempt_one"
+    },
+    {
+      "role": "scanner",
+      "task": "project",
+      "run_id": "scanner_attempt_one"
+    },
+    {
+      "role": "verifier",
+      "task": "amphlett",
+      "run_id": "verify_amphlett_attempt_one"
+    }
+  ],
+  "exclusions": [],
+  "scope": "Validates recorded state and artifact consistency; does not authenticate host identities or establish numerical/scientific correctness.",
+  "expected_assignments": [
+    {
+      "role": "environment",
+      "task": "project"
+    },
+    {
+      "role": "executor",
+      "task": "amphlett_reference"
+    },
+    {
+      "role": "implementer",
+      "task": "amphlett"
+    },
+    {
+      "role": "scanner",
+      "task": "project"
+    },
+    {
+      "role": "verifier",
+      "task": "amphlett"
+    }
+  ],
+  "active_tutorials": [
+    "amphlett_reference"
+  ],
+  "active_modules": [
+    "amphlett"
+  ],
+  "exposed_tools": [
+    "opem_simulate_polarization"
+  ],
+  "completion_files_checked": 13,
+  "project_root": "/workspace/fuelcell-paper2agent",
+  "state": "/workspace/fuelcell-paper2agent/reports/agent-runs.json"
+}

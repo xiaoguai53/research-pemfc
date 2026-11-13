@@ -1,0 +1,142 @@
+{
+  "success": true,
+  "mode": "calls",
+  "require_all_tools": true,
+  "server": "/tmp/fuelcell delivery ng1ijcvu/opem-mcp/src/opem_mcp.py",
+  "cwd": "/tmp/fuelcell delivery ng1ijcvu/opem-mcp",
+  "python": "/tmp/fuelcell delivery ng1ijcvu/opem-mcp/.venv/bin/python",
+  "python_version": "3.12.14",
+  "fastmcp": "4.0.3",
+  "expected": [
+    "opem_simulate_polarization"
+  ],
+  "actual": [
+    "opem_simulate_polarization"
+  ],
+  "missing": [],
+  "unexpected": [],
+  "schemas": {
+    "opem_simulate_polarization": {
+      "input": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "temperature_K": {
+            "description": "Prescribed cell operating temperature in kelvin; not a solved stack temperature.",
+            "type": "number"
+          },
+          "hydrogen_partial_pressure_atm": {
+            "description": "Hydrogen species partial pressure in atm, strictly positive.",
+            "type": "number"
+          },
+          "oxygen_partial_pressure_atm": {
+            "description": "Oxygen species partial pressure in atm, not total air pressure.",
+            "type": "number"
+          },
+          "active_area_cm2": {
+            "description": "Single-cell electrochemically active area in cm\u00b2, strictly positive.",
+            "type": "number"
+          },
+          "membrane_thickness_cm": {
+            "description": "Membrane thickness in cm, strictly positive.",
+            "type": "number"
+          },
+          "membrane_water_content": {
+            "description": "Prescribed dimensionless membrane parameter lambda, from 14 through 23; not ambient RH.",
+            "type": "number"
+          },
+          "cell_count": {
+            "description": "Positive integer number of single cells connected in series.",
+            "type": "integer"
+          },
+          "current_start_A": {
+            "description": "Nonnegative current sweep start in A, with at least two supported samples.",
+            "type": "number"
+          },
+          "current_stop_A": {
+            "description": "Exclusive current stop in A; OPEM caps it at active_area_cm2 times max_current_density_A_cm2.",
+            "type": "number"
+          },
+          "current_step_A": {
+            "description": "Positive current increment in A, advancing under OPEM rounding; at most 10,000 samples.",
+            "type": "number"
+          },
+          "max_current_density_A_cm2": {
+            "description": "Positive limiting current density JMax in A/cm\u00b2, used by the source concentration-loss model.",
+            "type": "number"
+          },
+          "electronic_resistance_ohm": {
+            "default": 0,
+            "description": "Nonnegative electronic resistance in ohm; native OPEM default is zero.",
+            "type": "number"
+          },
+          "output_dir": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "Output base directory; a new isolated invocation subdirectory is created, default ./results."
+          }
+        },
+        "required": [
+          "temperature_K",
+          "hydrogen_partial_pressure_atm",
+          "oxygen_partial_pressure_atm",
+          "active_area_cm2",
+          "membrane_thickness_cm",
+          "membrane_water_content",
+          "cell_count",
+          "current_start_A",
+          "current_stop_A",
+          "current_step_A",
+          "max_current_density_A_cm2"
+        ]
+      },
+      "output": {
+        "additionalProperties": true,
+        "type": "object"
+      }
+    }
+  },
+  "cases": [
+    {
+      "name": "official-reference",
+      "tool": "opem_simulate_polarization",
+      "success": true,
+      "artifacts_checked": 7
+    },
+    {
+      "name": "temperature-353K",
+      "tool": "opem_simulate_polarization",
+      "success": true,
+      "artifacts_checked": 7
+    },
+    {
+      "name": "oxygen-partial-0-21atm",
+      "tool": "opem_simulate_polarization",
+      "success": true,
+      "artifacts_checked": 7
+    },
+    {
+      "name": "official-repeat",
+      "tool": "opem_simulate_polarization",
+      "success": true,
+      "artifacts_checked": 7
+    },
+    {
+      "name": "reject-out-of-domain-lambda",
+      "tool": "opem_simulate_polarization",
+      "success": true
+    },
+    {
+      "name": "reject-boolean-cell-count",
+      "tool": "opem_simulate_polarization",
+      "success": true
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "route": "python",
+  "repository": {
+    "url": "https://github.com/ECSIM/opem",
+    "commit": "27d343fb966361a4e6cc99650241f651778fc50f"
+  },
+  "tutorials": [
+    {
+      "id": "amphlett_reference",
+      "module": "amphlett",
+      "source": "repo/opem/Documents/Amphlett.ipynb",
+      "sha256": "f358a34a4d943c22d8a081deec96da7fb1cf90a401d4e12cb70ef771052ab7db"
+    }
+  ],
+  "runs": [
+    {
+      "id": "environment_attempt_one",
+      "role": "environment",
+      "task": "project",
+      "agent_id": "/root/environment",
+      "status": "succeeded",
+      "started_at": "2026-11-13T16:47:07.077364571Z",
+      "finished_at": "2026-11-13T16:48:54.550357Z",
+      "owned_paths": [
+        "opem-env",
+        "pytest.ini",
+        "reports/environment-manager_results.md",
+        "reports/environment-requirements.txt",
+        "reports/python-version.txt"
+      ],
+      "report": "reports/environment-manager_results.md",
+      "report_sha256": "1ebe40629c7f4736faedf1d370f3a9fd7bd7c1553de64c7d41107ec5bfae477b"
+    },
+    {
+      "id": "scanner_attempt_one",
+      "role": "scanner",
+      "task": "project",
+      "agent_id": "/root/scanner",
+      "status": "succeeded",
+      "started_at": "2026-11-13T16:47:48Z",
+      "finished_at": "2026-11-13T16:49:24.737998Z",
+      "owned_paths": [
+        "reports/scanner-notes.md",
+        "reports/tutorial-scanner.json",
+        "reports/tutorial-scanner-include-in-tools.json"
+      ],
+      "report": "reports/scanner-notes.md",
+      "report_sha256": "0d3565977d182fa4f77d36f7668082d315303c9cb4beb6e9cdd72d855745e1ae",
+      "timestamp_note": "started_at is the earliest clock captured during actual scanner work; original dispatch/read start was not separately timestamped. See scanner-notes.md."
+    },
+    {
+      "id": "execute_amphlett_reference_attempt_one",
+      "role": "executor",
+      "task": "amphlett_reference",
+      "agent_id": "/root/executor",
+      "status": "succeeded",
+      "started_at": "2026-11-13T16:51:34.118407141Z",
+      "finished_at": "2026-11-13T16:53:27.137552Z",
+      "owned_paths": [
+        "notebooks/amphlett_reference",
+        "reports/executed_notebook_amphlett_reference.json"
+      ],
+      "report": "reports/executed_notebook_amphlett_reference.json",
+      "report_sha256": "eb2a2b8431ea613f22eed193e0fe6cc16b38508ee3783ca92d22dac83c4d9856",
+      "produced_files": {
+        "notebooks/amphlett_reference/data/official.json": "0a0e392a590799e76833927e93ce190e1f2204126801e2f051c63d36ca4bf60b",
+        "notebooks/amphlett_reference/data/oxygen_partial_pressure_0_21atm.json": "3b08d2b00cc3af43f00bb1621ea1398e085fc149dbaca4fed82faa4b821da866",
+        "notebooks/amphlett_reference/data/source-cells.json": "62707bc444440374bf28da95f9a644096b9f9f6455a8b7a2bbb9d81d9e813cd0",
+        "notebooks/amphlett_reference/data/temperature_353_15K.json": "2eb564f4aa07addddf122b210a7336fe7771ee215d7f0d7754af739ace408970",
+        "notebooks/amphlett_reference/driver-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "notebooks/amphlett_reference/driver-stdout.log": "af65ac52af3d81f55c7e630751a4a5e678b07068e2a2c6a9e0cce84b130b26ce",
+        "notebooks/amphlett_reference/execute_reference.py": "2bb6909ffc51ec3c1c6ace529d24b33f9eb5e73d9aa4507ba1c7864467d0afde",
+        "notebooks/amphlett_reference/execution-summary.json": "b1dbcee11984f5d7c7893596ba629d2243dd14d724102aaad6066562322067d7",
+        "notebooks/amphlett_reference/outputs/official/Amphlett/Amphlett_Test.csv": "9faeb33d1780d9152215bd97ea7537cf24d08e6409eaa85bbb2461fca81d28be",
+        "notebooks/amphlett_reference/outputs/official/Amphlett/Amphlett_Test.html": "5f6ae0a85c5103a2f56d02dc93b356a4d24518808ba63e48f322e9d457f2dab9",
+        "notebooks/amphlett_reference/outputs/official/Amphlett/Amphlett_Test.opem": "c26a2a1403bb7362e5a79d85f73635942a8f21d70b53ee6923854ca7ed9d9661",
+        "notebooks/amphlett_reference/outputs/official/native-result.json": "f36b5f57cbc9dd657aafea2536276bc51c0371a0f2d90a169a1b89ffee35bfee",
+        "notebooks/amphlett_reference/outputs/official/native.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "notebooks/amphlett_reference/outputs/official/replay-result.json": "f36b5f57cbc9dd657aafea2536276bc51c0371a0f2d90a169a1b89ffee35bfee",
+        "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/Amphlett/Amphlett_Test.csv": "70d53870f502b2112616d9bd3922365b7dffe721f7dee717f1240637f3c31a8f",
+        "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/Amphlett/Amphlett_Test.html": "d4f5a2156a3592d7e9b3b381c1c1e433aa97e37a21dcd2a7ac320dee5906f3b6",
+        "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/Amphlett/Amphlett_Test.opem": "ef3bb96d8dec8ee767ae7ead1b7b09793d774bee9a9e9e1214fed60648f56211",
+        "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/native-result.json": "11c367b0637098d669347b58edc31827eb02eb24e2aafaee01f552347652248c",
+        "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/native.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/replay-result.json": "11c367b0637098d669347b58edc31827eb02eb24e2aafaee01f552347652248c",
+        "notebooks/amphlett_reference/outputs/temperature_353_15K/Amphlett/Amphlett_Test.csv": "45a8b32056a8bb4cb3469c4ee64d8cb2822861ac66524b32a07cddce8cc6e65c",
+        "notebooks/amphlett_reference/outputs/temperature_353_15K/Amphlett/Amphlett_Test.html": "f9bc27327535a7b4e564ac5de1018635aaa54e91cf0b4a6fd2918fe87b37e9dc",
+        "notebooks/amphlett_reference/outputs/temperature_353_15K/Amphlett/Amphlett_Test.opem": "47393753355c7a76179674c3f00d3492acd09f00d08449c3357d7ff45f5a3314",
+        "notebooks/amphlett_reference/outputs/temperature_353_15K/native-result.json": "86386adc899bc3898631c03f4e0cfec7f94f338237850f72f8cf65da7eb041bf",
+        "notebooks/amphlett_reference/outputs/temperature_353_15K/native.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "notebooks/amphlett_reference/outputs/temperature_353_15K/replay-result.json": "86386adc899bc3898631c03f4e0cfec7f94f338237850f72f8cf65da7eb041bf"
+      }
+    },
+    {
+      "id": "implement_amphlett_attempt_one",
+      "role": "implementer",
+      "task": "amphlett",
+      "agent_id": "/root/implementer",
+      "status": "succeeded",
+      "started_at": "2026-11-13T16:54:16.345135546Z",
+      "finished_at": "2026-11-13T16:57:49.666569Z",
+      "owned_paths": [
+        "src/tools/amphlett.py",
+        "reports/implementation-amphlett.json"
+      ],
+      "report": "reports/implementation-amphlett.json",
+      "report_sha256": "dd288e2d28a9ac8cc785d9b5d3a8a637df39316bd640f26e967b43f96087828e",
+      "produced_files": {
+        "src/tools/amphlett.py": "017b6ee001ea636d02dc0797337f7d989ae3521984e3b99c8d2f443ff2e86033"
+      }
+    },
+    {
+      "id": "verify_amphlett_attempt_one",
+      "role": "verifier",
+      "task": "amphlett",
+      "agent_id": "/root/verifier",
+      "status": "succeeded",
+      "started_at": "2026-11-13T16:58:48Z",
+      "finished_at": "2026-11-13T17:06:50.890847Z",
+      "owned_paths": [
+        "src/tools/amphlett.py",
+        "tests/code/amphlett",
+        "tests/data/amphlett",
+        "tests/results/amphlett",
+        "tests/logs/amphlett",
+        "tests/summary/amphlett",
+        "reports/verification-amphlett.json",
+        "reports/mcp-acceptance-amphlett.json"
+      ],
+      "report": "reports/verification-amphlett.json",
+      "report_sha256": "78b8563527d705b2fa0db869c2da1c34bb0ef4eed139b7af4eebd99302040b7e",
+      "implementation_run_id": "implement_amphlett_attempt_one",
+      "tested_files": {
+        "src/tools/amphlett.py": "7d4ae068fd987d3401b7a609fbc3c0c37befa9470538b742972e44cdad2e734f"
+      },
+      "produced_files": {
+        "tests/code/amphlett/test_opem_simulate_polarization.py": "90815fb31316713522c7cd84d76503dfe6217206345ee7a980952e09fe3a8c93",
+        "tests/data/amphlett/official-tool-arguments.json": "a6ce24353a5e420e9614a77e2ee9061666b9824cb6672e86661216973b08fd08",
+        "tests/summary/amphlett/pre-repair.json": "bbd57e7ec61b663cc896a96bc430e8f7c63ecbb3ee611c03af0f860ef87a47ec",
+        "tests/summary/amphlett/run-three.xml": "a005913298cf2ce7f798ced2c965413d9614be78806e5ee0d3a4c0bded8bab2a",
+        "tests/logs/amphlett/run-three.log": "26582f8dbf5ed44a141a5a7f5a3aa648536548d96ede8116cea84c0c751c0d0e",
+        "reports/mcp-acceptance-amphlett.json": "bd066e36e633885a46a88843bf9d687605e379f20ef39b827109198d849456a6"
+      }
+    }
+  ],
+  "exclusions": [],
+  "completion": {
+    "finished_at": "2026-11-13T17:13:49.009602Z",
+    "files": {
+      "reports/expected-mcp-tools.json": "62af98a606eaab383114bcd80296b3af4760ac8e32378df47e6b20ca6a187ebc",
+      "reports/mcp-acceptance-cases.json": "bd066e36e633885a46a88843bf9d687605e379f20ef39b827109198d849456a6",
+      "reports/mcp-project-environment.json": "df0ba5f9086e30bc4b4d4bc9007a85471627ba9cb2d099894306144e60f9a87a",
+      "reports/mcp-clean-environment.json": "ae0bea2ad66f1e8e30c6330e52c4abc07770100aa17cbb0465e7ffa25808e577",
+      "src/opem_mcp.py": "4d0ce7fdac1c67ffd8d2c55b8f8e2fc8ac2219d811edb795cd8137c7c97e1a28",
+      "src/tools/amphlett.py": "7d4ae068fd987d3401b7a609fbc3c0c37befa9470538b742972e44cdad2e734f",
+      "src/requirements.txt": "5df7c61ef917749b7d5598618f3fbc0771ed63bf1d4e7ce05ff8267414f06f75",
+      "USAGE.md": "7751125d23a078770ad7c664b868df7c484de6ce35bf80add3c9868e676aa6e6",
+      "dist/opem-mcp.zip": "1ea16d1530d84ccf5b1cec384fc4befe37f8ccdd1dfce41404d6120f331d1a3c",
+      "reports/delivery-validation.json": "54c104b2b4ee5e1ca8399c05bf6c430114fe4452d6a9be4ace6adff752f61bb3",
+      "reports/delivery-stdio.json": "a32e50f9b9c57bf21a01a73383e0a79c57b064332973696ccf79b47dd039c3b5",
+      "reports/delivery-scientific-comparisons.json": "46a5c3ade7b1fda9754c90c83c49ed52687cae93b21bf1163723e2ca30567fed",
+      "reports/runtime-artifact-comparison.json": "114da86b957bcd67860ad1bf5269e2f83fc123d9272936ed6c1c47e78cc79bf3"
+    }
+  }
+}

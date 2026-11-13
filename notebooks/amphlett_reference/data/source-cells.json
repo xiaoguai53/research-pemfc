@@ -1,0 +1,12 @@
+{
+  "source": "Documents/Amphlett.ipynb",
+  "source_sha256": "f358a34a4d943c22d8a081deec96da7fb1cf90a401d4e12cb70ef771052ab7db",
+  "cell_index_convention": "zero-based",
+  "cells": {
+    "63": "## Full Run",
+    "64": "* Run from `i`=0 to `i`=75 with `step`=0.1",
+    "65": "Test_Vector={\n    \"T\": 343.15,\n    \"PH2\": 1,\n    \"PO2\": 1,\n    \"i-start\": 0,\n    \"i-stop\": 75,\n    \"i-step\": 0.1,\n    \"A\": 50.6,\n    \"l\": 0.0178,\n    \"lambda\": 23,\n    \"N\": 1,\n    \"R\": 0,\n    \"JMax\": 1.5,\n    \"Name\": \"Amphlett_Test\"}",
+    "67": "from opem.Static.Amphlett import Static_Analysis\ndata=Static_Analysis(InputMethod=Test_Vector,TestMode=True,PrintMode=True,ReportMode=True)",
+    "69": "data_2=Static_Analysis(InputMethod=Test_Vector,TestMode=True,PrintMode=True,ReportMode=False)"
+  }
+}

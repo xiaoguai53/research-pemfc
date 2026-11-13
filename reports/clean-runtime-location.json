@@ -1,0 +1,7 @@
+{
+  "temporary_root": "/tmp/fuelcell-clean-_abo3dmo",
+  "python": "/tmp/fuelcell-clean-_abo3dmo/venv/bin/python",
+  "requirements": "src/requirements.txt",
+  "install_log": "reports/clean-runtime-install.log",
+  "install_success": true
+}

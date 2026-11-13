@@ -1,0 +1,26 @@
+# Environments and generated results
+opem-env/
+.venv/
+*-env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+tests/results/
+results/
+tmp/
+dist/*
+!dist/opem-mcp.zip
+.env
+.env.*
+!.env.example
+# Upstream checkouts are restored from pinned commits, not committed as nested Git repositories.
+repo/
+# Private research inputs stay local by default.
+research/inputs/*
+!research/inputs/.gitkeep
+*.cas
+*.dat
+*.cas.h5
+*.dat.h5
+*.pem
+*.key

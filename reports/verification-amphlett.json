@@ -1,0 +1,150 @@
+{
+  "status": "succeeded",
+  "agent_id": "/root/verifier",
+  "implementation_run_id": "implement_amphlett_attempt_one",
+  "module": "amphlett",
+  "tools": [
+    "opem_simulate_polarization"
+  ],
+  "started_at": "2026-11-13T16:58:48Z",
+  "finished_at": "2026-11-13T17:06:50.890847Z",
+  "source_binding": {
+    "repository": "https://github.com/ECSIM/opem",
+    "commit": "27d343fb966361a4e6cc99650241f651778fc50f",
+    "callable": "opem.Static.Amphlett.Static_Analysis",
+    "source_file": "repo/opem/opem/Static/Amphlett.py",
+    "source_sha256": "fafd388f1f6fded85f745de39ec03267ab301708260ad96333b9aa333f816bd6",
+    "read_only_evidence": [
+      "reports/executed_notebook_amphlett_reference.json",
+      "notebooks/amphlett_reference/data/official.json",
+      "notebooks/amphlett_reference/outputs/official/native-result.json"
+    ]
+  },
+  "source_call_review": {
+    "actual_production_call_count": 1,
+    "direct_public_api_reused": true,
+    "copied_scientific_formulas": false,
+    "invented_scientific_computation": false,
+    "native_arrays_unchanged": true,
+    "defaults": "Only source-native electronic resistance R=0; all other physical inputs required. Internal report name changes filenames only.",
+    "input_preservation": "Fresh dictionary handed upstream; caller arguments, original source inputs and prior invocation artifacts remained unchanged."
+  },
+  "scientific_comparisons": {
+    "scenario_count": 11,
+    "scenarios": [
+      "official",
+      "temperature353.15K",
+      "oxygen_partial_pressure0.21atm",
+      "hydrogen_partial_pressure1.5atm",
+      "electronic_resistance0.002ohm",
+      "series_cells5",
+      "active_area60cm2",
+      "membrane_thickness0.02cm",
+      "membrane_water_content18",
+      "current_density_cap1.2A_per_cm2",
+      "current_sweep5_to15_step0.5A"
+    ],
+    "total_samples": 7378,
+    "native_numerical_values_compared": 66424,
+    "tolerance": {
+      "relative": 1e-12,
+      "absolute": 1e-12,
+      "reason": "Same deterministic original implementation, saved/source-backed inputs and exact source version; no stochastic approximation."
+    },
+    "native_JSON": "Every key,9 full arrays,2 fit scalars,Status,dimensions and finite-value checks. Official fresh direct-source result additionally compared to immutable executor reference.",
+    "native_CSV": "Every row of8 scientifically relevant source-native columns, including current, stack voltage/power, efficiency, thermal proxy and3 per-cell losses.",
+    "native_HTML": "Every numeric value of9 source-native datasets and6 axis-label arrays, preserving upstream precision for Efficiency-vs-Power labels. Numerical chart data validated; browser rendering was not performed.",
+    "summary": "Sample count and maximum sampled original P checked; no new optimizer or model invented."
+  },
+  "transport_and_error_contract": {
+    "calls_through": "fastmcp.Client(amphlett_mcp).call_tool; successful results read from result.data",
+    "required_inputs": [
+      "active_area_cm2",
+      "cell_count",
+      "current_start_A",
+      "current_step_A",
+      "current_stop_A",
+      "hydrogen_partial_pressure_atm",
+      "max_current_density_A_cm2",
+      "membrane_thickness_cm",
+      "membrane_water_content",
+      "oxygen_partial_pressure_atm",
+      "temperature_K"
+    ],
+    "artifact_count": 7,
+    "repeat_isolation": true,
+    "missing_required_input_rejected": true,
+    "finite_domain_and_sweep_errors_rejected": true,
+    "all12_numeric_parameters_reject_boolean": true,
+    "raw_numeric_strings_rejected": true,
+    "upstream_false_or_malformed_or_nonfinite_results_rejected": true,
+    "nonfinite_transport_note": "FastMCP client JSON serialization changes nonfinite floats to null; requests are rejected by raw-number validation, never accepted as scientific inputs.",
+    "schema_descriptions_preserved": true,
+    "full_arrays_in_protocol": false
+  },
+  "repair_history": [
+    {
+      "attempt": 1,
+      "finding": "JSON booleans silently coerced into physical float/int parameters before body checks. Pre-repair real MCP calls accepted cell_count=true,PH2=true,current_start=true.",
+      "evidence": "tests/summary/amphlett/pre-repair.json"
+    },
+    {
+      "attempt": 2,
+      "change": "Tried pydantic.Strict metadata on flat Annotated scalars.",
+      "outcome": "Insufficient: FastMCP passes strict=False and still accepted booleans. Replaced this unsuccessful approach."
+    },
+    {
+      "attempt": 3,
+      "change": "Added minimal BeforeValidator helpers rejecting raw booleans/strings and noninteger cell counts before Pydantic conversion.",
+      "outcome": "Boolean rejection and original750-point call passed. Extra validation metadata revealed missing descriptions in FastMCP plain-string Annotated conversion."
+    },
+    {
+      "attempt": 4,
+      "change": "Used explicit Field(description=...) inside numeric Annotated scalars alongside BeforeValidator. Flat public schema and scientific computation unchanged.",
+      "outcome": "All52 tests passed; every schema property retains a documented description."
+    }
+  ],
+  "test_runs": [
+    {
+      "command": "opem-env/bin/python -m pytest tests/code/amphlett -q --basetemp tests/results/amphlett/run-one --junitxml tests/summary/amphlett/run-one.xml",
+      "exit_status": 2,
+      "log": "tests/logs/amphlett/run-one.log",
+      "result": "Test collection path typo: ROOT.parents[4] selected /workspace. Corrected test root to parents[3]."
+    },
+    {
+      "command": "opem-env/bin/python -m pytest tests/code/amphlett -q --basetemp tests/results/amphlett/run-two --junitxml tests/summary/amphlett/run-two.xml",
+      "exit_status": 1,
+      "log": "tests/logs/amphlett/run-two.log",
+      "result": "14failed,38passed:11 chart parsers missed native fill:false line;2 nonfinite assertions expected body wording despite actual JSON-to-null behavior;1 real schema-description issue. Scientific native JSON and CSV comparisons passed before chart-parser assertion. Fixed parser/transport expectations without loosening scientific tolerances; repaired actual descriptions."
+    },
+    {
+      "command": "opem-env/bin/python -m pytest tests/code/amphlett -q --basetemp tests/results/amphlett/run-three --junitxml tests/summary/amphlett/run-three.xml",
+      "exit_status": 0,
+      "log": "tests/logs/amphlett/run-three.log",
+      "result": "52passed in2.77s; no skips/exclusions.",
+      "tests": 52,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "tested_files": {
+    "src/tools/amphlett.py": "7d4ae068fd987d3401b7a609fbc3c0c37befa9470538b742972e44cdad2e734f"
+  },
+  "produced_files": {
+    "tests/code/amphlett/test_opem_simulate_polarization.py": "90815fb31316713522c7cd84d76503dfe6217206345ee7a980952e09fe3a8c93",
+    "tests/data/amphlett/official-tool-arguments.json": "a6ce24353a5e420e9614a77e2ee9061666b9824cb6672e86661216973b08fd08",
+    "tests/summary/amphlett/pre-repair.json": "bbd57e7ec61b663cc896a96bc430e8f7c63ecbb3ee611c03af0f860ef87a47ec",
+    "tests/summary/amphlett/run-three.xml": "a005913298cf2ce7f798ced2c965413d9614be78806e5ee0d3a4c0bded8bab2a",
+    "tests/logs/amphlett/run-three.log": "26582f8dbf5ed44a141a5a7f5a3aa648536548d96ede8116cea84c0c751c0d0e",
+    "reports/mcp-acceptance-amphlett.json": "bd066e36e633885a46a88843bf9d687605e379f20ef39b827109198d849456a6"
+  },
+  "exclusions": [],
+  "limitations": [
+    "Independent scientific checks cover only selected static Amphlett tool, not all OPEM code.",
+    "No experimental calibration or air-cooled thermal/water/fan/control validity claim.",
+    "Native Ph uses upstream fixedEth1.23V and is not fan-sizing heat rejection.",
+    "Native HTML chart datasets and labels checked; external-JavaScript browser rendering not checked.",
+    "Only Linux/Python3.12.14 execution verified.",
+    "Real stdio integration, clean runtime and ZIP relocation are coordinator/delivery phases, not established by this in-process verification."
+  ]
+}

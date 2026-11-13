@@ -1,0 +1,184 @@
+{
+  "amphlett_reference": {
+    "status": "succeeded",
+    "agent_id": "/root/executor",
+    "started_at": "2026-11-13T16:51:34.118407141Z",
+    "finished_at": "2026-11-13T16:53:27.137552Z",
+    "execution_mode": "native_python_driver",
+    "execution_path": "notebooks/amphlett_reference/execute_reference.py",
+    "source_path": "repo/opem/Documents/Amphlett.ipynb",
+    "source_revision": "27d343fb966361a4e6cc99650241f651778fc50f",
+    "source_url": "https://github.com/ECSIM/opem/blob/27d343fb966361a4e6cc99650241f651778fc50f/Documents/Amphlett.ipynb",
+    "source_sections": "zero-based notebook cells65 official vector and67/69 native Full Run API; notebook installation/Plot cells excluded by selection",
+    "binding": "opem.Static.Amphlett.Static_Analysis",
+    "commands": [
+      {
+        "command": "opem-env/bin/python notebooks/amphlett_reference/execute_reference.py > notebooks/amphlett_reference/driver-stdout.log 2> notebooks/amphlett_reference/driver-stderr.log",
+        "working_directory": "/workspace/fuelcell-paper2agent",
+        "exit_status": 0,
+        "stdout_path": "notebooks/amphlett_reference/driver-stdout.log",
+        "stderr_path": "notebooks/amphlett_reference/driver-stderr.log",
+        "observed_output": "succeeded;3 scenarios;750 samples each; all internal source, replay and native-report assertions passed"
+      }
+    ],
+    "runtime": {
+      "python": "/workspace/fuelcell-paper2agent/opem-env/bin/python",
+      "python_version": "3.12.14",
+      "opem_version": "1.4",
+      "installed_implementation": "/workspace/fuelcell-paper2agent/opem-env/lib/python3.12/site-packages/opem/Static/Amphlett.py",
+      "installed_implementation_sha256": "fafd388f1f6fded85f745de39ec03267ab301708260ad96333b9aa333f816bd6"
+    },
+    "data_provenance": {
+      "official": "AST literal extraction of Test_Vector from unchanged pinned notebook cell65; independently corroborated README Library example. No experimental measurements and no synthesized measured data.",
+      "temperature_353_15K": "Official vector with only T changed343.15K to353.15K; a software changed-input test.",
+      "oxygen_partial_pressure_0_21atm": "Official vector with only PO2 changed1atm to0.21atm; a prescribed-partial-pressure sensitivity scenario, not a validated air-cooled stack.",
+      "seed": null,
+      "randomness": "None; deterministic source uses Python math."
+    },
+    "source_hashes": {
+      "repo/opem/Documents/Amphlett.ipynb": "f358a34a4d943c22d8a081deec96da7fb1cf90a401d4e12cb70ef771052ab7db",
+      "repo/opem/opem/Static/Amphlett.py": "fafd388f1f6fded85f745de39ec03267ab301708260ad96333b9aa333f816bd6",
+      "repo/opem/opem/Functions.py": "b432477f784f84dffea4cd2897d0c2f35f15980f192da8b6d2685d2a5bb31ff8",
+      "repo/opem/opem/Params.py": "88c914ec1ccdb0c948ddeed145c9424f57169f9cec75be5ac198d822ce14dba3",
+      "repo/opem/test/test_Amphlett.py": "e38e4739508f12065c51488d07b60b762cedb3bea9e6512b48d9a210579f70cd"
+    },
+    "scenarios": {
+      "official": {
+        "provenance": "Exact official Full Run vector from notebook cell 65, also README Library example.",
+        "input_path": "notebooks/amphlett_reference/data/official.json",
+        "result_path": "notebooks/amphlett_reference/outputs/official/native-result.json",
+        "replay_result_path": "notebooks/amphlett_reference/outputs/official/replay-result.json",
+        "sample_count": 750,
+        "first_current_A": 0,
+        "last_current_A": 74.9,
+        "first_voltage_V": 1.19075,
+        "last_voltage_V": 0.36467510365006117,
+        "max_stack_power_W": 29.399736050325846,
+        "native_reports": [
+          "notebooks/amphlett_reference/outputs/official/Amphlett/Amphlett_Test.csv",
+          "notebooks/amphlett_reference/outputs/official/Amphlett/Amphlett_Test.html",
+          "notebooks/amphlett_reference/outputs/official/Amphlett/Amphlett_Test.opem"
+        ],
+        "replay": {
+          "passed": true,
+          "numerical_values_checked": 6752,
+          "relative_tolerance": 1e-12,
+          "absolute_tolerance": 1e-12,
+          "reason": "Same deterministic implementation and saved input; no stochastic component or independent numerical method."
+        }
+      },
+      "temperature_353_15K": {
+        "provenance": "Changed-input scenario; only operating temperature changed from official vector. Not a hardware-validated case.",
+        "input_path": "notebooks/amphlett_reference/data/temperature_353_15K.json",
+        "result_path": "notebooks/amphlett_reference/outputs/temperature_353_15K/native-result.json",
+        "replay_result_path": "notebooks/amphlett_reference/outputs/temperature_353_15K/replay-result.json",
+        "sample_count": 750,
+        "first_current_A": 0,
+        "last_current_A": 74.9,
+        "first_voltage_V": 1.18225,
+        "last_voltage_V": 0.3832745052407567,
+        "max_stack_power_W": 30.544892464386802,
+        "native_reports": [
+          "notebooks/amphlett_reference/outputs/temperature_353_15K/Amphlett/Amphlett_Test.csv",
+          "notebooks/amphlett_reference/outputs/temperature_353_15K/Amphlett/Amphlett_Test.html",
+          "notebooks/amphlett_reference/outputs/temperature_353_15K/Amphlett/Amphlett_Test.opem"
+        ],
+        "replay": {
+          "passed": true,
+          "numerical_values_checked": 6752,
+          "relative_tolerance": 1e-12,
+          "absolute_tolerance": 1e-12,
+          "reason": "Same deterministic implementation and saved input; no stochastic component or independent numerical method."
+        }
+      },
+      "oxygen_partial_pressure_0_21atm": {
+        "provenance": "Changed-input scenario; prescribed oxygen partial pressure 0.21 atm, not a complete humid-air or air-cooled system model.",
+        "input_path": "notebooks/amphlett_reference/data/oxygen_partial_pressure_0_21atm.json",
+        "result_path": "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/native-result.json",
+        "replay_result_path": "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/replay-result.json",
+        "sample_count": 750,
+        "first_current_A": 0,
+        "last_current_A": 74.9,
+        "first_voltage_V": 1.1792145486404413,
+        "last_voltage_V": 0.31243889540440895,
+        "max_stack_power_W": 25.968699545016445,
+        "native_reports": [
+          "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/Amphlett/Amphlett_Test.csv",
+          "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/Amphlett/Amphlett_Test.html",
+          "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/Amphlett/Amphlett_Test.opem"
+        ],
+        "replay": {
+          "passed": true,
+          "numerical_values_checked": 6752,
+          "relative_tolerance": 1e-12,
+          "absolute_tolerance": 1e-12,
+          "reason": "Same deterministic implementation and saved input; no stochastic component or independent numerical method."
+        }
+      }
+    },
+    "replay_comparisons": {
+      "passed": true,
+      "scenario_count": 3,
+      "total_numerical_values_compared": 20256,
+      "relative_tolerance": 1e-12,
+      "absolute_tolerance": 1e-12,
+      "preserved_integer_identifier_boolean_checks": true,
+      "changed_input_effects_checked": [
+        "temperature changes terminal voltage",
+        "oxygen partial pressure changes terminal voltage"
+      ]
+    },
+    "figures": {
+      "format": "source-native HTML chart definitions",
+      "files": [
+        "notebooks/amphlett_reference/outputs/official/Amphlett/Amphlett_Test.html",
+        "notebooks/amphlett_reference/outputs/temperature_353_15K/Amphlett/Amphlett_Test.html",
+        "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/Amphlett/Amphlett_Test.html"
+      ],
+      "notes": "Preserved the charts generated by selected native Full Run; notebook Plot section was not selected. Raster image extraction is not applicable. HTML charts require their upstream remote JavaScript dependencies."
+    },
+    "produced_files": {
+      "notebooks/amphlett_reference/data/official.json": "0a0e392a590799e76833927e93ce190e1f2204126801e2f051c63d36ca4bf60b",
+      "notebooks/amphlett_reference/data/oxygen_partial_pressure_0_21atm.json": "3b08d2b00cc3af43f00bb1621ea1398e085fc149dbaca4fed82faa4b821da866",
+      "notebooks/amphlett_reference/data/source-cells.json": "62707bc444440374bf28da95f9a644096b9f9f6455a8b7a2bbb9d81d9e813cd0",
+      "notebooks/amphlett_reference/data/temperature_353_15K.json": "2eb564f4aa07addddf122b210a7336fe7771ee215d7f0d7754af739ace408970",
+      "notebooks/amphlett_reference/driver-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "notebooks/amphlett_reference/driver-stdout.log": "af65ac52af3d81f55c7e630751a4a5e678b07068e2a2c6a9e0cce84b130b26ce",
+      "notebooks/amphlett_reference/execute_reference.py": "2bb6909ffc51ec3c1c6ace529d24b33f9eb5e73d9aa4507ba1c7864467d0afde",
+      "notebooks/amphlett_reference/execution-summary.json": "b1dbcee11984f5d7c7893596ba629d2243dd14d724102aaad6066562322067d7",
+      "notebooks/amphlett_reference/outputs/official/Amphlett/Amphlett_Test.csv": "9faeb33d1780d9152215bd97ea7537cf24d08e6409eaa85bbb2461fca81d28be",
+      "notebooks/amphlett_reference/outputs/official/Amphlett/Amphlett_Test.html": "5f6ae0a85c5103a2f56d02dc93b356a4d24518808ba63e48f322e9d457f2dab9",
+      "notebooks/amphlett_reference/outputs/official/Amphlett/Amphlett_Test.opem": "c26a2a1403bb7362e5a79d85f73635942a8f21d70b53ee6923854ca7ed9d9661",
+      "notebooks/amphlett_reference/outputs/official/native-result.json": "f36b5f57cbc9dd657aafea2536276bc51c0371a0f2d90a169a1b89ffee35bfee",
+      "notebooks/amphlett_reference/outputs/official/native.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "notebooks/amphlett_reference/outputs/official/replay-result.json": "f36b5f57cbc9dd657aafea2536276bc51c0371a0f2d90a169a1b89ffee35bfee",
+      "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/Amphlett/Amphlett_Test.csv": "70d53870f502b2112616d9bd3922365b7dffe721f7dee717f1240637f3c31a8f",
+      "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/Amphlett/Amphlett_Test.html": "d4f5a2156a3592d7e9b3b381c1c1e433aa97e37a21dcd2a7ac320dee5906f3b6",
+      "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/Amphlett/Amphlett_Test.opem": "ef3bb96d8dec8ee767ae7ead1b7b09793d774bee9a9e9e1214fed60648f56211",
+      "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/native-result.json": "11c367b0637098d669347b58edc31827eb02eb24e2aafaee01f552347652248c",
+      "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/native.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "notebooks/amphlett_reference/outputs/oxygen_partial_pressure_0_21atm/replay-result.json": "11c367b0637098d669347b58edc31827eb02eb24e2aafaee01f552347652248c",
+      "notebooks/amphlett_reference/outputs/temperature_353_15K/Amphlett/Amphlett_Test.csv": "45a8b32056a8bb4cb3469c4ee64d8cb2822861ac66524b32a07cddce8cc6e65c",
+      "notebooks/amphlett_reference/outputs/temperature_353_15K/Amphlett/Amphlett_Test.html": "f9bc27327535a7b4e564ac5de1018635aaa54e91cf0b4a6fd2918fe87b37e9dc",
+      "notebooks/amphlett_reference/outputs/temperature_353_15K/Amphlett/Amphlett_Test.opem": "47393753355c7a76179674c3f00d3492acd09f00d08449c3357d7ff45f5a3314",
+      "notebooks/amphlett_reference/outputs/temperature_353_15K/native-result.json": "86386adc899bc3898631c03f4e0cfec7f94f338237850f72f8cf65da7eb041bf",
+      "notebooks/amphlett_reference/outputs/temperature_353_15K/native.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "notebooks/amphlett_reference/outputs/temperature_353_15K/replay-result.json": "86386adc899bc3898631c03f4e0cfec7f94f338237850f72f8cf65da7eb041bf"
+    },
+    "attempts": [
+      {
+        "number": 1,
+        "status": "succeeded",
+        "description": "Native documented API execution and replay with all3 scenarios."
+      }
+    ],
+    "limitations": [
+      "These are software reference executions, not validation against a physical fuel cell stack.",
+      "Only selected Full Run source API path is executed; notebook install and separate Plot section are outside selected scope. Native Full Run charts are retained as HTML definitions.",
+      "Native HTML visualization requires upstream remotely hosted JavaScript; numeric JSON/CSV/OPEM outputs do not.",
+      "PO2 is oxygen partial pressure, not air total pressure. The0.21atm scenario omits humid-air and transport coupling.",
+      "Ph follows upstream fixed Eth=1.23V and is not independently validated heat rejection, thermal balance or fan-sizing.",
+      "No airflow/fan power, membrane water dynamics, thermal dynamics, spatial distribution, parameter fitting or experimental comparison was executed."
+    ]
+  }
+}

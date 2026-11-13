@@ -1,0 +1,64 @@
+{
+  "success": true,
+  "relative_tolerance": 1e-12,
+  "absolute_tolerance": 1e-12,
+  "reference": "Fresh direct call to pinned opem.Static.Amphlett.Static_Analysis with each preserved native input, independent of generated wrapper",
+  "cases": [
+    {
+      "artifact": "tmp/outputs/acceptance/amphlett-az6tsr1q/native-result.json",
+      "samples": 750,
+      "native_numeric_values_compared": 6752,
+      "success": true,
+      "sha256": "d639c2fe8194ba42183dc16d805262d9b9abae91b4a9fbfb6cbeb2003ecdc6bc"
+    },
+    {
+      "artifact": "tmp/outputs/acceptance/amphlett-efe64eik/native-result.json",
+      "samples": 750,
+      "native_numeric_values_compared": 6752,
+      "success": true,
+      "sha256": "3ed805d18e56dca0b326e878f8faaad94891952e60455248f2b9ad5f2f0f383e"
+    },
+    {
+      "artifact": "tmp/outputs/acceptance/amphlett-egwwrybv/native-result.json",
+      "samples": 750,
+      "native_numeric_values_compared": 6752,
+      "success": true,
+      "sha256": "3ed805d18e56dca0b326e878f8faaad94891952e60455248f2b9ad5f2f0f383e"
+    },
+    {
+      "artifact": "tmp/outputs/acceptance/amphlett-knu49y2o/native-result.json",
+      "samples": 750,
+      "native_numeric_values_compared": 6752,
+      "success": true,
+      "sha256": "fb42e0a018d94c928d166923b15a02ad87fd3524e8cb1c56a61c9243782799ba"
+    },
+    {
+      "artifact": "tmp/outputs/acceptance-clean/amphlett-2r7vt5xx/native-result.json",
+      "samples": 750,
+      "native_numeric_values_compared": 6752,
+      "success": true,
+      "sha256": "3ed805d18e56dca0b326e878f8faaad94891952e60455248f2b9ad5f2f0f383e"
+    },
+    {
+      "artifact": "tmp/outputs/acceptance-clean/amphlett-4z3qku_p/native-result.json",
+      "samples": 750,
+      "native_numeric_values_compared": 6752,
+      "success": true,
+      "sha256": "d639c2fe8194ba42183dc16d805262d9b9abae91b4a9fbfb6cbeb2003ecdc6bc"
+    },
+    {
+      "artifact": "tmp/outputs/acceptance-clean/amphlett-fe5ltdye/native-result.json",
+      "samples": 750,
+      "native_numeric_values_compared": 6752,
+      "success": true,
+      "sha256": "fb42e0a018d94c928d166923b15a02ad87fd3524e8cb1c56a61c9243782799ba"
+    },
+    {
+      "artifact": "tmp/outputs/acceptance-clean/amphlett-qnfwrmbn/native-result.json",
+      "samples": 750,
+      "native_numeric_values_compared": 6752,
+      "success": true,
+      "sha256": "3ed805d18e56dca0b326e878f8faaad94891952e60455248f2b9ad5f2f0f383e"
+    }
+  ]
+}

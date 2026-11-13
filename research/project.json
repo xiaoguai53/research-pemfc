@@ -1,0 +1,18 @@
+{
+  "project_name": "Hydrogen and Air-cooled Fuel Cell Paper Agents",
+  "research_goal": "复用氢燃料电池论文方法，建立可追溯的 PEMFC 分析基线，并逐步扩展到空冷电堆热水管理与实验研究。",
+  "language": "zh-CN",
+  "initial_model": "opem.Static.Amphlett.Static_Analysis",
+  "initial_model_status": "reference_and_wrapper_validation_recorded_under_reports",
+  "stack": {
+    "architecture": null,
+    "cell_count": null,
+    "active_area_cm2": null,
+    "membrane_thickness_cm": null,
+    "notes": "请填写自己的电堆信息；官方示例不是本电堆的已辨识参数。"
+  },
+  "experimental_inputs": [],
+  "next_paper_url": null,
+  "next_code_repository": null,
+  "deferred_capabilities": ["airflow_coupled_thermal_model", "dynamic_membrane_water", "fan_power_optimization", "purge_control", "experimental_parameter_fitting", "spatial_CFD"]
+}

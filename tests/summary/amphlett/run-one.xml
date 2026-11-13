@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="1.161" timestamp="2026-11-13T17:03:18.240999+00:00" hostname="b0517a43691e"><testcase classname="" name="tests.code.amphlett.test_opem_simulate_polarization" time="0.000"><error message="collection failure">tests/code/amphlett/test_opem_simulate_polarization.py:27: in &lt;module&gt;
+    OFFICIAL_INPUT = json.loads((ROOT / "notebooks/amphlett_reference/data/official.json").read_text())
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1013: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: '/workspace/notebooks/amphlett_reference/data/official.json'</error></testcase></testsuite></testsuites>

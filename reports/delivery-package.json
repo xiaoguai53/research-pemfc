@@ -1,0 +1,18 @@
+{
+  "created_at_utc": "2026-11-13T17:08:32.950022+00:00",
+  "archive": "dist/opem-mcp.zip",
+  "archive_sha256": "1ea16d1530d84ccf5b1cec384fc4befe37f8ccdd1dfce41404d6120f331d1a3c",
+  "packaged_files": {
+    "USAGE.md": "7751125d23a078770ad7c664b868df7c484de6ce35bf80add3c9868e676aa6e6",
+    "LICENSE": "7ed701f01492e23986c5062ba37309d95cea6ba19bc78f1cc86280a90140a515",
+    "THIRD_PARTY_NOTICES.md": "fa476fadfde07f3bf8ee4a3a84c84ffa2e61eff1c7c63e31147eb35bca902cf6",
+    "third_party/OPEM-LICENSE": "80e18d0b4e58cef4171bfd8e52a91f03e81b5a1ffade6f6a7be8fb29d458f8c6",
+    "third_party/Paper2Agent-LICENSE": "1075df19ebaccda19b4b7498ce113ef920368dd6db679b4eb041d7b774d499da",
+    "src/opem_mcp.py": "4d0ce7fdac1c67ffd8d2c55b8f8e2fc8ac2219d811edb795cd8137c7c97e1a28",
+    "src/tools/amphlett.py": "7d4ae068fd987d3401b7a609fbc3c0c37befa9470538b742972e44cdad2e734f",
+    "src/requirements.txt": "5df7c61ef917749b7d5598618f3fbc0771ed63bf1d4e7ce05ff8267414f06f75",
+    "scripts/run_polarization.py": "029a2ee20cd980d3fe413c4c8a5dbf7ca22e62e44cae775a656de549cca9b9e2",
+    "scripts/print_mcp_config.py": "7aa75bf3786d67ab9e73d2cce61304e523548d97322b03ff770e0c35cb274e5e",
+    "PROVENANCE.json": "bd723f6672aa0ac21d3cba162368fdbceb86692093b00307097fc984cc11ddab"
+  }
+}
