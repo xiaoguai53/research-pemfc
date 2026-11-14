@@ -1,0 +1,31 @@
+{
+  "problem": {
+    "num_vars": 3,
+    "names": [
+      "x1",
+      "x2",
+      "x3"
+    ],
+    "bounds": [
+      [
+        -3.141592653589793,
+        3.141592653589793
+      ],
+      [
+        -3.141592653589793,
+        3.141592653589793
+      ],
+      [
+        -3.141592653589793,
+        3.141592653589793
+      ]
+    ],
+    "sample_scaled": true
+  },
+  "N": 1024,
+  "calc_second_order": false,
+  "seed": 42,
+  "source_function": "SALib.test_functions.Ishigami.evaluate",
+  "data_kind": "SOURCE_TEST_FUNCTION_NOT_EXPERIMENTAL",
+  "function_doc": "Non-monotonic Ishigami-Homma three parameter test function:\n\n`f(x) = \\sin(x_{1}) + A \\sin(x_{2})^2 + Bx^{4}_{3}\\sin(x_{1})`\n\nThis test function is commonly used to benchmark global sensitivity\nmethods as variance-based sensitivities of this function can be\nanalytically determined.\n\nSee listed references below.\n\nIn [2], the expected first-order indices are:\n\n    x1: 0.3139\n    x2: 0.4424\n    x3: 0.0\n\nwhen A = 7, B = 0.1 when conducting Sobol' analysis with the\nSaltelli sampling method with a sample size of 1000.\n\n\nParameters\n----------\nX : np.ndarray\n    An `N*D` array holding values for each parameter, where `N` is the\n    number of samples and `D` is the number of parameters\n    (in this case, three).\nA : float\n    Constant `A` parameter\nB : float\n    Constant `B` parameter\n\nReturns\n-------\nY : np.ndarray\n\nReferences\n----------\n.. [1] Ishigami, T., Homma, T., 1990.\n       An importance quantification technique in uncertainty analysis for\n       computer models.\n       Proceedings. First International Symposium on Uncertainty Modeling\n       and Analysis.\n       https://doi.org/10.1109/ISUMA.1990.151285\n\n.. [2] Saltelli, A., Ratto, M., Andres, T., Campolongo, F., Cariboni, J.,\n       Gatelli, D., Saisana, M., Tarantola, S., 2008.\n       Global Sensitivity Analysis: The Primer. Wiley, West Sussex, U.K.\n       https://dx.doi.org/10.1002/9780470725184"
+}

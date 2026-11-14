@@ -1,0 +1,475 @@
+{
+  "data_kind": "SYNTHETIC_SOFTWARE_VALIDATION_NOT_EXPERIMENTAL",
+  "results": {
+    "data": {
+      "message": "Research operation completed; inspect the method, provenance and limits with the results.",
+      "reference": "Measured-data profile and explicit electrical-power accounting",
+      "summary": {
+        "row_count": 36,
+        "data_kind": "SYNTHETIC_SOFTWARE_VALIDATION_NOT_EXPERIMENTAL",
+        "power_boundary": "gross_minus_measured_fan_and_declared_other_auxiliaries",
+        "max_observed_gross_power_W": 64.18,
+        "source_rows_removed": 0,
+        "imputed_values": 0,
+        "valid_gross_minus_fan_power_W_rows": 36,
+        "max_observed_gross_minus_fan_power_W": 61.24000000000001,
+        "valid_net_power_W_rows": 36,
+        "max_observed_net_power_W": 60.74000000000001
+      },
+      "method": {
+        "name": "Measured-data profile and explicit electrical-power accounting",
+        "numeric_source": "pandas/NumPy; P_gross=I*V; subtraction of supplied consumed powers only"
+      },
+      "warnings": [],
+      "run_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/measurements-wjo2g5sk",
+      "artifacts": [
+        {
+          "description": "derived-measurements.csv",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/measurements-wjo2g5sk/derived-measurements.csv"
+        },
+        {
+          "description": "inputs.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/measurements-wjo2g5sk/inputs.json"
+        },
+        {
+          "description": "measurement-curves.png",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/measurements-wjo2g5sk/measurement-curves.png"
+        },
+        {
+          "description": "measurement-curves.svg",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/measurements-wjo2g5sk/measurement-curves.svg"
+        },
+        {
+          "description": "quality.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/measurements-wjo2g5sk/quality.json"
+        },
+        {
+          "description": "summary.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/measurements-wjo2g5sk/summary.json"
+        },
+        {
+          "description": "manifest.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/measurements-wjo2g5sk/manifest.json"
+        }
+      ]
+    },
+    "comparison": {
+      "message": "Research operation completed; inspect the method, provenance and limits with the results.",
+      "reference": "scipy.stats.ttest_rel",
+      "summary": {
+        "metric": "net_power_W",
+        "contrast": "group_b_minus_group_a",
+        "group_a": "baseline",
+        "group_b": "candidate",
+        "design": "paired",
+        "n_replicates_a": 6,
+        "n_replicates_b": 6,
+        "mean_a": 58.01500000000001,
+        "mean_b": 60.23000000000001,
+        "mean_difference": 2.2150000000000034,
+        "inference": {
+          "status": "computed_under_declared_design",
+          "statistic": 32.22350845818064,
+          "degrees_of_freedom": 5.0,
+          "p_value_two_sided": 5.407155719953708e-07,
+          "confidence_level": 0.95,
+          "mean_difference_ci": [
+            2.0383017123717724,
+            2.3916982876282415
+          ]
+        },
+        "actual_current_ranges": {
+          "baseline": {
+            "min_A": 20.0,
+            "max_A": 20.0
+          },
+          "candidate": {
+            "min_A": 20.0,
+            "max_A": 20.0
+          }
+        },
+        "target_current_A": 20.0,
+        "current_tolerance_A": 0.1,
+        "data_kind": "SYNTHETIC_SOFTWARE_VALIDATION_NOT_EXPERIMENTAL",
+        "power_boundary": "gross_minus_measured_fan_and_declared_other_auxiliaries"
+      },
+      "method": {
+        "name": "Prespecified replicate-level paired t-test",
+        "source": "scipy.stats.ttest_rel",
+        "multiple_testing": "One requested contrast; no automatic multiplicity adjustment or outcome-driven test selection."
+      },
+      "warnings": [
+        "Replicate independence and matched operating conditions come from experimental design; this computation cannot establish them."
+      ],
+      "run_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/condition-comparison-08syq95w",
+      "artifacts": [
+        {
+          "description": "inputs.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/condition-comparison-08syq95w/inputs.json"
+        },
+        {
+          "description": "matched-observations.csv",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/condition-comparison-08syq95w/matched-observations.csv"
+        },
+        {
+          "description": "per-replicate.csv",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/condition-comparison-08syq95w/per-replicate.csv"
+        },
+        {
+          "description": "replicate-comparison.png",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/condition-comparison-08syq95w/replicate-comparison.png"
+        },
+        {
+          "description": "replicate-comparison.svg",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/condition-comparison-08syq95w/replicate-comparison.svg"
+        },
+        {
+          "description": "summary.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/condition-comparison-08syq95w/summary.json"
+        },
+        {
+          "description": "manifest.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/condition-comparison-08syq95w/manifest.json"
+        }
+      ]
+    },
+    "calibration": {
+      "message": "Research operation completed; inspect the method, provenance and limits with the results.",
+      "reference": "https://github.com/ECSIM/opem/blob/27d343fb966361a4e6cc99650241f651778fc50f/opem/Static/Amphlett.py",
+      "summary": {
+        "fitted_parameters": {
+          "electronic_resistance_ohm": 0.002000000000000093,
+          "membrane_water_content": 18.000000000000043
+        },
+        "train_metrics": {
+          "n": 20,
+          "rmse_V": 3.383449067067174e-15,
+          "mae_V": 3.0475622025960546e-15,
+          "mean_residual_V": -3.0475622025960546e-15
+        },
+        "holdout_metrics": {
+          "n": 5,
+          "rmse_V": 2.9116643935723535e-15,
+          "mae_V": 2.509104035652854e-15,
+          "mean_residual_V": -2.509104035652854e-15
+        },
+        "optimizer": {
+          "success": true,
+          "status": 1,
+          "message": "`gtol` termination condition is satisfied.",
+          "nfev": 8,
+          "cost": 1.144772758943773e-28
+        },
+        "split": {
+          "policy": "explicit_prespecified_split",
+          "seed": 42,
+          "group_column": null,
+          "train_rows": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            11,
+            12,
+            13,
+            14,
+            16,
+            17,
+            18,
+            19,
+            21,
+            22,
+            23,
+            24
+          ],
+          "holdout_rows": [
+            0,
+            5,
+            10,
+            15,
+            20
+          ],
+          "validation_scope": "point holdout within supplied curves; not independent experimental validation"
+        },
+        "temperature_mode": "measured_per_row_temperature_K",
+        "data_kind": "SYNTHETIC_SOFTWARE_VALIDATION_NOT_EXPERIMENTAL",
+        "identifiability": {
+          "jacobian_rank": 2,
+          "column_normalized_jacobian_rank": 2,
+          "parameter_count": 2,
+          "raw_condition_number": 32535.97311257992,
+          "column_normalized_condition_number": 14.040146860633373,
+          "raw_singular_values": [
+            180.79685148345223,
+            0.0055568293856730466
+          ],
+          "column_normalized_singular_values": [
+            1.410640067365729,
+            0.10047188831912922
+          ],
+          "at_or_near_bounds": {
+            "electronic_resistance_ohm": false,
+            "membrane_water_content": false
+          },
+          "parameter_confidence_intervals_computed": false
+        }
+      },
+      "method": {
+        "name": "New composition: bounded SciPy least_squares around original OPEM public point functions",
+        "physical_model_source": "https://github.com/ECSIM/opem/blob/27d343fb966361a4e6cc99650241f651778fc50f/opem/Static/Amphlett.py",
+        "opem_commit": "27d343fb966361a4e6cc99650241f651778fc50f",
+        "optimizer": "scipy.optimize.least_squares(method=trf,x_scale=jac)",
+        "confidence_interval_scope": "No physical parameter uncertainty interval is inferred from residuals alone."
+      },
+      "warnings": [
+        "Good residual agreement and optimizer convergence do not establish physical parameter identification or validated hardware performance.",
+        "Measured/prescribed temperature is an input to a quasi-static model; no air-cooled heat/water dynamics are solved.",
+        "A current-point holdout checks interpolation on supplied curves, not generalization to an independent experiment."
+      ],
+      "run_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/amphlett-calibration-hmxllcn4",
+      "artifacts": [
+        {
+          "description": "calibration.png",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/amphlett-calibration-hmxllcn4/calibration.png"
+        },
+        {
+          "description": "calibration.svg",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/amphlett-calibration-hmxllcn4/calibration.svg"
+        },
+        {
+          "description": "fitted-parameters.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/amphlett-calibration-hmxllcn4/fitted-parameters.json"
+        },
+        {
+          "description": "identifiability.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/amphlett-calibration-hmxllcn4/identifiability.json"
+        },
+        {
+          "description": "inputs.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/amphlett-calibration-hmxllcn4/inputs.json"
+        },
+        {
+          "description": "parameters-fitted.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/amphlett-calibration-hmxllcn4/parameters-fitted.json"
+        },
+        {
+          "description": "predictions.csv",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/amphlett-calibration-hmxllcn4/predictions.csv"
+        },
+        {
+          "description": "summary.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/amphlett-calibration-hmxllcn4/summary.json"
+        },
+        {
+          "description": "training-jacobian.csv",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/amphlett-calibration-hmxllcn4/training-jacobian.csv"
+        },
+        {
+          "description": "manifest.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/amphlett-calibration-hmxllcn4/manifest.json"
+        }
+      ]
+    },
+    "sensitivity": {
+      "message": "Research operation completed; inspect the method, provenance and limits with the results.",
+      "reference": "https://salib.readthedocs.io/en/latest/",
+      "summary": {
+        "model_evaluations": 320,
+        "n_base": 64,
+        "factor_count": 3,
+        "output": "stack_voltage_V",
+        "fixed_current_A": 40.0,
+        "data_kind": "model_sensitivity_not_experiment"
+      },
+      "method": {
+        "name": "SALib Sobol sample/analyze + original OPEM point APIs",
+        "second_order": false,
+        "url": "https://salib.readthedocs.io/en/latest/"
+      },
+      "warnings": [
+        "Independent uniform input bounds are assumptions; indices are model-conditional, not causal effects from measured data.",
+        "Finite-sample estimates and intervals are preserved without clipping; prescribed temperature is not a solved air-cooled temperature."
+      ],
+      "run_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/model-sensitivity-3il6k5eu",
+      "artifacts": [
+        {
+          "description": "inputs.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/model-sensitivity-3il6k5eu/inputs.json"
+        },
+        {
+          "description": "ordered-sobol-design.csv",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/model-sensitivity-3il6k5eu/ordered-sobol-design.csv"
+        },
+        {
+          "description": "ordered-sobol-responses.csv",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/model-sensitivity-3il6k5eu/ordered-sobol-responses.csv"
+        },
+        {
+          "description": "sensitivity-indices.csv",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/model-sensitivity-3il6k5eu/sensitivity-indices.csv"
+        },
+        {
+          "description": "sensitivity.png",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/model-sensitivity-3il6k5eu/sensitivity.png"
+        },
+        {
+          "description": "sensitivity.svg",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/model-sensitivity-3il6k5eu/sensitivity.svg"
+        },
+        {
+          "description": "summary.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/model-sensitivity-3il6k5eu/summary.json"
+        },
+        {
+          "description": "manifest.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/model-sensitivity-3il6k5eu/manifest.json"
+        }
+      ]
+    },
+    "design": {
+      "message": "Research operation completed; inspect the method, provenance and limits with the results.",
+      "reference": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.qmc.LatinHypercube.html",
+      "summary": {
+        "planned_count": 15,
+        "lhs_count": 12,
+        "center_replicates": 3,
+        "data_kind": "experimental_design_not_observations"
+      },
+      "method": {
+        "name": "SciPy LatinHypercube + randomized execution order",
+        "seed": 42,
+        "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.qmc.LatinHypercube.html"
+      },
+      "warnings": [
+        "Factor bounds are user declarations. Planned candidates have no measured performance or verified operating feasibility."
+      ],
+      "run_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/experiment-design-uaxxjc4j",
+      "artifacts": [
+        {
+          "description": "design.png",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/experiment-design-uaxxjc4j/design.png"
+        },
+        {
+          "description": "design.svg",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/experiment-design-uaxxjc4j/design.svg"
+        },
+        {
+          "description": "factor-units.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/experiment-design-uaxxjc4j/factor-units.json"
+        },
+        {
+          "description": "inputs.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/experiment-design-uaxxjc4j/inputs.json"
+        },
+        {
+          "description": "planned-experiments.csv",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/experiment-design-uaxxjc4j/planned-experiments.csv"
+        },
+        {
+          "description": "summary.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/experiment-design-uaxxjc4j/summary.json"
+        },
+        {
+          "description": "manifest.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/experiment-design-uaxxjc4j/manifest.json"
+        }
+      ]
+    },
+    "next_experiments": {
+      "message": "Research operation completed; inspect the method, provenance and limits with the results.",
+      "reference": "https://optuna.readthedocs.io/en/stable/",
+      "summary": {
+        "history_count": 16,
+        "observed_feasible_count": 13,
+        "data_kind": "SYNTHETIC_ANALYTIC_TOY_NOT_A_FUEL_CELL_THERMAL_MODEL",
+        "candidate_count": 3,
+        "sampler_phase": "TPE",
+        "best_observed_feasible": {
+          "trial_id": "demo-012",
+          "measured_objective": 83.66226461644405,
+          "measured_constraint": 52.52524450005603
+        },
+        "candidate_feasibility_verified": false
+      },
+      "method": {
+        "name": "Optuna 5 constrained TPE ask/tell",
+        "constraint_api": "Trial.set_constraint",
+        "seed": 42,
+        "url": "https://optuna.readthedocs.io/en/stable/"
+      },
+      "warnings": [
+        "Recommendations satisfy declared input bounds; outcome constraints require new measurements and are not guaranteed.",
+        "Pending candidates have no fabricated power, temperature or objective values. Each history row must be an independent completed trial."
+      ],
+      "run_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/next-experiments-j6zdqu8e",
+      "artifacts": [
+        {
+          "description": "inputs.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/next-experiments-j6zdqu8e/inputs.json"
+        },
+        {
+          "description": "native-trial-records.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/next-experiments-j6zdqu8e/native-trial-records.json"
+        },
+        {
+          "description": "observed-history.csv",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/next-experiments-j6zdqu8e/observed-history.csv"
+        },
+        {
+          "description": "pending-candidates.csv",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/next-experiments-j6zdqu8e/pending-candidates.csv"
+        },
+        {
+          "description": "summary.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/next-experiments-j6zdqu8e/summary.json"
+        },
+        {
+          "description": "manifest.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/next-experiments-j6zdqu8e/manifest.json"
+        }
+      ]
+    },
+    "prior_art_plan": {
+      "message": "Research operation completed; inspect the method, provenance and limits with the results.",
+      "reference": "Explicit feature-to-prior-art search matrix",
+      "summary": {
+        "query_count": 2,
+        "live_patent_search_performed": false,
+        "novelty_determined": false
+      },
+      "method": {
+        "name": "Explicit feature-to-prior-art search matrix"
+      },
+      "warnings": [
+        "The links and matrix prepare a search; inspect actual patent documents and dates before judging technical differences."
+      ],
+      "run_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/prior-art-plan-gmi49rc_",
+      "artifacts": [
+        {
+          "description": "inputs.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/prior-art-plan-gmi49rc_/inputs.json"
+        },
+        {
+          "description": "prior-art-matrix.csv",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/prior-art-plan-gmi49rc_/prior-art-matrix.csv"
+        },
+        {
+          "description": "search-plan.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/prior-art-plan-gmi49rc_/search-plan.json"
+        },
+        {
+          "description": "summary.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/prior-art-plan-gmi49rc_/summary.json"
+        },
+        {
+          "description": "manifest.json",
+          "path": "/workspace/fuelcell-paper2agent/tmp/workbench-cli-demo/prior-art-plan-gmi49rc_/manifest.json"
+        }
+      ]
+    }
+  }
+}

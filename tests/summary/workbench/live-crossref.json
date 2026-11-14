@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "tool": "research_search_literature",
+  "summary": {
+    "record_count": 2,
+    "full_text_reviewed_count": 0
+  },
+  "run_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-independent-live/literature-8b6082cm",
+  "evidence_sha256": "7750b78facd42acdb38a47c1aeea826e9c6ab17ffe9fd22ea4a1d2c4535aea87",
+  "records": [
+    {
+      "doi": "10.1016/j.applthermaleng.2024.122709",
+      "source_url": "https://doi.org/10.1016/j.applthermaleng.2024.122709",
+      "access_level": "metadata",
+      "full_text_reviewed": false
+    },
+    {
+      "doi": "10.2139/ssrn.4092187",
+      "source_url": "https://doi.org/10.2139/ssrn.4092187",
+      "access_level": "metadata",
+      "full_text_reviewed": false
+    }
+  ]
+}

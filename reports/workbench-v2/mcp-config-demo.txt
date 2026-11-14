@@ -1,0 +1,1 @@
+codex mcp add pemfc-research -- /workspace/fuelcell-paper2agent/research-env/bin/python /workspace/fuelcell-paper2agent/src/research_mcp.py

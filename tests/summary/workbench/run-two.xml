@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="41" time="10.158" timestamp="2026-11-14T05:33:44.274559+00:00" hostname="b0517a43691e"><testcase classname="tests.code.workbench.test_calibration" name="test_all_native_curve_points_and_input_preservation[change0]" time="0.009" /><testcase classname="tests.code.workbench.test_calibration" name="test_all_native_curve_points_and_input_preservation[change1]" time="0.008" /><testcase classname="tests.code.workbench.test_calibration" name="test_all_native_curve_points_and_input_preservation[change2]" time="0.008" /><testcase classname="tests.code.workbench.test_calibration" name="test_all_native_curve_points_and_input_preservation[change3]" time="0.008" /><testcase classname="tests.code.workbench.test_calibration" name="test_measured_temperature_is_used_for_each_point" time="0.001" /><testcase classname="tests.code.workbench.test_calibration" name="test_recover_truth_and_holdout_response_cannot_leak" time="1.038" /><testcase classname="tests.code.workbench.test_calibration" name="test_whole_group_holdout_keeps_distinct_real_ids" time="0.400" /><testcase classname="tests.code.workbench.test_calibration" name="test_source_domain_errors_are_not_repaired[change0]" time="0.001" /><testcase classname="tests.code.workbench.test_calibration" name="test_source_domain_errors_are_not_repaired[change1]" time="0.000" /><testcase classname="tests.code.workbench.test_calibration" name="test_source_domain_errors_are_not_repaired[change2]" time="0.000" /><testcase classname="tests.code.workbench.test_comparison" name="test_true_replicate_effect_ci_and_time_duplication_invariance" time="0.602" /><testcase classname="tests.code.workbench.test_comparison" name="test_welch_and_matching_load" time="0.283" /><testcase classname="tests.code.workbench.test_comparison" name="test_zero_contrast_variance_has_no_manufactured_inference" time="0.310" /><testcase classname="tests.code.workbench.test_comparison" name="test_pair_ids_are_exact_strings_and_missing_pairs_fail" time="0.466" /><testcase classname="tests.code.workbench.test_design" name="test_latin_hypercube_strata_centers_and_reproducibility" time="0.506" /><testcase classname="tests.code.workbench.test_design" name="test_reserved_output_column_cannot_overwrite_factor" time="0.205"><failure message="Failed: DID NOT RAISE Exception">tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-two/test_reserved_output_column_ca0')
+
+    async def test_reserved_output_column_cannot_overwrite_factor(tmp_path):
+        cfg={"factors":[{"name":"status","unit":"1","lower":0.,"upper":1.}]}
+&gt;       with pytest.raises(Exception,match="reserved"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE Exception
+
+tests/code/workbench/test_design.py:25: Failed</failure></testcase><testcase classname="tests.code.workbench.test_literature" name="test_doi_dedup_and_access_levels_through_mcp" time="0.024" /><testcase classname="tests.code.workbench.test_literature" name="test_service_failure_is_not_fabricated_success" time="0.024" /><testcase classname="tests.code.workbench.test_literature" name="test_zero_records_still_export_a_readable_schema" time="0.018"><failure message="pandas.errors.EmptyDataError: No columns to parse from file">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7f304485f260&gt;
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-two/test_zero_records_still_export0')
+
+    async def test_zero_records_still_export_a_readable_schema(monkeypatch,tmp_path):
+        class Empty(Response):
+            def json(self):return {"message":{"items":[]}}
+        monkeypatch.setattr(evidence.requests,"get",lambda *a,**k:Empty())
+        r=await call("research_search_literature",{"query":"fuel cell","output_dir":str(tmp_path)})
+&gt;       frame=pd.read_csv(artifact(r,"literature.csv"))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/code/workbench/test_literature.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1866: in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+research-env/lib/python3.12/site-packages/pandas/io/parsers/readers.py:423: in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+research-env/lib/python3.12/site-packages/pandas/io/parsers/readers.py:2721: in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+research-env/lib/python3.12/site-packages/pandas/io/parsers/readers.py:3006: in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+research-env/lib/python3.12/site-packages/pandas/io/parsers/c_parser_wrapper.py:107: in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+&gt;   ???
+E   pandas.errors.EmptyDataError: No columns to parse from file
+
+pandas/_libs/parsers.pyx:735: EmptyDataError</failure></testcase><testcase classname="tests.code.workbench.test_measurements" name="test_derived_values_no_source_mutation_and_identifiers" time="0.533" /><testcase classname="tests.code.workbench.test_measurements" name="test_explicit_auxiliary_boundaries[power_columns0-False-False]" time="0.334" /><testcase classname="tests.code.workbench.test_measurements" name="test_explicit_auxiliary_boundaries[power_columns1-False-True]" time="0.373" /><testcase classname="tests.code.workbench.test_measurements" name="test_explicit_auxiliary_boundaries[power_columns2-True-True]" time="0.403" /><testcase classname="tests.code.workbench.test_measurements" name="test_missing_consumption_is_retained_and_selected_excel_sheet" time="0.644" /><testcase classname="tests.code.workbench.test_measurements" name="test_bad_measurements_are_tool_errors[current_A-True]" time="0.035" /><testcase classname="tests.code.workbench.test_measurements" name="test_bad_measurements_are_tool_errors[current_A-nan]" time="0.021" /><testcase classname="tests.code.workbench.test_measurements" name="test_bad_measurements_are_tool_errors[stack_voltage_V-bad]" time="0.032" /><testcase classname="tests.code.workbench.test_measurements" name="test_bad_measurements_are_tool_errors[fan_power_W--1]" time="0.027" /><testcase classname="tests.code.workbench.test_next" name="test_history_constraints_pending_truth_and_seed_replay" time="0.058" /><testcase classname="tests.code.workbench.test_next" name="test_startup_is_random_and_history_ids_must_be_unique" time="0.065" /><testcase classname="tests.code.workbench.test_priorart" name="test_prior_art_plan_is_encoded_and_never_a_novelty_claim" time="0.020" /><testcase classname="tests.code.workbench.test_protocol_and_provenance" name="test_inventory_schemas_and_original_baseline" time="0.042" /><testcase classname="tests.code.workbench.test_protocol_and_provenance" name="test_raw_boolean_arguments_fail_through_transport[research_design_experiments-args0]" time="0.006" /><testcase classname="tests.code.workbench.test_protocol_and_provenance" name="test_raw_boolean_arguments_fail_through_transport[research_model_sensitivity-args1]" time="0.006" /><testcase classname="tests.code.workbench.test_protocol_and_provenance" name="test_raw_boolean_arguments_fail_through_transport[research_compare_conditions-args2]" time="0.005" /><testcase classname="tests.code.workbench.test_protocol_and_provenance" name="test_raw_boolean_arguments_fail_through_transport[research_search_literature-args3]" time="0.006" /><testcase classname="tests.code.workbench.test_protocol_and_provenance" name="test_manifest_integrity_export_and_no_full_arrays" time="0.391"><failure message="AssertionError: assert 'reference' in {'message': 'Research operation completed; inspect the method, provenance and limits with the results.', 'summary': {'...ng', 'numeric_source': 'pandas/NumPy; P_gross=I*V; subtraction of supplied consumed powers only'}, 'warnings': [], ...}">tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-two/test_manifest_integrity_export0')
+
+    async def test_manifest_integrity_export_and_no_full_arrays(tmp_path):
+        r=await call("research_analyze_measurements",{"data_path":str(EXAMPLES/"measurements-synthetic.csv"),"output_dir":str(tmp_path)})
+        manifest=read_json(artifact(r,"manifest.json"));root=Path(r["run_dir"])
+        for name,expected in manifest["files"].items():assert hashlib.sha256((root/name).read_bytes()).hexdigest()==expected
+&gt;       assert "reference" in r
+E       AssertionError: assert 'reference' in {'message': 'Research operation completed; inspect the method, provenance and limits with the results.', 'summary': {'...ng', 'numeric_source': 'pandas/NumPy; P_gross=I*V; subtraction of supplied consumed powers only'}, 'warnings': [], ...}
+
+tests/code/workbench/test_protocol_and_provenance.py:44: AssertionError</failure></testcase><testcase classname="tests.code.workbench.test_protocol_and_provenance" name="test_strict_json_and_duplicate_table_columns" time="0.001" /><testcase classname="tests.code.workbench.test_sensitivity" name="test_ordered_design_all_native_responses_and_indices" time="0.407" /><testcase classname="tests.code.workbench.test_sensitivity" name="test_ishigami_analytic_benchmark" time="0.048" /><testcase classname="tests.code.workbench.test_sensitivity" name="test_zero_variance_is_not_a_fake_zero_sensitivity" time="0.038" /></testsuite></testsuites>

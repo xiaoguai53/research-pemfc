@@ -1,0 +1,22 @@
+{
+  "factors": [
+    {
+      "name": "temperature_K",
+      "lower": 333.15,
+      "upper": 353.15,
+      "unit": "K"
+    },
+    {
+      "name": "membrane_water_content",
+      "lower": 14.0,
+      "upper": 23.0,
+      "unit": "1"
+    },
+    {
+      "name": "electronic_resistance_ohm",
+      "lower": 0.0,
+      "upper": 0.004,
+      "unit": "ohm"
+    }
+  ]
+}

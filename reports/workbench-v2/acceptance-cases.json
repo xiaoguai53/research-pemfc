@@ -1,0 +1,312 @@
+[
+  {
+    "name": "original-model-official",
+    "tool": "opem_simulate_polarization",
+    "arguments": {
+      "temperature_K": 343.15,
+      "hydrogen_partial_pressure_atm": 1,
+      "oxygen_partial_pressure_atm": 1,
+      "active_area_cm2": 50.6,
+      "membrane_thickness_cm": 0.0178,
+      "membrane_water_content": 23,
+      "cell_count": 1,
+      "current_start_A": 0,
+      "current_stop_A": 75,
+      "current_step_A": 0.1,
+      "max_current_density_A_cm2": 1.5,
+      "electronic_resistance_ohm": 0,
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance"
+    },
+    "required_inputs": [
+      "temperature_K",
+      "hydrogen_partial_pressure_atm",
+      "oxygen_partial_pressure_atm",
+      "active_area_cm2",
+      "membrane_thickness_cm",
+      "membrane_water_content",
+      "cell_count",
+      "current_start_A",
+      "current_stop_A",
+      "current_step_A",
+      "max_current_density_A_cm2"
+    ],
+    "expected_subset": {
+      "summary": {
+        "sample_count": 750
+      },
+      "source": {
+        "pinned_commit": "27d343fb966361a4e6cc99650241f651778fc50f"
+      }
+    },
+    "min_artifacts": 7,
+    "artifact_root": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance",
+    "unique_artifacts": true
+  },
+  {
+    "name": "measurement-power-accounting",
+    "tool": "research_analyze_measurements",
+    "arguments": {
+      "data_path": "/workspace/fuelcell-paper2agent/examples/workbench/measurements-synthetic.csv",
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance"
+    },
+    "required_inputs": [
+      "data_path"
+    ],
+    "expected_subset": {
+      "summary": {
+        "row_count": 36,
+        "imputed_values": 0,
+        "data_kind": "SYNTHETIC_SOFTWARE_VALIDATION_NOT_EXPERIMENTAL"
+      }
+    },
+    "min_artifacts": 7,
+    "artifact_root": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance",
+    "unique_artifacts": true
+  },
+  {
+    "name": "actual-replicate-comparison",
+    "tool": "research_compare_conditions",
+    "arguments": {
+      "data_path": "/workspace/fuelcell-paper2agent/examples/workbench/measurements-synthetic.csv",
+      "metric": "net_power_W",
+      "group_a": "baseline",
+      "group_b": "candidate",
+      "design_type": "paired",
+      "target_current_A": 20.0,
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance"
+    },
+    "required_inputs": [
+      "data_path",
+      "metric",
+      "group_a",
+      "group_b",
+      "design_type",
+      "target_current_A"
+    ],
+    "expected_subset": {
+      "summary": {
+        "n_replicates_a": 6,
+        "n_replicates_b": 6,
+        "contrast": "group_b_minus_group_a"
+      }
+    },
+    "min_artifacts": 7,
+    "artifact_root": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance",
+    "unique_artifacts": true
+  },
+  {
+    "name": "known-parameter-calibration",
+    "tool": "research_calibrate_model",
+    "arguments": {
+      "data_path": "/workspace/fuelcell-paper2agent/examples/workbench/polarization-synthetic.csv",
+      "config_path": "/workspace/fuelcell-paper2agent/examples/workbench/calibration.json",
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance"
+    },
+    "required_inputs": [
+      "data_path",
+      "config_path"
+    ],
+    "expected_subset": {
+      "summary": {
+        "train_metrics": {
+          "n": 20
+        },
+        "holdout_metrics": {
+          "n": 5
+        },
+        "optimizer": {
+          "success": true
+        },
+        "data_kind": "SYNTHETIC_SOFTWARE_VALIDATION_NOT_EXPERIMENTAL"
+      }
+    },
+    "min_artifacts": 10,
+    "artifact_root": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance",
+    "unique_artifacts": true
+  },
+  {
+    "name": "pending-lhs-design",
+    "tool": "research_design_experiments",
+    "arguments": {
+      "bounds_path": "/workspace/fuelcell-paper2agent/examples/workbench/experiment-bounds.json",
+      "n_samples": 8,
+      "center_replicates": 2,
+      "seed": 42,
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance"
+    },
+    "required_inputs": [
+      "bounds_path"
+    ],
+    "expected_subset": {
+      "summary": {
+        "planned_count": 10,
+        "lhs_count": 8,
+        "center_replicates": 2,
+        "data_kind": "experimental_design_not_observations"
+      }
+    },
+    "min_artifacts": 7,
+    "artifact_root": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance",
+    "unique_artifacts": true
+  },
+  {
+    "name": "native-model-sensitivity",
+    "tool": "research_model_sensitivity",
+    "arguments": {
+      "parameters_path": "/workspace/fuelcell-paper2agent/examples/workbench/model-parameters.json",
+      "bounds_path": "/workspace/fuelcell-paper2agent/examples/workbench/sensitivity-bounds.json",
+      "current_A": 40.0,
+      "n_base": 32,
+      "seed": 42,
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance"
+    },
+    "required_inputs": [
+      "parameters_path",
+      "bounds_path",
+      "current_A"
+    ],
+    "expected_subset": {
+      "summary": {
+        "model_evaluations": 160,
+        "factor_count": 3,
+        "n_base": 32,
+        "data_kind": "model_sensitivity_not_experiment"
+      }
+    },
+    "min_artifacts": 8,
+    "artifact_root": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance",
+    "unique_artifacts": true
+  },
+  {
+    "name": "pending-constrained-next-trials",
+    "tool": "research_suggest_experiments",
+    "arguments": {
+      "history_path": "/workspace/fuelcell-paper2agent/examples/workbench/history-synthetic.csv",
+      "bounds_path": "/workspace/fuelcell-paper2agent/examples/workbench/experiment-bounds.json",
+      "objective_column": "net_power_W",
+      "constraint_column": "stack_temperature_C",
+      "constraint_upper": 55.0,
+      "n_candidates": 3,
+      "seed": 42,
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance"
+    },
+    "required_inputs": [
+      "history_path",
+      "bounds_path",
+      "objective_column",
+      "constraint_column",
+      "constraint_upper"
+    ],
+    "expected_subset": {
+      "summary": {
+        "history_count": 16,
+        "candidate_count": 3,
+        "candidate_feasibility_verified": false,
+        "sampler_phase": "TPE",
+        "data_kind": "SYNTHETIC_ANALYTIC_TOY_NOT_A_FUEL_CELL_THERMAL_MODEL"
+      }
+    },
+    "min_artifacts": 6,
+    "artifact_root": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance",
+    "unique_artifacts": true
+  },
+  {
+    "name": "live-crossref-public-metadata",
+    "tool": "research_search_literature",
+    "arguments": {
+      "query": "open cathode air cooled PEM fuel cell thermal water management",
+      "limit": 2,
+      "year_from": 2018,
+      "year_to": 2026,
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance"
+    },
+    "required_inputs": [
+      "query"
+    ],
+    "expected_subset": {
+      "summary": {
+        "record_count": 2,
+        "full_text_reviewed_count": 0
+      }
+    },
+    "min_artifacts": 6,
+    "artifact_root": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance",
+    "unique_artifacts": true
+  },
+  {
+    "name": "prior-art-plan-not-novelty-verdict",
+    "tool": "research_prior_art_plan",
+    "arguments": {
+      "topic": "air cooled PEM fuel cell",
+      "technical_features": [
+        "fan control net power",
+        "membrane water thermal management"
+      ],
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance"
+    },
+    "required_inputs": [
+      "topic",
+      "technical_features"
+    ],
+    "expected_subset": {
+      "summary": {
+        "query_count": 2,
+        "live_patent_search_performed": false,
+        "novelty_determined": false
+      }
+    },
+    "min_artifacts": 5,
+    "artifact_root": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance",
+    "unique_artifacts": true
+  },
+  {
+    "name": "repeat-measurement-artifact-isolation",
+    "tool": "research_analyze_measurements",
+    "arguments": {
+      "data_path": "/workspace/fuelcell-paper2agent/examples/workbench/measurements-synthetic.csv",
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance"
+    },
+    "required_inputs": [
+      "data_path"
+    ],
+    "expected_subset": {
+      "summary": {
+        "row_count": 36
+      }
+    },
+    "min_artifacts": 7,
+    "artifact_root": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance",
+    "unique_artifacts": true
+  },
+  {
+    "name": "reject-boolean-design-count",
+    "tool": "research_design_experiments",
+    "arguments": {
+      "bounds_path": "/workspace/fuelcell-paper2agent/examples/workbench/experiment-bounds.json",
+      "n_samples": true,
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance"
+    },
+    "required_inputs": [
+      "bounds_path"
+    ],
+    "error_contains": "booleans"
+  },
+  {
+    "name": "reject-non-power-two-sobol",
+    "tool": "research_model_sensitivity",
+    "arguments": {
+      "parameters_path": "/workspace/fuelcell-paper2agent/examples/workbench/model-parameters.json",
+      "bounds_path": "/workspace/fuelcell-paper2agent/examples/workbench/sensitivity-bounds.json",
+      "current_A": 40.0,
+      "n_base": 33,
+      "seed": 42,
+      "output_dir": "/workspace/fuelcell-paper2agent/tmp/workbench-acceptance"
+    },
+    "required_inputs": [
+      "parameters_path",
+      "bounds_path",
+      "current_A"
+    ],
+    "error_contains": "power of two"
+  }
+]

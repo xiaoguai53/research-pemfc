@@ -1,0 +1,17 @@
+{
+  "data_kind": "SYNTHETIC_EXAMPLE_BOUNDS_NOT_HARDWARE_SPECIFICATION",
+  "factors": [
+    {
+      "name": "fan_pwm_fraction",
+      "lower": 0.3,
+      "upper": 0.9,
+      "unit": "1"
+    },
+    {
+      "name": "current_A",
+      "lower": 10.0,
+      "upper": 40.0,
+      "unit": "A"
+    }
+  ]
+}

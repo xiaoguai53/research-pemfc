@@ -1,0 +1,98 @@
+{
+  "fetched_at_utc": "2026-11-14T05:36:05.129033+00:00",
+  "url": "https://github.com/trending?since=weekly",
+  "sha256": "a16e096ca504a3c803938ea1cf2ff08231628c1ca0c0f607a420fce6ac683c65",
+  "status": "parsed",
+  "repositories": [
+    {
+      "rank": 1,
+      "repository": "sherlock-project/sherlock",
+      "weekly_stars": 13364,
+      "text": "Star sherlock-project / sherlock Hunt down social media accounts by username across social networks Python 111,276 12,878 Built by 13,364 stars this week"
+    },
+    {
+      "rank": 2,
+      "repository": "anthropics/skills",
+      "weekly_stars": 6169,
+      "text": "Star anthropics / skills Public repository for Agent Skills Python 194,213 22,847 Built by 6,169 stars this week"
+    },
+    {
+      "rank": 3,
+      "repository": "milind-soni/OpenMausBot",
+      "weekly_stars": 7763,
+      "text": "Sponsor Star milind-soni / OpenMausBot Open-source Grok Bot alternative with a virtual machine that bots can use TypeScript 22,287 3,097 Built by 7,763 stars this week"
+    },
+    {
+      "rank": 4,
+      "repository": "vercel-labs/agent-browser",
+      "weekly_stars": 4360,
+      "text": "Star vercel-labs / agent-browser Browser automation CLI for AI agents Rust 50,797 3,534 Built by 4,360 stars this week"
+    },
+    {
+      "rank": 5,
+      "repository": "google/elephant-goldfish-model",
+      "weekly_stars": 5560,
+      "text": "Star google / elephant-goldfish-model Open-source plugin for designing and reviewing software with agents Python 18,702 1,397 Built by 5,560 stars this week"
+    },
+    {
+      "rank": 6,
+      "repository": "ZhuLinsen/daily_stock_analysis",
+      "weekly_stars": 3778,
+      "text": "Sponsor Star ZhuLinsen / daily_stock_analysis LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs. Python 71,814 57,349 Built by 3,778 stars this week"
+    },
+    {
+      "rank": 7,
+      "repository": "NVIDIA/auto-ontology",
+      "weekly_stars": 4108,
+      "text": "Star NVIDIA / auto-ontology Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows. Python 12,618 1,036 Built by 4,108 stars this week"
+    },
+    {
+      "rank": 8,
+      "repository": "google-deepmind/mujoco",
+      "weekly_stars": 1764,
+      "text": "Star google-deepmind / mujoco Multi-Joint dynamics with Contact. A general purpose physics simulator. C++ 17,897 2,187 Built by 1,764 stars this week"
+    },
+    {
+      "rank": 9,
+      "repository": "mattpocock/skills",
+      "weekly_stars": 7599,
+      "text": "Sponsor Star mattpocock / skills Skills for Real Engineers. Straight from my .agents directory. Shell 323,920 27,188 Built by 7,599 stars this week"
+    },
+    {
+      "rank": 10,
+      "repository": "addyosmani/agent-skills",
+      "weekly_stars": 3502,
+      "text": "Star addyosmani / agent-skills Production-grade engineering skills for AI coding agents. JavaScript 117,219 12,258 Built by 3,502 stars this week"
+    },
+    {
+      "rank": 11,
+      "repository": "cloudflare/security-audit-skill",
+      "weekly_stars": 8829,
+      "text": "Star cloudflare / security-audit-skill A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings JavaScript 72,043 4,803 Built by 8,829 stars this week"
+    },
+    {
+      "rank": 12,
+      "repository": "zed-industries/zed",
+      "weekly_stars": 2117,
+      "text": "Sponsor Star zed-industries / zed Code at the speed of thought – Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter. Rust 94,979 11,697 Built by 2,117 stars this week"
+    },
+    {
+      "rank": 13,
+      "repository": "anthropics/claude-quickstarts",
+      "weekly_stars": 1731,
+      "text": "Star anthropics / claude-quickstarts A collection of projects designed to help developers quickly get started with building deployable applications using the Claude API Python 20,884 3,490 Built by 1,731 stars this week"
+    },
+    {
+      "rank": 14,
+      "repository": "vercel-labs/agent-desktop",
+      "weekly_stars": 5408,
+      "text": "Star vercel-labs / agent-desktop Computer use CLI for AI agents Rust 23,398 1,732 Built by 5,408 stars this week"
+    },
+    {
+      "rank": 15,
+      "repository": "lobehub/lobehub",
+      "weekly_stars": 1126,
+      "text": "Sponsor Star lobehub / lobehub 🤯 LobeHub - Super-Agents on Your Team. Add super-agents to the chats your team already uses.They take on work by themselves and get better every week. TypeScript 85,441 16,303 Built by 1,126 stars this week"
+    }
+  ]
+}

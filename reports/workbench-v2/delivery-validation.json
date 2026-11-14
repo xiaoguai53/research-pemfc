@@ -1,0 +1,295 @@
+{
+  "status": "succeeded",
+  "success": true,
+  "agent_id": "/root/workbench_verifier",
+  "started_at": "2026-11-14T05:50:15Z",
+  "finished_at": "2026-11-14T06:05:23.928042Z",
+  "archive": "dist/research-workbench.zip",
+  "archive_sha256": "09cad8af98d32b1dc9d766fbdff8cf161e921ad9e3fc36b585c0686094625ed8",
+  "packaged_file_count": 39,
+  "packaged_files": {
+    ".streamlit/config.toml": "c24c4e3daf1885ff0ed5599ed9c45856cc6a64d71c750997483a8464d82835d0",
+    "LICENSE": "7ed701f01492e23986c5062ba37309d95cea6ba19bc78f1cc86280a90140a515",
+    "THIRD_PARTY_NOTICES.md": "29c4b733a331914fbf0d445feae9456afa1440715845a4c4ee03c1195df3b068",
+    "USAGE.md": "7751125d23a078770ad7c664b868df7c484de6ce35bf80add3c9868e676aa6e6",
+    "WORKBENCH.md": "35ee5bb819b926b127123019791d3324d925a595db1551c04c42f08abd758ba3",
+    "app.py": "49153d1f33c73604064946ee67396a64413fb70834616e98580845a1bb164dee",
+    "dist/opem-mcp.zip": "1ea16d1530d84ccf5b1cec384fc4befe37f8ccdd1dfce41404d6120f331d1a3c",
+    "docs/github-research-2026-11-14.md": "f965c3ed7e64ada238b37c1eb2f13512b2f24e51c7c9cabd26015aa69b71ed4a",
+    "examples/amphlett-official.json": "cc60fee550b56c3a3a2e84f3838a07eea9523b3126bdcb2647653ddc8a0a8db8",
+    "examples/workbench/README.md": "43c6ed8466ce33b556817411373471361f0c455782d4fc8013b6c970aae9bb21",
+    "examples/workbench/calibration.json": "ef8ad0b64a3fd037b1189fb388a94545345417333dc9f5d7a75e009fdb1e19db",
+    "examples/workbench/experiment-bounds.json": "dc33d54221c82864f2f0bc5360adbae5ce46816e0ee9c922e7565eb96836a34b",
+    "examples/workbench/history-synthetic.csv": "61530f5d00b90640839030f53a48da1d1713180ad9219a8b6b39d265041ec68f",
+    "examples/workbench/measurements-synthetic.csv": "24d66c5f545933b209aff6a61c4eeb478a3bd60328b3ce3324943a89e05a2807",
+    "examples/workbench/model-parameters.json": "6c548f603736d0c665daaa1ed66516714fe9ca2f6a41e57159d4f8d866526a42",
+    "examples/workbench/polarization-synthetic.csv": "e396b88638a1ded4e8db311efd9c65d2d186aeff22e246dbb3a775a9a35c9262",
+    "examples/workbench/sensitivity-bounds.json": "e3262b2ade713f4c9f09671b4b5f7c8384392a09f77bdb87c911328a954c6af4",
+    "reports/research-radar/github-metadata.json": "d8f1758b3cf73fedf08444524283c8199ff659c3c8feacfb87ab2b5cd86e6da1",
+    "reports/research-radar/weekly-trending.json": "62940bdbf22ed253587e58f78a1e620b2dd05dfb3101407e18815a8df5831284",
+    "requirements-research.txt": "36a92350113cbecd802d86ec671c70a2bfed730384237d0d711b78a0267d79c6",
+    "scripts/print_mcp_config.py": "7aa75bf3786d67ab9e73d2cce61304e523548d97322b03ff770e0c35cb274e5e",
+    "scripts/print_research_mcp_config.py": "bc6b5642913151758b970e2dfdab742f22f19d4111c8ed01197b15b695824b0d",
+    "scripts/refresh_research_radar.py": "fa2dbd36d59a7fe5912b8356496a95a83d066f792153ee5d5b0fd3a6e94f84af",
+    "scripts/run_polarization.py": "029a2ee20cd980d3fe413c4c8a5dbf7ca22e62e44cae775a656de549cca9b9e2",
+    "scripts/run_research.py": "1658712850e1df64c546bf09a138e97dcb329fc32482e80a547c653f41d5949d",
+    "src/opem_mcp.py": "4d0ce7fdac1c67ffd8d2c55b8f8e2fc8ac2219d811edb795cd8137c7c97e1a28",
+    "src/requirements.txt": "5df7c61ef917749b7d5598618f3fbc0771ed63bf1d4e7ce05ff8267414f06f75",
+    "src/research_core/__init__.py": "8dc0d587ff90cf9de5e1c80b3bff14cb1a930baab4aae386ed19151c90a6dabd",
+    "src/research_core/calibration.py": "5127640cfb95ee6ff11b65179ab16ed0eb3ee4e5ecc5618c06c7e78cc08b1dd3",
+    "src/research_core/common.py": "6d011a7a1fccba888c9e7218d8a024f78f740c13f6be89ff8d7ac9b4096ab1ac",
+    "src/research_core/data.py": "77c232d23eae80630dc2c5b993e7ec6b7c0e9f285b52175cdcdade6d6cfdf9bb",
+    "src/research_core/design.py": "39ca0c864389c0d27b32c95c07cdf63ba81eda9224b9b1cbf3e04f370aadd2ee",
+    "src/research_core/evidence.py": "88f458cc1c040d8867992e3721a1dfb7e2275d15dd5b0f105e8a7af0bf14ba73",
+    "src/research_mcp.py": "5d0021b809e57541b728fe6d8fccc3abc6520ab9afa4cc1e33b0311e4b751a3a",
+    "src/tools/amphlett.py": "7d4ae068fd987d3401b7a609fbc3c0c37befa9470538b742972e44cdad2e734f",
+    "third_party/OPEM-LICENSE": "80e18d0b4e58cef4171bfd8e52a91f03e81b5a1ffade6f6a7be8fb29d458f8c6",
+    "third_party/Paper2Agent-LICENSE": "1075df19ebaccda19b4b7498ce113ef920368dd6db679b4eb041d7b774d499da",
+    "PROVENANCE.json": "84ba06d32836dd2c96842542ff2ba9dd0ce8514394b20445ae7912b213d08024",
+    "README.md": "8212d33260bc3a16b370818ec611727c16d77f11e95755c565f7c6825c404a23"
+  },
+  "archive_integrity": {
+    "zip_integrity_passed": true,
+    "all_file_hashes_match": true,
+    "no_absolute_or_parent_traversal_paths": true,
+    "no_symlink_members": true,
+    "no_private_inputs_or_venvs_or_source_checkouts_in_archive": true,
+    "synthetic_examples_are_explicitly_labeled": true
+  },
+  "extraction_location": "/tmp/PEMFC workbench delivery itl_ocx_/research-workbench",
+  "temporary_root": "/tmp/PEMFC workbench delivery itl_ocx_",
+  "python": "/tmp/PEMFC workbench delivery itl_ocx_/research-workbench/research-env/bin/python",
+  "python_version": "Python 3.12.14",
+  "platform": {
+    "system": "Linux",
+    "machine": "x86_64"
+  },
+  "installation": {
+    "success": true,
+    "followed_shipped_WORKBENCH_commands": true,
+    "cwd": "/tmp/PEMFC workbench delivery itl_ocx_/research-workbench",
+    "commands": [
+      [
+        "python3.12",
+        "-m",
+        "venv",
+        "research-env"
+      ],
+      [
+        "/tmp/PEMFC workbench delivery itl_ocx_/research-workbench/research-env/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements-research.txt"
+      ],
+      [
+        "/tmp/PEMFC workbench delivery itl_ocx_/research-workbench/research-env/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ]
+    ],
+    "requirements_sha256": "36a92350113cbecd802d86ec671c70a2bfed730384237d0d711b78a0267d79c6",
+    "pip_check_passed": true,
+    "log": "reports/workbench-v2/delivery-install.log",
+    "build_PYTHONPATH_removed": true,
+    "user_site_disabled": true,
+    "proxy_and_CA_inherited": true,
+    "MPLCONFIGDIR": "/tmp/PEMFC workbench delivery itl_ocx_/mpl-cache"
+  },
+  "installed_provenance": {
+    "opem_origin": "/tmp/PEMFC workbench delivery itl_ocx_/research-workbench/research-env/lib/python3.12/site-packages/opem/Static/Amphlett.py",
+    "opem_source_sha256": "fafd388f1f6fded85f745de39ec03267ab301708260ad96333b9aa333f816bd6",
+    "opem_direct_url": {
+      "url": "https://github.com/ECSIM/opem.git",
+      "vcs_info": {
+        "commit_id": "27d343fb966361a4e6cc99650241f651778fc50f",
+        "requested_revision": "27d343fb966361a4e6cc99650241f651778fc50f",
+        "vcs": "git"
+      }
+    },
+    "production_module_origin": "/tmp/PEMFC workbench delivery itl_ocx_/research-workbench/src/research_core/calibration.py",
+    "versions": {
+      "opem": "1.4",
+      "fastmcp": "4.0.3",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "pandas": "3.1.1",
+      "SALib": "1.6.0",
+      "optuna": "5.0.0",
+      "streamlit": "1.67.0"
+    },
+    "all_runtime_imports_from_extracted_source_or_its_new_venv": true
+  },
+  "reuse_after_UI_only_replacement": {
+    "superseded_candidate_sha256": "873b79d1413c7140ecb9db9d9b05629a1c5e49a2717233ae9ef0adc7d7ab11f1",
+    "changed_packaged_files": [
+      "PROVENANCE.json",
+      "app.py"
+    ],
+    "other_37_files_byte_identical": true,
+    "science_requirements_CLI_and_docs_byte_identical": true,
+    "dependency_restore_and_stdio_CLI_science_reused_only_for_matching_bytes": true,
+    "final_all_39_hashes_rechecked": true,
+    "affected_radar_UI_retested_on_final_package_for_normal_and_empty_metadata": true
+  },
+  "stdio_acceptance": {
+    "success": true,
+    "mode": "calls",
+    "report": "reports/workbench-v2/delivery-stdio.json",
+    "cases": "reports/workbench-v2/delivery-acceptance-cases.json",
+    "case_count": 12,
+    "positive_case_count": 10,
+    "negative_case_count": 2,
+    "expected": [
+      "opem_simulate_polarization",
+      "research_analyze_measurements",
+      "research_calibrate_model",
+      "research_compare_conditions",
+      "research_design_experiments",
+      "research_model_sensitivity",
+      "research_prior_art_plan",
+      "research_search_literature",
+      "research_suggest_experiments"
+    ],
+    "actual": [
+      "opem_simulate_polarization",
+      "research_analyze_measurements",
+      "research_calibrate_model",
+      "research_compare_conditions",
+      "research_design_experiments",
+      "research_model_sensitivity",
+      "research_prior_art_plan",
+      "research_search_literature",
+      "research_suggest_experiments"
+    ],
+    "missing": [],
+    "unexpected": [],
+    "real_subprocess_handshake_and_calls": true,
+    "network_Crossref_case_passed": true,
+    "repeated_artifacts_are_isolated": true,
+    "server": "/tmp/PEMFC workbench delivery itl_ocx_/research-workbench/src/research_mcp.py"
+  },
+  "scientific_artifacts": {
+    "success": true,
+    "report": "reports/workbench-v2/delivery-comparisons.json",
+    "successful_output_directories": 17,
+    "original_model_numeric_values_compared": 6752,
+    "native_Sobol_response_points": 480,
+    "native_calibration_prediction_points": 50,
+    "calibration_truth_R_ohm": 0.002,
+    "calibration_truth_lambda": 18.0,
+    "calibration_relative_and_absolute_tolerance": 1e-08,
+    "replicate_comparisons_checked_against_native_SciPy": true,
+    "LHS_strata_bounds_and_center_repeats_checked": true,
+    "infeasible_Optuna_history_preserved_and_pending_outcomes_not_invented": true,
+    "Crossref_metadata_matches_actual_raw_response": true,
+    "no_patent_search_or_novelty_verdict_invented": true,
+    "CSV_numeric_values_and_manifest_hashes_checked": true,
+    "PNG_SVG_artifact_containers_checked": true
+  },
+  "CLI": {
+    "success": true,
+    "command": [
+      "/tmp/PEMFC workbench delivery itl_ocx_/research-workbench/research-env/bin/python",
+      "scripts/run_research.py",
+      "demo",
+      "--output",
+      "results/demo"
+    ],
+    "offline_operations": [
+      "data",
+      "comparison",
+      "calibration",
+      "sensitivity",
+      "design",
+      "next_experiments",
+      "prior_art_plan"
+    ],
+    "data_kind": "SYNTHETIC_SOFTWARE_VALIDATION_NOT_EXPERIMENTAL",
+    "actual_output": "/tmp/PEMFC workbench delivery itl_ocx_/research-workbench/results/demo/demo-workflow.json",
+    "evidence_export_integrity_passed": true
+  },
+  "UI": {
+    "success": true,
+    "method": "Streamlit AppTest in the fresh package interpreter",
+    "initial_candidate_page_smokes": [
+      {
+        "page": "开始",
+        "exception_count": 0,
+        "synthetic_badge_present": true
+      },
+      {
+        "page": "实验数据与对比",
+        "exception_count": 0,
+        "synthetic_badge_present": true
+      },
+      {
+        "page": "模型校准",
+        "exception_count": 0,
+        "synthetic_badge_present": true
+      },
+      {
+        "page": "敏感性分析",
+        "exception_count": 0,
+        "synthetic_badge_present": true
+      },
+      {
+        "page": "实验规划",
+        "exception_count": 0,
+        "synthetic_badge_present": true
+      },
+      {
+        "page": "文献与专利证据",
+        "exception_count": 0,
+        "synthetic_badge_present": true
+      },
+      {
+        "page": "开源方法雷达",
+        "exception_count": 0,
+        "synthetic_badge_present": true
+      }
+    ],
+    "final_package_radar_checks": {
+      "success": true,
+      "normal_snapshot_tables": 1,
+      "zero_metadata_tables": 0,
+      "normal_and_empty_no_exceptions": true,
+      "source_snapshot_restored": true
+    },
+    "scope": "Fresh-package Python rendering/startup. Parent owns real Chromium upload/mapping/plot checks; no independent browser rendering claim here."
+  },
+  "MCP_configuration": {
+    "success": true,
+    "codex_json_toml_outputs_checked": true,
+    "preserves_new_venv_interpreter": true,
+    "server_path_resolves_to_extracted_package": true,
+    "spaces_in_paths_are_correctly_quoted": true,
+    "client_registration_not_executed": true,
+    "outputs": {
+      "codex": "codex mcp add pemfc-research -- '/tmp/PEMFC workbench delivery itl_ocx_/research-workbench/research-env/bin/python' '/tmp/PEMFC workbench delivery itl_ocx_/research-workbench/src/research_mcp.py'\n",
+      "json": "{\n  \"mcpServers\": {\n    \"pemfc-research\": {\n      \"command\": \"/tmp/PEMFC workbench delivery itl_ocx_/research-workbench/research-env/bin/python\",\n      \"args\": [\n        \"/tmp/PEMFC workbench delivery itl_ocx_/research-workbench/src/research_mcp.py\"\n      ]\n    }\n  }\n}\n",
+      "toml": "[mcp_servers.pemfc-research]\ncommand = \"/tmp/PEMFC workbench delivery itl_ocx_/research-workbench/research-env/bin/python\"\nargs = [\"/tmp/PEMFC workbench delivery itl_ocx_/research-workbench/src/research_mcp.py\"]\n"
+    }
+  },
+  "retained_test_evidence": {
+    "stdio_log": "/tmp/PEMFC workbench delivery itl_ocx_/stdio-validation.log",
+    "CLI_stdout": "/tmp/PEMFC workbench delivery itl_ocx_/cli-demo.stdout.json",
+    "CLI_stderr": "/tmp/PEMFC workbench delivery itl_ocx_/cli-demo.stderr.log",
+    "UI_config_log": "/tmp/PEMFC workbench delivery itl_ocx_/ui-config-validation.log",
+    "final_UI_log": "/tmp/PEMFC workbench delivery itl_ocx_/final-ui-guard.log",
+    "comparison_driver": "/tmp/PEMFC workbench delivery itl_ocx_/compare_outputs.py",
+    "comparison_log": "/tmp/PEMFC workbench delivery itl_ocx_/output-comparison.log"
+  },
+  "remaining_limits": [
+    "Execution validation covers Linux x86_64 and Python 3.12.14; Windows was not executed.",
+    "All packaged measurement examples are synthetic software validation data, not user experiments or hardware validation.",
+    "The physical model remains prescribed/measured-temperature quasi-static Amphlett. Air-cooled heat/water dynamics, fan thermal control and CFD are not implemented.",
+    "Independent replicate and steady-state assumptions require actual experimental design; successful software checks do not establish causal effects.",
+    "Optuna outcome-constraint feasibility requires new measurements; candidates contain no invented performance results.",
+    "Crossref search and dependency restoration require network access. Literature results are metadata/available abstracts, not reviewed full text.",
+    "Patent output prepares encoded queries and a review matrix; live patent search and novelty or patentability judgments are not performed.",
+    "UI-specific candidate replacement was accepted only after matching all unchanged hashes and retesting the changed radar branch; no scientific validation was inferred from hashes alone."
+  ]
+}

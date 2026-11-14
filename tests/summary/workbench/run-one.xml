@@ -1,0 +1,928 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="28" failures="0" skipped="0" tests="41" time="4.480" timestamp="2026-11-14T05:32:23.680178+00:00" hostname="b0517a43691e"><testcase classname="tests.code.workbench.test_calibration" name="test_all_native_curve_points_and_input_preservation[change0]" time="0.008" /><testcase classname="tests.code.workbench.test_calibration" name="test_all_native_curve_points_and_input_preservation[change1]" time="0.007" /><testcase classname="tests.code.workbench.test_calibration" name="test_all_native_curve_points_and_input_preservation[change2]" time="0.007" /><testcase classname="tests.code.workbench.test_calibration" name="test_all_native_curve_points_and_input_preservation[change3]" time="0.007" /><testcase classname="tests.code.workbench.test_calibration" name="test_measured_temperature_is_used_for_each_point" time="0.001" /><testcase classname="tests.code.workbench.test_calibration" name="test_recover_truth_and_holdout_response_cannot_leak" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_recover_truth_and_holdout_response_cannot_leak&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_calibration" name="test_whole_group_holdout_keeps_distinct_real_ids" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_whole_group_holdout_keeps_distinct_real_ids&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_calibration" name="test_source_domain_errors_are_not_repaired[change0]" time="0.001" /><testcase classname="tests.code.workbench.test_calibration" name="test_source_domain_errors_are_not_repaired[change1]" time="0.000" /><testcase classname="tests.code.workbench.test_calibration" name="test_source_domain_errors_are_not_repaired[change2]" time="0.000" /><testcase classname="tests.code.workbench.test_comparison" name="test_true_replicate_effect_ci_and_time_duplication_invariance" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_true_replicate_effect_ci_and_time_duplication_invariance&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_comparison" name="test_welch_and_matching_load" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_welch_and_matching_load&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_comparison" name="test_zero_contrast_variance_has_no_manufactured_inference" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_zero_contrast_variance_has_no_manufactured_inference&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_comparison" name="test_pair_ids_are_exact_strings_and_missing_pairs_fail" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_pair_ids_are_exact_strings_and_missing_pairs_fail&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_design" name="test_latin_hypercube_strata_centers_and_reproducibility" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_latin_hypercube_strata_centers_and_reproducibility&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_design" name="test_reserved_output_column_cannot_overwrite_factor" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_reserved_output_column_cannot_overwrite_factor&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_literature" name="test_doi_dedup_and_access_levels_through_mcp" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_doi_dedup_and_access_levels_through_mcp&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_literature" name="test_service_failure_is_not_fabricated_success" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_service_failure_is_not_fabricated_success&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_literature" name="test_zero_records_still_export_a_readable_schema" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_zero_records_still_export_a_readable_schema&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_measurements" name="test_derived_values_no_source_mutation_and_identifiers" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_derived_values_no_source_mutation_and_identifiers&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_measurements" name="test_explicit_auxiliary_boundaries[power_columns0-False-False]" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_explicit_auxiliary_boundaries[power_columns0-False-False]&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_measurements" name="test_explicit_auxiliary_boundaries[power_columns1-False-True]" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_explicit_auxiliary_boundaries[power_columns1-False-True]&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_measurements" name="test_explicit_auxiliary_boundaries[power_columns2-True-True]" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_explicit_auxiliary_boundaries[power_columns2-True-True]&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_measurements" name="test_missing_consumption_is_retained_and_selected_excel_sheet" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_missing_consumption_is_retained_and_selected_excel_sheet&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_measurements" name="test_bad_measurements_are_tool_errors[current_A-True]" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_bad_measurements_are_tool_errors[current_A-True]&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_measurements" name="test_bad_measurements_are_tool_errors[current_A-nan]" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_bad_measurements_are_tool_errors[current_A-nan]&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_measurements" name="test_bad_measurements_are_tool_errors[stack_voltage_V-bad]" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_bad_measurements_are_tool_errors[stack_voltage_V-bad]&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_measurements" name="test_bad_measurements_are_tool_errors[fan_power_W--1]" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_bad_measurements_are_tool_errors[fan_power_W--1]&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_next" name="test_history_constraints_pending_truth_and_seed_replay" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_history_constraints_pending_truth_and_seed_replay&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_next" name="test_startup_is_random_and_history_ids_must_be_unique" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_startup_is_random_and_history_ids_must_be_unique&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_priorart" name="test_prior_art_plan_is_encoded_and_never_a_novelty_claim" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_prior_art_plan_is_encoded_and_never_a_novelty_claim&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_protocol_and_provenance" name="test_inventory_schemas_and_original_baseline" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_inventory_schemas_and_original_baseline&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_protocol_and_provenance" name="test_raw_boolean_arguments_fail_through_transport[research_design_experiments-args0]" time="0.026" /><testcase classname="tests.code.workbench.test_protocol_and_provenance" name="test_raw_boolean_arguments_fail_through_transport[research_model_sensitivity-args1]" time="0.006" /><testcase classname="tests.code.workbench.test_protocol_and_provenance" name="test_raw_boolean_arguments_fail_through_transport[research_compare_conditions-args2]" time="0.006" /><testcase classname="tests.code.workbench.test_protocol_and_provenance" name="test_raw_boolean_arguments_fail_through_transport[research_search_literature-args3]" time="0.005" /><testcase classname="tests.code.workbench.test_protocol_and_provenance" name="test_manifest_integrity_export_and_no_full_arrays" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_manifest_integrity_export_and_no_full_arrays&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_protocol_and_provenance" name="test_strict_json_and_duplicate_table_columns" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">fixturedef = &lt;FixtureDef argname='tmp_path' scope='function' baseid=''&gt;
+request = &lt;SubRequest 'tmp_path' for &lt;Function test_strict_json_and_duplicate_table_columns&gt;&gt;
+
+    @pytest.hookimpl(wrapper=True)
+    def pytest_fixture_setup(fixturedef: FixtureDef, request) -&gt; object | None:
+        if (
+            fixturedef.argname == "event_loop_policy"
+            and fixturedef.func.__module__ != __name__
+        ):
+            warnings.warn(
+                PytestDeprecationWarning(_EVENT_LOOP_POLICY_FIXTURE_DEPRECATION_WARNING),
+            )
+        asyncio_mode = _get_asyncio_mode(request.config)
+        if not _is_asyncio_fixture_function(fixturedef.func):
+            if asyncio_mode == Mode.STRICT:
+                # Ignore async fixtures without explicit asyncio mark in strict mode
+                # This applies to pytest_trio fixtures, for example
+                return (yield)
+            if not _is_coroutine_or_asyncgen(fixturedef.func):
+&gt;               return (yield)
+                        ^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_sensitivity" name="test_ordered_design_all_native_responses_and_indices" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_ordered_design_all_native_responses_and_indices&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase><testcase classname="tests.code.workbench.test_sensitivity" name="test_ishigami_analytic_benchmark" time="0.076" /><testcase classname="tests.code.workbench.test_sensitivity" name="test_zero_variance_is_not_a_fake_zero_sensitivity" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'&quot;">self = &lt;Coroutine test_zero_variance_is_not_a_fake_zero_sensitivity&gt;
+
+    def setup(self) -&gt; None:
+        runner_fixture_id = f"_{self._loop_scope}_scoped_runner"
+        if runner_fixture_id not in self.fixturenames:
+            self.fixturenames.append(runner_fixture_id)
+        # When loop factories are configured, resolve the loop factory
+        # fixture early so that a factory variant change cascades cache
+        # invalidation before any async fixture checks its cache.
+        hook_caller = self.config.hook.pytest_asyncio_loop_factories
+        if hook_caller.get_hookimpls():
+            _ = self._request.getfixturevalue(_asyncio_loop_factory.__name__)
+&gt;       return super().setup()
+               ^^^^^^^^^^^^^^^
+
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:565: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:936: in pytest_fixture_setup
+    return (yield)
+            ^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-one')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspace/fuelcell-paper2agent/tests/results/workbench/run-one'
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py:1311: FileNotFoundError</error></testcase></testsuite></testsuites>

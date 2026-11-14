@@ -1,0 +1,35 @@
+{
+  "status": "implemented_development_smoke_passed_independent_verification_pending",
+  "finished_at_utc": "2026-11-14T05:25:01.377806+00:00",
+  "implementation_contexts": [
+    "/root",
+    "/root/research_analysis"
+  ],
+  "interrupted_worker": {
+    "agent_id": "/root/research_analysis",
+    "reported_error": "Your workspace is out of credits",
+    "terminal_status": "failed",
+    "recovery": "Coordinator inspected retained files, completed ownership handoff, fixed provenance and identifier preservation, and ran native-reference developmental smokes; failed worker is not recorded as succeeded."
+  },
+  "development_smokes": [
+    "known-R/lambda recovery with fixed held-out rows",
+    "measurement power accounting and paired real-ID comparison",
+    "source SALib320-point sensitivity",
+    "Optuna5 measured-history suggestions with outcome feasibility false",
+    "LHS design",
+    "Crossref live5 DOI metadata records",
+    "prior-art plan explicitly not searched",
+    "MCP9-tool inventory"
+  ],
+  "produced_files": {
+    "src/research_core/__init__.py": "8dc0d587ff90cf9de5e1c80b3bff14cb1a930baab4aae386ed19151c90a6dabd",
+    "src/research_core/calibration.py": "5127640cfb95ee6ff11b65179ab16ed0eb3ee4e5ecc5618c06c7e78cc08b1dd3",
+    "src/research_core/evidence.py": "bc3d2c74a3e7dd7223d7282bddabd3b88a7b1060e2c7c5e0237979d013e40e69",
+    "src/research_core/design.py": "2657285b78e0b8904b820a8af73525799e25c9b638d4bc261a067d981e9b37df",
+    "src/research_core/data.py": "77c232d23eae80630dc2c5b993e7ec6b7c0e9f285b52175cdcdade6d6cfdf9bb",
+    "src/research_core/common.py": "0627a074de4f01fc1cac56efe658f10291af7955cd8fd0e7973307b8e05460ed",
+    "src/research_mcp.py": "5d0021b809e57541b728fe6d8fccc3abc6520ab9afa4cc1e33b0311e4b751a3a"
+  },
+  "native_reference_report": "reports/workbench-v2/reference.json",
+  "validation_claim": "Development smoke only; independent and real stdio/fresh environment checks remain separate."
+}

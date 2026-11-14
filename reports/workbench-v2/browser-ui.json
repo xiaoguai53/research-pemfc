@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "browser": "Chromium/Playwright headless",
+  "app_sha256": "460d290ad86a174851b8bd8ccbad56d8d83787c63b496fa04f86b3a5e107b992",
+  "checks": [
+    "home",
+    "data navigation",
+    "source analysis",
+    "metrics and image",
+    "actual upload and mapping",
+    "synthetic origin remains visible after upload"
+  ],
+  "data": "synthetic benchmark only"
+}

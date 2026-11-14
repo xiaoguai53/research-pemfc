@@ -1,0 +1,1 @@
+{"status": "succeeded", "point_chain_scenarios": 3, "calibration_modes": ["R_only", "R_and_lambda"], "sobol_evaluations": 5120}

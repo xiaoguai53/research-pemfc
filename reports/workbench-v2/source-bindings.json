@@ -1,0 +1,301 @@
+{
+  "scan_metadata": {
+    "agent_id": "/root/research_scanner",
+    "started_at": "2026-11-13T17:29:17.410892141Z",
+    "finished_at": "2026-11-13T17:33:50.444157Z",
+    "status": "succeeded",
+    "repository": "https://github.com/ECSIM/opem",
+    "commit": "27d343fb966361a4e6cc99650241f651778fc50f",
+    "scope": "Non-writing PEMFC experimental-data workflows and targeted source-backed calibration; original v0.1 tool stays unchanged.",
+    "reporting_contract": "Parent assigned scanner.md and source-bindings.json instead of legacy fixed scanner filenames.",
+    "runtime_note": "Point-chain feasibility calls used existing pinned opem-env. SciPy signature probe used global1.17.0 for reference only; actual workbench version must come from the new environment report."
+  },
+  "source_hashes": {
+    "repo/opem/opem/Static/Amphlett.py": "fafd388f1f6fded85f745de39ec03267ab301708260ad96333b9aa333f816bd6",
+    "repo/opem/opem/Functions.py": "b432477f784f84dffea4cd2897d0c2f35f15980f192da8b6d2685d2a5bb31ff8",
+    "repo/opem/opem/Params.py": "88c914ec1ccdb0c948ddeed145c9424f57169f9cec75be5ac198d822ce14dba3",
+    "repo/opem/test/test_Amphlett.py": "e38e4739508f12065c51488d07b60b762cedb3bea9e6512b48d9a210579f70cd",
+    "repo/opem/Documents/Amphlett.ipynb": "f358a34a4d943c22d8a081deec96da7fb1cf90a401d4e12cb70ef771052ab7db",
+    "notebooks/amphlett_reference/data/official.json": "0a0e392a590799e76833927e93ce190e1f2204126801e2f051c63d36ca4bf60b",
+    "notebooks/amphlett_reference/outputs/official/native-result.json": "f36b5f57cbc9dd657aafea2536276bc51c0371a0f2d90a169a1b89ffee35bfee"
+  },
+  "official_references": [
+    {
+      "path": "repo/opem/test/test_Amphlett.py",
+      "sections": "Numerical doctest anchors and native Static_Analysis Full Run",
+      "url": "https://github.com/ECSIM/opem/blob/27d343fb966361a4e6cc99650241f651778fc50f/test/test_Amphlett.py"
+    },
+    {
+      "path": "repo/opem/Documents/Amphlett.ipynb",
+      "sections": "Full Run; Test_Vector cell65, Static_Analysis calls67/69",
+      "url": "https://github.com/ECSIM/opem/blob/27d343fb966361a4e6cc99650241f651778fc50f/Documents/Amphlett.ipynb"
+    },
+    {
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html",
+      "observed_manual_version": "1.18.0",
+      "supports": "Bounded residual minimization, method trf; native success/status/nfev/jac/active_mask diagnostics."
+    },
+    {
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html",
+      "observed_manual_version": "1.18.0",
+      "supports": "Prespecified Welch via equal_var=False; confidence_interval for mean(a)-mean(b)."
+    },
+    {
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_rel.html",
+      "observed_manual_version": "1.18.0",
+      "supports": "Explicit matched arrays and paired mean difference confidence_interval."
+    }
+  ],
+  "point_adapter": {
+    "decision": "keep_internal_shared_prerequisite",
+    "owning_module": "coordinator_assigns_one_shared_owner",
+    "source_file": "repo/opem/opem/Static/Amphlett.py",
+    "call_chain": [
+      {
+        "symbol": "Enernst_Calc",
+        "arguments": [
+          "T",
+          "PH2",
+          "PO2"
+        ]
+      },
+      {
+        "symbol": "B_Calc",
+        "arguments": [
+          "T"
+        ]
+      },
+      {
+        "symbol": "Eta_Act_Calc",
+        "arguments": [
+          "T",
+          "PO2",
+          "PH2",
+          "i",
+          "A"
+        ]
+      },
+      {
+        "symbol": "Eta_Ohmic_Calc",
+        "arguments": [
+          "i",
+          "l",
+          "A",
+          "T",
+          "lambda_param"
+        ],
+        "keywords": {
+          "R_elec": "R"
+        }
+      },
+      {
+        "symbol": "Eta_Conc_Calc",
+        "arguments": [
+          "i",
+          "A",
+          "B",
+          "JMax"
+        ]
+      },
+      {
+        "symbol": "Loss_Calc",
+        "arguments": [
+          "Eta_Act",
+          "Eta_Ohmic",
+          "Eta_Conc"
+        ]
+      },
+      {
+        "symbol": "Vcell_Calc",
+        "arguments": [
+          "Enernst",
+          "Loss"
+        ]
+      },
+      {
+        "symbol": "VStack_Calc",
+        "arguments": [
+          "N",
+          "Vcell"
+        ]
+      },
+      {
+        "symbol": "Power_Calc",
+        "arguments": [
+          "Vcell",
+          "i"
+        ],
+        "optional": "Only if gross power returned."
+      },
+      {
+        "symbol": "PowerStack_Calc",
+        "arguments": [
+          "Power",
+          "N"
+        ],
+        "optional": "Only if gross power returned."
+      }
+    ],
+    "preconditions": [
+      "All numbers finite and not bool/string coercions.",
+      "T,PH2,PO2,A,l,JMax positive; N positive integer; R nonnegative.",
+      "14<=lambda<=23, checked before source calls; never call mutating filter_lambda as a repair.",
+      "0<=i<A*JMax; reject source None/nonfinite outputs without dropping rows.",
+      "Per-row measured temperature can be passed directly, in explicit K or converted from a declared C field. Missing temperature values do not silently fall back."
+    ],
+    "feasibility_probe": {
+      "execution_runtime": "opem-env/bin/python",
+      "official_samples": 750,
+      "official_max_absolute_voltage_error_V": 0.0,
+      "I0_stack_voltage_V": 1.19075,
+      "last_stack_voltage_V": 0.36467510365006117,
+      "additional_scenarios": [
+        {
+          "change": "T=353.15K",
+          "samples": 750,
+          "max_absolute_voltage_error_V": 0.0
+        },
+        {
+          "change": "PO2=0.21atm",
+          "samples": 750,
+          "max_absolute_voltage_error_V": 0.0
+        },
+        {
+          "change": "N=5",
+          "samples": 750,
+          "max_absolute_voltage_error_V": 0.0
+        },
+        {
+          "change": "R=0.002ohm",
+          "samples": 750,
+          "max_absolute_voltage_error_V": 0.0
+        },
+        {
+          "change": "lambda=18",
+          "samples": 750,
+          "max_absolute_voltage_error_V": 0.0
+        }
+      ],
+      "claim_limit": "Read-only native API feasibility probe; not validation of any new production wrapper."
+    }
+  },
+  "tool_review": [
+    {
+      "proposed_name": "calibrate_amphlett",
+      "decision": "expose_after_validation",
+      "task": "Fit source-native R and/or membrane lambda to user steady-state current/stack-voltage measurements.",
+      "implementation": [
+        "OPEM public point chain",
+        "scipy.optimize.least_squares(method=trf, bounds=explicit_user_bounds)"
+      ],
+      "adaptation": "Calibration is a newly requested composition, not an existing OPEM calibration function. The optimizer is reused; no replacement fuel-cell physics is invented.",
+      "inputs": [
+        "measurement file/sheet and explicit column mapping",
+        "known model parameters with units",
+        "fit subset limited to R/lambda and explicit initial guesses/bounds",
+        "declared temperature handling",
+        "seed and holdout/grouping policy",
+        "output root"
+      ],
+      "outputs": [
+        "preserved input hashes/config",
+        "fitted parameters and optimizer diagnostics",
+        "train and held-out predictions/residuals, metrics separately",
+        "Jacobian rank, scaled-conditioning and active-bound flags",
+        "plots and numeric artifacts"
+      ],
+      "verification": [
+        "Compare internal point adapter with full native Static_Analysis on original and changed source inputs.",
+        "Generate synthetic fixtures with the original native API at known R/lambda, clearly label synthetic, recover parameters on training rows and test against held-out rows.",
+        "Perturb held-out responses only; fitted parameters must remain unchanged.",
+        "Grouped split must keep run/replicate IDs disjoint; a single-curve row split is interpolation testing, not independent experimental validation.",
+        "Changing per-row measured temperature must change source predictions; no energy balance is claimed."
+      ]
+    },
+    {
+      "proposed_name": "profile_experimental_data",
+      "decision": "expose_after_validation",
+      "task": "Read CSV or selected XLSX sheet; report missingness/types/units and derive gross electrical power and explicitly measured auxiliary subtraction.",
+      "implementation": [
+        "pandas.read_csv",
+        "pandas.read_excel(engine=openpyxl)",
+        "NumPy/pandas arithmetic and descriptive summaries"
+      ],
+      "inputs": [
+        "explicit path/sheet",
+        "column mapping and units",
+        "optional measured fan and other auxiliary power fields"
+      ],
+      "outputs": [
+        "quality diagnostics",
+        "derived data with units",
+        "source hash and row counts",
+        "plots"
+      ],
+      "verification": [
+        "Known exact I*V example with measured fan power.",
+        "Absent fan/auxiliary power must not become zero; distinguish gross-minus-fan from full system net power.",
+        "Raw input bytes remain unchanged; no automatic outlier removal or imputation."
+      ]
+    },
+    {
+      "proposed_name": "compare_conditions",
+      "decision": "expose_after_validation",
+      "task": "Compare one prespecified metric at matched current using actual independent replicate units.",
+      "implementation": [
+        "pandas groupby with user replicate IDs",
+        "scipy.stats.ttest_rel for paired",
+        "scipy.stats.ttest_ind(equal_var=False) for independent",
+        "native TtestResult.confidence_interval(confidence_level=0.95)"
+      ],
+      "inputs": [
+        "condition and replicate columns",
+        "baseline/candidate group labels",
+        "metric and two-sided paired/independent design",
+        "target current and explicit tolerance",
+        "confidence level"
+      ],
+      "outputs": [
+        "per-replicate aggregated values",
+        "group descriptives and n_replicates",
+        "candidate-minus-baseline effect in original units",
+        "95% CI, test statistic/df/pvalue where defined",
+        "assumptions/degeneracy flags and plots"
+      ],
+      "verification": [
+        "Duplicate the same within-replicate rows; inferential n/effect/CI must remain unchanged.",
+        "Paired IDs must align by ID, not row order; shuffled rows must not change results.",
+        "Missing paired IDs fail by default.",
+        "Welch variance choice is explicit; no p-value-driven test switching.",
+        "Zero variance/constant differences produce explicit noninferential status rather than JSON NaN/inf or invented uncertainty."
+      ]
+    }
+  ],
+  "deferred": [
+    {
+      "capability": "aircooled thermal/water dynamics",
+      "reason": "No source implementation or validation data is in the selected static model."
+    },
+    {
+      "capability": "causal claims from sensitivity indices",
+      "reason": "Sobol indices are conditional on selected independent input distributions, not proof of mechanism."
+    },
+    {
+      "capability": "patentability or novelty certification",
+      "reason": "Requires relevant prior art and technical/legal assessment; retrieval and a feature-evidence matrix cannot certify novelty."
+    },
+    {
+      "capability": "parameter CI from fit alone",
+      "reason": "Requires justified noise/design and identifiability assumptions; do not fabricate reliable confidence bounds from a good residual alone."
+    }
+  ],
+  "related_method_risks": [
+    "SALib Sobol analysis requires its own ordered design and response vector; arbitrary experimental CSV cannot be substituted.",
+    "Zero response variance makes normalized Sobol indices undefined; reject/flag rather than returning all zeros.",
+    "Optuna constraints must be processed for historical completed trials; ensure native after_trial processing occurs when reconstructing history, not merely user_attrs on an add_trial object.",
+    "Keep infeasible measurements and enforce explicit metric/constraint units. Unmeasured proposed candidates have no observed performance.",
+    "Below TPE startup count the sampler uses random startup; report the stage honestly.",
+    "Data/QC or a non-significant normality screen cannot establish experimental independence.",
+    "Do not treat timestamp samples from one run as separate experimental replicates."
+  ]
+}

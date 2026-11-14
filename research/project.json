@@ -14,5 +14,29 @@
   "experimental_inputs": [],
   "next_paper_url": null,
   "next_code_repository": null,
-  "deferred_capabilities": ["airflow_coupled_thermal_model", "dynamic_membrane_water", "fan_power_optimization", "purge_control", "experimental_parameter_fitting", "spatial_CFD"]
+  "deferred_capabilities": [
+    "airflow_coupled_thermal_model",
+    "dynamic_membrane_water",
+    "fan_power_optimization",
+    "purge_control",
+    "spatial_CFD",
+    "independent_validation_on_user_experiments"
+  ],
+  "workbench_version": "0.2",
+  "writing_features_included": false,
+  "primary_inputs": [
+    "experimental_CSV_Excel",
+    "general_research_evidence_and_experiment_design"
+  ],
+  "implemented_workflows": [
+    "measurement_profile",
+    "replicate_comparison",
+    "bounded_R_lambda_calibration",
+    "model_Sobol_sensitivity",
+    "LHS_design",
+    "constrained_TPE_next_experiments",
+    "Crossref_metadata",
+    "prior_art_query_matrix",
+    "hashed_evidence_export"
+  ]
 }

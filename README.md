@@ -1,74 +1,77 @@
-# Research PEMFC：氢燃料电池与空冷燃料电池 Paper2Agent
+# Research PEMFC · 非写作科研工作台
 
-将论文方法整理为可追溯、可运行、能被编程智能体调用的研究工具。
+面向氢燃料电池与空冷／开放阴极燃料电池，将**实验数据 → 可复核比较 → 模型校准 → 敏感性 → 下一轮试验**连接起来。文献和已有技术部分记录证据来源，结果可导出给你已有的写作工具。
 
-这个首版已迁移 **OPEM Amphlett 静态 PEMFC 模型**，用于计算极化曲线、整堆功率、效率和电压损失，并保存原始结果、CSV 和 HTML 图表。研究方向配置、数据字段模板和后续论文转换提示词也已准备好。
+![工作台合成验证案例](reports/workbench-v2/workbench-preview.png)
 
-**空冷研究的边界：** 当前工具给定温度和膜水含量，不求解风量耦合的热水动态，也不模拟风机功耗、吹扫或三维流场。它是研究基线；空冷专用模型的下一步路线见 [研究路线](docs/research-roadmap.zh-CN.md)。
+## 直接使用
 
-## 先运行一次
-
-需要 Python 3.12、Git 和可访问 PyPI/GitHub 的网络。基础计算不需要 GPU，也不需要 LLM API Key。
-
-先获取项目：
-
-```bash
-git clone https://github.com/xiaoguai53/research-pemfc.git
-cd research-pemfc
-```
-
-Linux/macOS：
-
-```bash
-python3.12 -m venv .venv
-.venv/bin/python -m pip install -r src/requirements.txt
-.venv/bin/python scripts/run_polarization.py --input examples/amphlett-official.json --output results
-```
+需要 Python 3.12 和 Git。核心计算在本机运行，无需 GPU 或 LLM API Key。
 
 Windows PowerShell：
 
 ```powershell
-py -3.12 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r src\requirements.txt
-.\.venv\Scripts\python.exe scripts\run_polarization.py --input examples\amphlett-official.json --output results
+git clone https://github.com/xiaoguai53/research-pemfc.git
+cd research-pemfc
+py -3.12 -m venv research-env
+.\research-env\Scripts\python.exe -m pip install -r requirements-research.txt
+.\research-env\Scripts\python.exe -m streamlit run app.py
 ```
 
-命令通过 MCP 调用模型，输出摘要与新建结果目录；完整数组保存在 `native-result.json`。官方案例应有 750 个电流点，最大整堆功率约 29.399736 W。**这是官方单片纯氧参数的回归案例，不是你的空冷电堆预测。**
-
-实际验证环境为 Linux/Python 3.12；Windows 命令按路径语法提供，尚未在 Windows 实机验证。
-
-## 连接 Codex / 其他 MCP 客户端
-
-先用刚安装的解释器打印本机路径：
+Linux：
 
 ```bash
-.venv/bin/python scripts/print_mcp_config.py --client codex
+python3.12 -m venv research-env
+research-env/bin/python -m pip install -r requirements-research.txt
+research-env/bin/python -m streamlit run app.py
 ```
 
-Windows 用 `.\.venv\Scripts\python.exe`。运行打印出来的 `codex mcp add ...` 命令即可注册。脚本也支持 `--client json` 和 `--client toml`，只打印配置，不修改客户端设置。
+打开本机 `http://127.0.0.1:8501`。在左侧选择“我的实验文件”，上传 CSV／Excel 并映射列名。默认演示是明确标注的**合成软件验证数据**，不能当作实验结果。完整说明、参数单位、命令行和 MCP 配置见 [WORKBENCH.md](WORKBENCH.md)。
 
-连接后可以说：
+## 已实现的研究工作流
 
-> 使用 fuelcell 的 opem_simulate_polarization 工具。先按仓库官方示例验证环境，再用我给出的电堆参数计算极化曲线，说明单位、模型来源和空冷适用性限制。
+| 能力 | 实际交付 |
+| --- | --- |
+| 数据质量与功率边界 | 只读检查、缺失记录、整堆／扣风机／明确辅机边界的功率、CSV 与图 |
+| 真实重复的条件比较 | 同负载匹配、重复内聚合、配对或 Welch、原单位效应与 95% 区间 |
+| 原模型参数校准 | SciPy 有界优化＋原始 OPEM 点函数；R／lambda、逐行测温、完整组留出、残差与可辨识性 |
+| 模型敏感性 | SALib Sobol 有序采样、原模型响应、首阶／总阶指数与置信估计 |
+| 初始实验设计 | SciPy LHS、中心点重复、随机执行顺序、单位与待测表 |
+| 下一轮候选 | Optuna 5 约束 ask/tell，保留已测不满足约束的试验，候选不附虚构结果 |
+| 文献证据 | Crossref DOI 元数据／可用摘要、去重、访问级别和原始响应 |
+| 已有技术查证 | 技术特征检索式、专利检索链接、待人工查证矩阵；没有新颖性判定 |
+| 复现与导出 | 每次运行独立目录、输入哈希、方法／版本、PNG/SVG、CSV、JSON 和 ZIP |
 
-参数表、安装包使用方法和完整启动步骤见 [USAGE.md](USAGE.md)。
+MCP 提供原模型和八项新研究工具，共九项：
 
-## 用于自己的研究
+```bash
+research-env/bin/python scripts/print_research_mcp_config.py --client codex
+```
 
-1. 编辑 [research/project.json](research/project.json)，填写电堆结构、面积、单片数和下一篇论文。
-2. 将实验数据放入 `research/inputs/`；字段说明见 [研究路线](docs/research-roadmap.zh-CN.md)。仓库里的 [测量模板](research/measurement-template.csv) 没有虚构实验数据。
-3. 复制 `examples/amphlett-official.json`，填写自己的工况和参数，再运行上面的命令。注意氧气分压、温度 K、膜厚 cm 和水含量 lambda。
-4. 将 [下一篇论文转换提示词](research/prompts/convert-paper.zh-CN.md) 交给支持本地 Skill、命令执行和子智能体的 Codex/Claude Code。上游完整 Skill 在 `.agents/skills/paper2agent/`。
+脚本只打印本机连接命令。也可以不打开界面，运行完整的离线合成验证流程：
 
-## 项目研究与验证证据
+```bash
+research-env/bin/python scripts/run_research.py demo --output results/demo
+```
 
-- [Paper2Agent 项目分析](docs/paper2agent-study.zh-CN.md)：架构、迁移取舍与限制。
-- [燃料电池研究路线](docs/research-roadmap.zh-CN.md) 与 [首批文献线索](docs/literature.csv)：区分可执行模型与尚未复现的空冷论文。
-- `reports/`、`notebooks/amphlett_reference/`：来源、原始运行、独立验证、协议及安装验收记录。
-- `sources.lock.json`、`THIRD_PARTY_NOTICES.md`：固定的上游版本与许可。
+## GitHub 高 Star 与周榜研究
 
-本次验证通过 52 项独立测试，覆盖 11 组源代码支持的参数场景。开发环境、全新运行环境和真实 ZIP 解压目录分别通过 6 项 stdio 验收；完整数值、CSV 与图表数据按 `1e-12` 容差比较。验证范围为 Linux 上的选定静态模型，没有使用用户电堆的实验测量。
+已核对 20 个候选项目及 GitHub 官方周榜，并记录日期、累计 Star、实际周榜增量、许可和采用方式。详见 [调研与融合报告](docs/github-research-2026-11-14.md)。
 
-开发时可运行 `python scripts/restore_sources.py` 恢复固定 OPEM 源码，然后使用带 pytest 的开发环境执行 `python -m pytest tests/code/`。用户运行只需 `src/requirements.txt`。
+- **实际调用**：SciPy、Optuna、SALib、Streamlit。
+- **设计借鉴**：Scientific Agent Skills 的分析规范，autoresearch 的固定评估／实验记录，MLflow/DVC 的追溯原则，Auto Ontology 的数据语义与来源。
+- **保留研究入口**：上游 Paper2Agent 完整 Skill；后续有论文和代码时，可逐篇转换并验证。
 
-可分发 MCP 运行包生成在 `dist/opem-mcp.zip`。整个研究工作区还另有压缩备份，交付路径以本次任务结果为准。
+没有把“借鉴”标成已安装的第三方服务，也没有把自动写作模块加入产品。雷达页面和 `scripts/refresh_research_radar.py` 可按需刷新，未设置自动定时任务。
+
+## 研究边界与证据
+
+温度与膜水含量是给定／实测输入，当前没有空冷热水动态或 CFD 求解器。推荐工况的实际效果及输出约束要靠新测量确认。低拟合误差不等于物理参数已被唯一辨识；元数据不等于阅读全文；专利检索计划不等于已完成检索或新颖性判断。
+
+新工作台的原始 API 参照、实现与独立验证、界面及安装验收保存在 `reports/workbench-v2/`。源模型仍固定于 OPEM 提交 `27d343fb966361a4e6cc99650241f651778fc50f`。验证平台是 Linux/Python 3.12；Windows 路径命令已提供，未声称完成 Windows 实机验证。
+
+原 v0.1 单模型工具、锁定依赖与已验证的 [opem-mcp.zip](dist/opem-mcp.zip) 保持完整，其说明是 [USAGE.md](USAGE.md)，阶段记录对应原版本。原始数据放在 `research/inputs/`；界面上传与结果默认留在 `.workbench/`、`results/`，不进入 Git。
+
+## 来源与许可
+
+新集成代码使用 MIT。第三方实现由各自固定版本提供，详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。OPEM 软件 DOI：`10.21105/joss.00676`；Paper2Agent DOI：`10.1038/s41586-026-11044-y`。

@@ -7,9 +7,15 @@ __pycache__/
 .pytest_cache/
 tests/results/
 results/
+.workbench/
+research/outputs/
+research/local/
+.streamlit/secrets.toml
+reports/research-radar/*.html
 tmp/
 dist/*
 !dist/opem-mcp.zip
+!dist/research-workbench.zip
 .env
 .env.*
 !.env.example

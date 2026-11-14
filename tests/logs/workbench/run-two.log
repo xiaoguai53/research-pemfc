@@ -1,0 +1,70 @@
+/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/pytest_asyncio/plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+...............F..F.................F....                                [100%]
+=================================== FAILURES ===================================
+_____________ test_reserved_output_column_cannot_overwrite_factor ______________
+
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-two/test_reserved_output_column_ca0')
+
+    async def test_reserved_output_column_cannot_overwrite_factor(tmp_path):
+        cfg={"factors":[{"name":"status","unit":"1","lower":0.,"upper":1.}]}
+>       with pytest.raises(Exception,match="reserved"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE Exception
+
+tests/code/workbench/test_design.py:25: Failed
+_______________ test_zero_records_still_export_a_readable_schema _______________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f304485f260>
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-two/test_zero_records_still_export0')
+
+    async def test_zero_records_still_export_a_readable_schema(monkeypatch,tmp_path):
+        class Empty(Response):
+            def json(self):return {"message":{"items":[]}}
+        monkeypatch.setattr(evidence.requests,"get",lambda *a,**k:Empty())
+        r=await call("research_search_literature",{"query":"fuel cell","output_dir":str(tmp_path)})
+>       frame=pd.read_csv(artifact(r,"literature.csv"))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/code/workbench/test_literature.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+research-env/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1866: in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+research-env/lib/python3.12/site-packages/pandas/io/parsers/readers.py:423: in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+research-env/lib/python3.12/site-packages/pandas/io/parsers/readers.py:2721: in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+research-env/lib/python3.12/site-packages/pandas/io/parsers/readers.py:3006: in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+research-env/lib/python3.12/site-packages/pandas/io/parsers/c_parser_wrapper.py:107: in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   ???
+E   pandas.errors.EmptyDataError: No columns to parse from file
+
+pandas/_libs/parsers.pyx:735: EmptyDataError
+______________ test_manifest_integrity_export_and_no_full_arrays _______________
+
+tmp_path = PosixPath('/workspace/fuelcell-paper2agent/tests/results/workbench/run-two/test_manifest_integrity_export0')
+
+    async def test_manifest_integrity_export_and_no_full_arrays(tmp_path):
+        r=await call("research_analyze_measurements",{"data_path":str(EXAMPLES/"measurements-synthetic.csv"),"output_dir":str(tmp_path)})
+        manifest=read_json(artifact(r,"manifest.json"));root=Path(r["run_dir"])
+        for name,expected in manifest["files"].items():assert hashlib.sha256((root/name).read_bytes()).hexdigest()==expected
+>       assert "reference" in r
+E       AssertionError: assert 'reference' in {'message': 'Research operation completed; inspect the method, provenance and limits with the results.', 'summary': {'...ng', 'numeric_source': 'pandas/NumPy; P_gross=I*V; subtraction of supplied consumed powers only'}, 'warnings': [], ...}
+
+tests/code/workbench/test_protocol_and_provenance.py:44: AssertionError
+=========================== short test summary info ============================
+FAILED tests/code/workbench/test_design.py::test_reserved_output_column_cannot_overwrite_factor
+FAILED tests/code/workbench/test_literature.py::test_zero_records_still_export_a_readable_schema
+FAILED tests/code/workbench/test_protocol_and_provenance.py::test_manifest_integrity_export_and_no_full_arrays
+3 failed, 38 passed in 10.16s

@@ -1,0 +1,54 @@
+mkdir -p failed for path /home/agent/.config/matplotlib: [Errno 30] Read-only file system: '/home/agent/.config/matplotlib'
+Matplotlib created a temporary cache directory at /tmp/matplotlib-jpvejejj because there was an issue with the default path (/home/agent/.config/matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+[11/14/26 05:44:06] INFO     Starting MCP server 'PEMFC         transport.py:242
+                             Research Workbench' with transport                 
+                             'stdio'                                            
+[I 2026-11-14 05:44:08,258] A new study created in memory with name: no-name-c7852dff-6f6f-4f3f-947f-06e00bd0bb1d
+[11/14/26 05:44:09] WARNING  Invalid arguments for tool           server.py:1505
+                             'research_design_experiments':                     
+                             [{'type': 'value_error', 'loc':                    
+                             ('n_samples',), 'msg': 'Value error,               
+                             Integer arguments must be integers,                
+                             not booleans or strings.', 'input':                
+                             True, 'ctx': {'error':                             
+                             ValueError('Integer arguments must                 
+                             be integers, not booleans or                       
+                             strings.')}}]                                      
+[11/14/26 05:44:09] Error calling tool 'research_model_sensitivity'             
+                    ╭─────────── Traceback (most recent call last) ────────────╮
+                    │ /workspace/fuelcell-paper2agent/research-env/lib/python3 │
+                    │ .12/site-packages/fastmcp/server/server.py:1492 in       │
+                    │ call_tool                                                │
+                    │                                                          │
+                    │ /workspace/fuelcell-paper2agent/research-env/lib/python3 │
+                    │ .12/site-packages/fastmcp/tools/base.py:440 in _run      │
+                    │                                                          │
+                    │                 ... 9 frames hidden ...                  │
+                    │                                                          │
+                    │ /workspace/fuelcell-paper2agent/src/research_mcp.py:101  │
+                    │ in research_model_sensitivity                            │
+                    │                                                          │
+                    │    98 │   """Estimate model-conditional voltage sensitiv │
+                    │    99 │   Original model and ordered sampling design → f │
+                    │       estimates and figures.                             │
+                    │   100 │   """                                            │
+                    │ ❱ 101 │   return design.model_sensitivity(parameters_pat │
+                    │       seed, output_dir)                                  │
+                    │   102                                                    │
+                    │   103                                                    │
+                    │   104 @mcp.tool()                                        │
+                    │                                                          │
+                    │ /workspace/fuelcell-paper2agent/src/research_core/design │
+                    │ .py:87 in model_sensitivity                              │
+                    │                                                          │
+                    │    84 │   _integer(n_base, 32, 2048, "n_base")           │
+                    │    85 │   _integer(seed, 0, 2**32 - 1, "seed")           │
+                    │    86 │   if n_base & (n_base - 1):                      │
+                    │ ❱  87 │   │   raise ValueError("Sobol n_base must be a p │
+                    │    88 │   if isinstance(current_A, bool) or not isinstan │
+                    │       math.isfinite(current_A) or current_A <= 0:        │
+                    │    89 │   │   raise ValueError("Sensitivity requires a f │
+                    │    90 │   parameters = read_json(parameters_path)        │
+                    ╰──────────────────────────────────────────────────────────╯
+                    ValueError: Sobol n_base must be a power of two.            
+{"success": true, "mode": "calls", "cases_checked": 12, "report": "reports/workbench-v2/mcp-project-environment.json"}

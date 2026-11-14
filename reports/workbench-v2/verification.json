@@ -1,0 +1,153 @@
+{
+  "status": "succeeded",
+  "agent_id": "/root/workbench_verifier",
+  "implementation_contexts": [
+    "/root",
+    "/root/research_analysis"
+  ],
+  "implementation_report": "reports/workbench-v2/implementation.json",
+  "started_at": "2026-11-14T05:25:41Z",
+  "finished_at": "2026-11-14T05:41:25.070710Z",
+  "scientific_comparisons": {
+    "native_curve_scenarios": 4,
+    "native_voltage_samples_per_curve": 750,
+    "native_curve_scope": "Original Static_Analysis full V arrays for official, changedT, changedPO2, and changedN/R/lambda; zero-current behavior retained.",
+    "per_row_temperature_points": 25,
+    "point_tolerance": {
+      "relative": 1e-12,
+      "absolute": 1e-12
+    },
+    "calibration": "Recovered R=0.002 ohm and lambda=18 on 20 training and 5 held-out source-generated points. Corrupting only held-out responses leaves the fitted parameters unchanged. Whole-group IDs 001 and 1 remain distinct. Both raw and column-normalized Jacobian diagnostics are retained; no parameter confidence intervals are invented.",
+    "replicate_comparison": "B minus A effects, 95% confidence intervals and p-values agree with independent SciPy paired and Welch calculations on actual replicate aggregates. Shuffling rows or copying within-replicate samples preserves inference. Missing pairs fail; constant contrasts have no manufactured p-value or interval.",
+    "power_accounting": "Derived electrical quantities agree with supplied current, voltage and auxiliary powers. Missing powers are not imputed. Fan-only subtraction is not labeled full net power. Selected Excel sheets and text IDs are preserved; source files are unchanged.",
+    "lhs": "Each variable has one point in every one of 8 strata, plus 3 center repeats. Execution order is randomized, the seed reproduces the design, and calls use new output directories.",
+    "sensitivity": "Independently recomputed all 160 ordered original-model responses. SALib first-order, total-order and confidence estimates agree with direct API calls at 1e-12 tolerance. A 4096-base Ishigami benchmark matches analytic indices within 0.025. Zero output variance fails rather than returning fake zero indices.",
+    "optuna": "Optuna 5 Trial.set_constraint preserves all 16 completed records, including infeasible observations. Three pending candidates have no invented outcomes and satisfy input bounds. Seed replay is deterministic; 4 history rows are labeled random startup. Candidate outcome feasibility is never claimed.",
+    "literature": "Tested DOI case deduplication, explicit access levels, HTTP errors and empty results with controlled responses. A separate real Crossref MCP call returned 2 metadata records with full_text_reviewed=false. Patent output contains encoded search links and an unchecked matrix; no live search or novelty verdict is claimed."
+  },
+  "protocol_checks": {
+    "transport": "In-process FastMCP Client(mcp).call_tool, successfulresult.data",
+    "tool_count": 9,
+    "positive_coverage_all_tools": true,
+    "property_descriptions_checked": true,
+    "required_input_contracts_checked": true,
+    "raw_booleans_rejected": true,
+    "compact_metadata_artifacts": true,
+    "repeat_artifact_isolation": true,
+    "artifact_file_hashes_and_export_tamper_checks": true
+  },
+  "test_runs": [
+    {
+      "command": "research-env/bin/python -m pytest tests/code/workbench -q --basetemp tests/results/workbench/run-one --junitxml tests/summary/workbench/run-one.xml",
+      "exit_status": 1,
+      "result": "13 passed; 28 fixture setup errors because the new basetemp parent directory was absent. Created the generated namespace. No scientific failure was hidden.",
+      "log": "tests/logs/workbench/run-one.log"
+    },
+    {
+      "command": "research-env/bin/python -m pytest tests/code/workbench -q --basetemp tests/results/workbench/run-two --junitxml tests/summary/workbench/run-two.xml",
+      "exit_status": 1,
+      "result": "38 passed; 3 genuine output-contract failures: reserved factor metadata overwrite, headerless empty Crossref CSV, and a missing reference field.",
+      "log": "tests/logs/workbench/run-two.log"
+    },
+    {
+      "command": "research-env/bin/python -m pytest tests/code/workbench -q --basetemp tests/results/workbench/run-three --junitxml tests/summary/workbench/run-three.xml",
+      "exit_status": 0,
+      "tests": 41,
+      "failures": 0,
+      "errors": 0,
+      "result": "41 passed in 9.38 seconds; no skips or exclusions.",
+      "log": "tests/logs/workbench/run-three.log"
+    }
+  ],
+  "repairs": [
+    {
+      "file": "src/research_core/design.py",
+      "finding": "Reserved factor names could overwrite numeric design data.",
+      "change": "Reject design_role, candidate_id, status and execution_order before sampling. No sampling algorithm changed."
+    },
+    {
+      "file": "src/research_core/evidence.py",
+      "finding": "An empty search response produced a headerless CSV.",
+      "change": "Preserve explicit Crossref columns with zero rows."
+    },
+    {
+      "file": "src/research_core/common.py",
+      "finding": "New MCP results omitted the required reference metadata field.",
+      "change": "Add reference from the existing method URL, source or name; scientific results are unchanged."
+    },
+    {
+      "file": "src/research_core/design.py",
+      "finding": "Recommendation summaries lost declared history data_kind when separated from the CSV.",
+      "change": "Preserve the actual declaration in summaries and manifests; default to user_supplied_unverified. The synthetic label is tested."
+    }
+  ],
+  "live_crossref_receipt": "tests/summary/workbench/live-crossref.json",
+  "runtime_acceptance": {
+    "expected_tools": "reports/workbench-v2/expected-tools.json",
+    "cases": "reports/workbench-v2/acceptance-cases.json",
+    "case_count": 12,
+    "positive_case_count": 10,
+    "negative_case_count": 2,
+    "case_schema_and_required_inputs_validated": true,
+    "network_case": "The live-crossref-public-metadata case needs public Crossref HTTPS access; its verified query returns 2 records without an API key."
+  },
+  "tested_files": {
+    "src/research_core/__init__.py": "8dc0d587ff90cf9de5e1c80b3bff14cb1a930baab4aae386ed19151c90a6dabd",
+    "src/research_core/calibration.py": "5127640cfb95ee6ff11b65179ab16ed0eb3ee4e5ecc5618c06c7e78cc08b1dd3",
+    "src/research_core/common.py": "6d011a7a1fccba888c9e7218d8a024f78f740c13f6be89ff8d7ac9b4096ab1ac",
+    "src/research_core/data.py": "77c232d23eae80630dc2c5b993e7ec6b7c0e9f285b52175cdcdade6d6cfdf9bb",
+    "src/research_core/design.py": "39ca0c864389c0d27b32c95c07cdf63ba81eda9224b9b1cbf3e04f370aadd2ee",
+    "src/research_core/evidence.py": "88f458cc1c040d8867992e3721a1dfb7e2275d15dd5b0f105e8a7af0bf14ba73",
+    "src/research_mcp.py": "5d0021b809e57541b728fe6d8fccc3abc6520ab9afa4cc1e33b0311e4b751a3a"
+  },
+  "read_only_dependencies": {
+    "src/tools/amphlett.py": "7d4ae068fd987d3401b7a609fbc3c0c37befa9470538b742972e44cdad2e734f",
+    "src/opem_mcp.py": "4d0ce7fdac1c67ffd8d2c55b8f8e2fc8ac2219d811edb795cd8137c7c97e1a28",
+    "src/requirements.txt": "5df7c61ef917749b7d5598618f3fbc0771ed63bf1d4e7ce05ff8267414f06f75",
+    "USAGE.md": "7751125d23a078770ad7c664b868df7c484de6ce35bf80add3c9868e676aa6e6",
+    "reports/workbench-v2/reference.json": "9c05fd2f1dbc6717adeb485f87b48e4f006d2e8e55e26ad329c8e5ec358ec17e",
+    "reports/workbench-v2/source-bindings.json": "03bc3162b5135030293584ce6fff1dd84555ed1f8d22ab57444cb7f6afb3a339",
+    "notebooks/workbench-v2/reference/execute_reference.py": "ffda295760cec6216dea6c75bb1b4da21ca70cca1789fa1c852c3b49eb6313da",
+    "examples/workbench/README.md": "43c6ed8466ce33b556817411373471361f0c455782d4fc8013b6c970aae9bb21",
+    "examples/workbench/calibration.json": "ef8ad0b64a3fd037b1189fb388a94545345417333dc9f5d7a75e009fdb1e19db",
+    "examples/workbench/experiment-bounds.json": "dc33d54221c82864f2f0bc5360adbae5ce46816e0ee9c922e7565eb96836a34b",
+    "examples/workbench/history-synthetic.csv": "61530f5d00b90640839030f53a48da1d1713180ad9219a8b6b39d265041ec68f",
+    "examples/workbench/measurements-synthetic.csv": "24d66c5f545933b209aff6a61c4eeb478a3bd60328b3ce3324943a89e05a2807",
+    "examples/workbench/model-parameters.json": "6c548f603736d0c665daaa1ed66516714fe9ca2f6a41e57159d4f8d866526a42",
+    "examples/workbench/polarization-synthetic.csv": "e396b88638a1ded4e8db311efd9c65d2d186aeff22e246dbb3a775a9a35c9262",
+    "examples/workbench/sensitivity-bounds.json": "e3262b2ade713f4c9f09671b4b5f7c8384392a09f77bdb87c911328a954c6af4"
+  },
+  "produced_files": {
+    "tests/code/workbench/__init__.py": "f08983846bdf02dcbac684ac0dcacc1a8c267e36ada71d4107e7b64cd7e243b0",
+    "tests/code/workbench/_helpers.py": "bd14500f07d065786066519523135036177d94a7a18903b1db2cc797221a1972",
+    "tests/code/workbench/conftest.py": "783b2c3eb568d9a1900b21b309fa166855b7329f60829bd1f36b9f9509b3ca0f",
+    "tests/code/workbench/test_calibration.py": "f31ec507ae533c7f324d2d1936e76d41b0f45b45ac19b05acc82f0909387c3dc",
+    "tests/code/workbench/test_comparison.py": "239c9d98ba569a09bac9eb4ce49bc06a7e129bbdc66d696cbc59e484efacd9bc",
+    "tests/code/workbench/test_design.py": "4ef8d3762720b1fb24d4dc16f49a4cec3f834ab66a8f9c0fb2560173c003198d",
+    "tests/code/workbench/test_literature.py": "c15e2021d88880d357fb201408ebfb98089f41aaacfa714c4f2d379de38fd216",
+    "tests/code/workbench/test_measurements.py": "e9a861a02bf8380bec3dcc824f2cc9d1508a5d1c27bb8295f4ef2315f021e5bc",
+    "tests/code/workbench/test_next.py": "e9d44983a96795d974fefc021644219fc048429b24b7c50e8dab711199d94d60",
+    "tests/code/workbench/test_priorart.py": "2f9f44c4109b9f5eaa507858d26d07dd2e3b04e641204aa7d816e631ff9fc560",
+    "tests/code/workbench/test_protocol_and_provenance.py": "8ee0bdc57f455cda388c8bee08fc6b88b1f4adf0ae868897740f56f42efe479e",
+    "tests/code/workbench/test_sensitivity.py": "91b770d68b7d00f3b4a2b6e1b19f208d461002f89a7fa97d24cd45ccfcada7af",
+    "reports/workbench-v2/acceptance-cases.json": "d907c93aa08204e13eb0273e5057df309156cf65feb87818b0a525bc9188157f",
+    "reports/workbench-v2/expected-tools.json": "d15eee2f9375307cedb2fbeb138d4c7fd989a57e1ffe718ba268f7883dca5325",
+    "tests/logs/workbench/run-one.log": "a32d896190f4899aa04469dc737db0e68703a3a9edc3f000b3a1545a2cbe0f80",
+    "tests/logs/workbench/run-two.log": "6c7c026b721b5d95849e62b1a1659b587f8b3b77055384413201c4e974e7d6dc",
+    "tests/logs/workbench/run-three.log": "d1defaf25e06b4ecba6c0ec65eb13534ca861c94c7174903271803797bfe20b2",
+    "tests/summary/workbench/run-one.xml": "2010052a8eb93012a71af9080b487015879c6a56696ef3735d38d06146a6aea6",
+    "tests/summary/workbench/run-two.xml": "f4f920eb892154bcb079bb5046be561c70d9aeee31e487d0b35ae69a6f6f08c5",
+    "tests/summary/workbench/run-three.xml": "e013fcb37b4c6b83bd4fd634ac4c94846eefdddb9cea180c7d2e4e5c66a9d055",
+    "tests/summary/workbench/live-crossref.json": "c62d5d7da2848133641d87d44e28c3f4931c69d2d0ad21723f5ba6bb57536b55"
+  },
+  "limitations": [
+    "These checks establish selected software behavior, not experimental validation of user hardware. Example observations are explicitly synthetic.",
+    "Measured or prescribed temperature remains an input. Air-cooled heat/water dynamics and fan thermal control are not implemented.",
+    "Replicate independence and steady-state status are experimental-design assumptions supplied by the user; numeric screens cannot certify them.",
+    "Sobol analysis assumes independent uniform inputs within declared bounds. The indices are model-conditional, not causal proof.",
+    "Optuna candidates require measurements to establish outcome-constraint feasibility. No candidate power, temperature or novelty verdict is fabricated.",
+    "Crossref provides metadata and available abstracts; full text is not reviewed. Patent plans neither perform patent searches nor certify novelty.",
+    "Execution covers Linux and Python 3.12.14. In-process scientific and MCP checks passed; real stdio, fresh installation, actual ZIP relocation and UI checks remain parent-owned stages.",
+    "No fuel-cell formula was changed. Original v0.1 model code, server, runtime lock and usage instructions remain byte-identical."
+  ]
+}

@@ -18,3 +18,9 @@
 - Original Amphlett model references remain in OPEM's source documentation and should be cited when used for research.
 
 Third-party dependencies retain their own licenses. This repository's MIT license applies to the new integration code and documentation, subject to these notices and any separately marked material.
+
+## Research workbench v0.2
+
+Runtime libraries are installed from the exact closure in `requirements-research.txt`; their own distribution notices remain applicable. Direct scientific calls use SciPy (BSD-3-Clause), Optuna (MIT), SALib (MIT), NumPy (BSD-3-Clause), pandas (BSD-3-Clause), Matplotlib (its BSD-compatible project license), OpenPyXL (MIT) and Streamlit (Apache-2.0). The new calibration combines the original OPEM public functions with SciPy's optimizer; it is not claimed as an original OPEM calibration API.
+
+Design inspiration is attributed to K-Dense-AI/scientific-agent-skills, karpathy/autoresearch, NVIDIA/auto-ontology, mlflow/mlflow and treeverse/dvc. This workbench does not vendor or run those whole systems, and does not claim their services are installed. Details, dated GitHub metrics and source links are in `docs/github-research-2026-11-14.md`. Patent-search links and Crossref metadata are separate evidence utilities; no third-party scientific findings are presented as our measurements.

@@ -1,0 +1,22 @@
+[
+  {
+    "trial_number": 6,
+    "x": 0.5471397865002018,
+    "status": "AWAITING_OBSERVATION"
+  },
+  {
+    "trial_number": 7,
+    "x": 0.638657478589908,
+    "status": "AWAITING_OBSERVATION"
+  },
+  {
+    "trial_number": 8,
+    "x": 0.30769421145026227,
+    "status": "AWAITING_OBSERVATION"
+  },
+  {
+    "trial_number": 9,
+    "x": 0.932290341911787,
+    "status": "AWAITING_OBSERVATION"
+  }
+]

@@ -1,0 +1,48 @@
+{
+  "data_kind": "SYNTHETIC_TOY_BENCHMARK_NOT_MEASUREMENTS",
+  "history": [
+    {
+      "x": 0.0,
+      "objective": -0.42250000000000004,
+      "temperature_C": 60.0
+    },
+    {
+      "x": 0.2,
+      "objective": -0.2025,
+      "temperature_C": 64.0
+    },
+    {
+      "x": 0.4,
+      "objective": -0.0625,
+      "temperature_C": 68.0
+    },
+    {
+      "x": 0.6000000000000001,
+      "objective": -0.0024999999999999935,
+      "temperature_C": 72.0
+    },
+    {
+      "x": 0.8,
+      "objective": -0.022500000000000006,
+      "temperature_C": 76.0
+    },
+    {
+      "x": 1.0,
+      "objective": -0.12249999999999998,
+      "temperature_C": 80.0
+    }
+  ],
+  "bounds": {
+    "x": [
+      0.0,
+      1.0
+    ]
+  },
+  "direction": "maximize",
+  "constraint_temperature_upper_C": 75.0,
+  "n_startup_trials": 4,
+  "seed": 42,
+  "constant_liar": true,
+  "native_constraint_API": "Trial.set_constraint(key,value)",
+  "constraint_semantics": "Feasible when every recorded constraint <=0."
+}

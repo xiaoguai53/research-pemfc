@@ -1,0 +1,260 @@
+{
+  "agent_id": "/root/research_environment",
+  "python": "/workspace/fuelcell-paper2agent/research-env/bin/python",
+  "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "packages": {
+    "numpy": {
+      "version": "2.5.4",
+      "metadata_root": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/numpy-2.5.4.dist-info",
+      "project_urls": [
+        "homepage, https://numpy.org",
+        "documentation, https://numpy.org/doc/",
+        "source, https://github.com/numpy/numpy",
+        "download, https://pypi.org/project/numpy/#files",
+        "tracker, https://github.com/numpy/numpy/issues",
+        "release notes, https://numpy.org/doc/stable/release"
+      ],
+      "home_page": null,
+      "direct_url": null
+    },
+    "scipy": {
+      "version": "1.18.1",
+      "metadata_root": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/scipy-1.18.1.dist-info",
+      "project_urls": [
+        "homepage, https://scipy.org/",
+        "documentation, https://docs.scipy.org/doc/scipy/",
+        "source, https://github.com/scipy/scipy",
+        "download, https://github.com/scipy/scipy/releases",
+        "tracker, https://github.com/scipy/scipy/issues"
+      ],
+      "home_page": null,
+      "direct_url": null
+    },
+    "pandas": {
+      "version": "3.1.1",
+      "metadata_root": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/pandas-3.1.1.dist-info",
+      "project_urls": [
+        "homepage, https://pandas.pydata.org",
+        "source, https://github.com/pandas-dev/pandas",
+        "documentation, https://pandas.pydata.org/docs/",
+        "changelog, https://pandas.pydata.org/docs/whatsnew/index.html",
+        "issues, https://github.com/pandas-dev/pandas/issues",
+        "funding, https://opencollective.com/pandas"
+      ],
+      "home_page": null,
+      "direct_url": null
+    },
+    "matplotlib": {
+      "version": "3.11.2",
+      "metadata_root": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/matplotlib-3.11.2.dist-info",
+      "project_urls": [
+        "Homepage, https://matplotlib.org",
+        "Download, https://matplotlib.org/stable/install/index.html",
+        "Documentation, https://matplotlib.org",
+        "Source Code, https://github.com/matplotlib/matplotlib",
+        "Bug Tracker, https://github.com/matplotlib/matplotlib/issues",
+        "Forum, https://discourse.matplotlib.org/",
+        "Donate, https://numfocus.org/donate-to-matplotlib"
+      ],
+      "home_page": null,
+      "direct_url": null
+    },
+    "optuna": {
+      "version": "5.0.0",
+      "metadata_root": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/optuna-5.0.0.dist-info",
+      "project_urls": [
+        "homepage, https://optuna.org/",
+        "repository, https://github.com/optuna/optuna",
+        "documentation, https://optuna.readthedocs.io",
+        "bugtracker, https://github.com/optuna/optuna/issues"
+      ],
+      "home_page": null,
+      "direct_url": null
+    },
+    "SALib": {
+      "version": "1.6.0",
+      "metadata_root": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/salib-1.6.0.dist-info",
+      "project_urls": [
+        "Documentation, https://salib.readthedocs.io",
+        "Source code, https://github.com/SALib/SALib"
+      ],
+      "home_page": null,
+      "direct_url": null
+    },
+    "openpyxl": {
+      "version": "3.1.5",
+      "metadata_root": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/openpyxl-3.1.5.dist-info",
+      "project_urls": [
+        "Documentation, https://openpyxl.readthedocs.io/en/stable/",
+        "Source, https://foss.heptapod.net/openpyxl/openpyxl",
+        "Tracker, https://foss.heptapod.net/openpyxl/openpyxl/-/issues"
+      ],
+      "home_page": "https://openpyxl.readthedocs.io",
+      "direct_url": null
+    },
+    "streamlit": {
+      "version": "1.67.0",
+      "metadata_root": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/streamlit-1.67.0.dist-info",
+      "project_urls": [
+        "Homepage, https://streamlit.io",
+        "Documentation, https://docs.streamlit.io/",
+        "Source Code, https://github.com/streamlit/streamlit",
+        "Bug Tracker, https://github.com/streamlit/streamlit/issues",
+        "Release Notes, https://docs.streamlit.io/develop/quick-reference/changelog",
+        "Community, https://discuss.streamlit.io/"
+      ],
+      "home_page": null,
+      "direct_url": null
+    },
+    "fastmcp": {
+      "version": "4.0.3",
+      "metadata_root": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/fastmcp-4.0.3.dist-info",
+      "project_urls": [
+        "Homepage, https://gofastmcp.com",
+        "Repository, https://github.com/PrefectHQ/fastmcp",
+        "Documentation, https://gofastmcp.com"
+      ],
+      "home_page": null,
+      "direct_url": null
+    },
+    "opem": {
+      "version": "1.4",
+      "metadata_root": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/opem-1.4.dist-info",
+      "project_urls": [
+        "Webpage, http://opem.ecsim.site",
+        "Source, https://github.com/ecsim/opem"
+      ],
+      "home_page": "https://github.com/ecsim/opem",
+      "direct_url": {
+        "url": "https://github.com/ECSIM/opem.git",
+        "vcs_info": {
+          "vcs": "git",
+          "commit_id": "27d343fb966361a4e6cc99650241f651778fc50f",
+          "requested_revision": "27d343fb966361a4e6cc99650241f651778fc50f"
+        }
+      }
+    },
+    "pytest": {
+      "version": "9.2.0",
+      "metadata_root": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/pytest-9.2.0.dist-info",
+      "project_urls": [
+        "Changelog, https://docs.pytest.org/en/stable/changelog.html",
+        "Contact, https://docs.pytest.org/en/stable/contact.html",
+        "Funding, https://docs.pytest.org/en/stable/sponsor.html",
+        "Homepage, https://docs.pytest.org/en/latest/",
+        "Source, https://github.com/pytest-dev/pytest",
+        "Tracker, https://github.com/pytest-dev/pytest/issues"
+      ],
+      "home_page": null,
+      "direct_url": null
+    },
+    "pytest-asyncio": {
+      "version": "1.5.0",
+      "metadata_root": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/pytest_asyncio-1.5.0.dist-info",
+      "project_urls": [
+        "Bug Tracker, https://github.com/pytest-dev/pytest-asyncio/issues",
+        "Changelog, https://pytest-asyncio.readthedocs.io/en/stable/reference/changelog.html",
+        "Documentation, https://pytest-asyncio.readthedocs.io",
+        "Homepage, https://github.com/pytest-dev/pytest-asyncio",
+        "Source Code, https://github.com/pytest-dev/pytest-asyncio"
+      ],
+      "home_page": null,
+      "direct_url": null
+    }
+  },
+  "apis": {
+    "scipy.optimize.least_squares": {
+      "signature": "(fun, x0, jac='2-point', bounds=(-inf, inf), method='trf', ftol=1e-08, xtol=1e-08, gtol=1e-08, x_scale=None, loss='linear', f_scale=1.0, diff_step=None, tr_solver=None, tr_options=None, jac_sparsity=None, max_nfev=None, verbose=0, args=(), kwargs=None, callback=None, workers=None)",
+      "source_file": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/scipy/_lib/_util.py",
+      "source_sha256": "360d46a50bff6c1c4959fd10e6e5088c08ac80370fcfd649613b119f86372a7f"
+    },
+    "scipy.stats.ttest_rel": {
+      "signature": "(a, b, axis=0, nan_policy='propagate', alternative='two-sided', *, keepdims=False)",
+      "source_file": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/scipy/stats/_axis_nan_policy.py",
+      "source_sha256": "599cbc8896fb05a4743c31e55f1f587682d5a42614d1199aea55c9754e990437"
+    },
+    "scipy.stats.ttest_ind": {
+      "signature": "(a, b, *, axis=0, equal_var=True, nan_policy='propagate', alternative='two-sided', trim=0, method=None, keepdims=False)",
+      "source_file": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/scipy/stats/_axis_nan_policy.py",
+      "source_sha256": "599cbc8896fb05a4743c31e55f1f587682d5a42614d1199aea55c9754e990437"
+    },
+    "scipy.stats.qmc.LatinHypercube": {
+      "signature": "(d: IntNumber, *, scramble: bool = True, strength: int = 1, optimization: Optional[Literal['random-cd', 'lloyd']] = None, rng: SeedType = None, seed=None) -> None",
+      "source_file": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/scipy/stats/_qmc.py",
+      "source_sha256": "54bdaad11441432013886630ded7d1c66d1b8d85643495107392a29844a5cd9f"
+    },
+    "SALib.sample.sobol.sample": {
+      "signature": "(problem: Dict, N: int, *, calc_second_order: bool = True, scramble: bool = True, skip_values: int = 0, seed: Union[int, numpy.random._generator.Generator, NoneType] = None)",
+      "source_file": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/SALib/sample/sobol.py",
+      "source_sha256": "7600919e3875162d8a59a29965683daa86e1fb8f1c0c56874757dd95ffe98d9a"
+    },
+    "SALib.analyze.sobol.analyze": {
+      "signature": "(problem, Y, calc_second_order=True, num_resamples=100, conf_level=0.95, print_to_console=False, parallel=False, n_processors=None, keep_resamples=False, seed=None)",
+      "source_file": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/SALib/analyze/sobol.py",
+      "source_sha256": "102d5bda4c4086d16a89da3e0184a619c04c6bdd671f72600e5e6ebdd5625e99"
+    },
+    "optuna.samplers.TPESampler": {
+      "signature": "(*, consider_prior: 'bool | None' = None, prior_weight: 'float | None' = None, consider_magic_clip: 'bool | None' = None, consider_endpoints: 'bool | None' = None, n_startup_trials: 'int' = 10, n_ei_candidates: 'int' = 24, gamma: 'Callable[[int], int] | None' = None, weights: 'Callable[[int], np.ndarray] | None' = None, seed: 'int | None' = None, multivariate: 'bool | None' = None, group: 'bool' = False, warn_independent_sampling: 'bool | None' = None, constant_liar: 'bool' = True, constraints_func: 'Callable[[FrozenTrial], Sequence[float]] | None' = None) -> 'None'",
+      "source_file": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/optuna/samplers/_tpe/sampler.py",
+      "source_sha256": "aa0ef08f6f745d34c6366a10ce8d826ed1f6d701550084cd0b063729e9d94388"
+    },
+    "optuna.study.Study.ask": {
+      "signature": "(self, fixed_distributions: 'dict[str, BaseDistribution] | None' = None) -> 'Trial'",
+      "source_file": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/optuna/study/study.py",
+      "source_sha256": "d70e8bfde50dc5a69ef7db96c2dc3d138fcd38f347af54d065115b3d414bf260"
+    },
+    "optuna.study.Study.tell": {
+      "signature": "(self, trial: 'Trial | int', values: 'float | Sequence[float] | None' = None, state: 'TrialState | None' = None, skip_if_finished: 'bool' = False) -> 'FrozenTrial'",
+      "source_file": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/optuna/study/study.py",
+      "source_sha256": "d70e8bfde50dc5a69ef7db96c2dc3d138fcd38f347af54d065115b3d414bf260"
+    },
+    "optuna.trial.Trial.set_constraint": {
+      "signature": "(self, key: 'str', value: 'float') -> 'None'",
+      "doc": "Set a constraint value for the trial.\n\nArgs:\n    key:\n        A constraint name.\n    value:\n        A constraint value. The trial is considered feasible when all constraint values\n        are zero or less.",
+      "source_file": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/optuna/trial/_trial.py",
+      "source_sha256": "b490ce8b0d8258bd67e12707cd4bb4acf25e3dd5574db10c3d98f1e86a30a05b"
+    }
+  },
+  "opem_source_sha256": "fafd388f1f6fded85f745de39ec03267ab301708260ad96333b9aa333f816bd6",
+  "opem_installed_file": "/workspace/fuelcell-paper2agent/research-env/lib/python3.12/site-packages/opem/Static/Amphlett.py",
+  "opem_original_file": "/workspace/fuelcell-paper2agent/repo/opem/opem/Static/Amphlett.py",
+  "smoke": {
+    "least_squares_fit": [
+      1.9999999999999998
+    ],
+    "paired_interval": [
+      0.7007717363748891,
+      3.299228263625111
+    ],
+    "welch_interval": [
+      -2.8709350310752217,
+      6.870935031075222
+    ],
+    "LHS_shape": [
+      8,
+      2
+    ],
+    "SALib_sample_shape": [
+      512,
+      2
+    ],
+    "Sobol_S1": [
+      0.18906791406052298,
+      0.7991266180675319
+    ],
+    "Optuna_observed_constraints_recorded": true,
+    "Optuna_next_x": 0.07630828937395717,
+    "success": true,
+    "Optuna_v5_native_constraint_API_success": true
+  },
+  "scope": "Environment/API readiness only; no scientific feature implementation or independent verification.",
+  "lock_validation": {
+    "baseline_entries_preserved": 77,
+    "universal_entries": 111,
+    "linux_applicable_entries": 107,
+    "all_applicable_pins_match_installed": true,
+    "runtime_lock_sha256": "36a92350113cbecd802d86ec671c70a2bfed730384237d0d711b78a0267d79c6"
+  },
+  "started_at_utc": "2026-11-13T17:28:57.192001866Z",
+  "finished_at_utc": "2026-11-13T17:31:36.251408Z"
+}

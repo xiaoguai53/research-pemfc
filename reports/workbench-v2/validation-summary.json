@@ -1,0 +1,41 @@
+{
+  "status": "succeeded",
+  "completed_at_utc": "2026-11-14T06:09:27.769653+00:00",
+  "source_repository": "https://github.com/xiaoguai53/research-pemfc",
+  "scope": "Non-writing experimental PEMFC and general research workbench",
+  "independent_scientific_tests": 41,
+  "mcp_tool_count": 9,
+  "stdio_cases_per_runtime": 12,
+  "offline_cli_operations": 7,
+  "github_candidates_reviewed": 20,
+  "official_weekly_snapshot_entries": 15,
+  "tested_platform": "Linux/Python3.12.14",
+  "data_validation_scope": "Source-generated and explicitly synthetic software benchmarks; not user experimental validation.",
+  "patent_novelty_determined": false,
+  "aircooled_dynamic_model_implemented": false,
+  "writing_features_included": false,
+  "final_archive_sha256": "09cad8af98d32b1dc9d766fbdff8cf161e921ad9e3fc36b585c0686094625ed8",
+  "evidence_files": {
+    "app.py": "49153d1f33c73604064946ee67396a64413fb70834616e98580845a1bb164dee",
+    "requirements-research.txt": "36a92350113cbecd802d86ec671c70a2bfed730384237d0d711b78a0267d79c6",
+    "scripts/run_research.py": "1658712850e1df64c546bf09a138e97dcb329fc32482e80a547c653f41d5949d",
+    "scripts/print_research_mcp_config.py": "bc6b5642913151758b970e2dfdab742f22f19d4111c8ed01197b15b695824b0d",
+    "scripts/refresh_research_radar.py": "fa2dbd36d59a7fe5912b8356496a95a83d066f792153ee5d5b0fd3a6e94f84af",
+    "WORKBENCH.md": "35ee5bb819b926b127123019791d3324d925a595db1551c04c42f08abd758ba3",
+    "reports/workbench-v2/verification.json": "99e68a05d193e19a1a7bcc7b09cea6dc1308f938bbd96db57e911fce681fd6fd",
+    "reports/workbench-v2/mcp-project-environment.json": "3d9c3fc5d8c8bcb413efd14735d5ffd54a5ec966ac461956384b0b6c52d8ce8b",
+    "reports/workbench-v2/delivery-validation.json": "df87704846e91bb85dd5e689a517bd4c0927c9b5b211d2300801b9e333f8320c",
+    "reports/workbench-v2/delivery-stdio.json": "3553ecdfc136ae32c5abb9d7b89ded82bfcee44ad3deda8908e49be3208acee7",
+    "reports/workbench-v2/ui-empty-radar.json": "96f241c3a0d3a7640211973ff3207355d1578c4b78445185c44d717817299978",
+    "dist/research-workbench.zip": "09cad8af98d32b1dc9d766fbdff8cf161e921ad9e3fc36b585c0686094625ed8"
+  },
+  "scientific_files": {
+    "src/research_core/__init__.py": "8dc0d587ff90cf9de5e1c80b3bff14cb1a930baab4aae386ed19151c90a6dabd",
+    "src/research_core/calibration.py": "5127640cfb95ee6ff11b65179ab16ed0eb3ee4e5ecc5618c06c7e78cc08b1dd3",
+    "src/research_core/common.py": "6d011a7a1fccba888c9e7218d8a024f78f740c13f6be89ff8d7ac9b4096ab1ac",
+    "src/research_core/data.py": "77c232d23eae80630dc2c5b993e7ec6b7c0e9f285b52175cdcdade6d6cfdf9bb",
+    "src/research_core/design.py": "39ca0c864389c0d27b32c95c07cdf63ba81eda9224b9b1cbf3e04f370aadd2ee",
+    "src/research_core/evidence.py": "88f458cc1c040d8867992e3721a1dfb7e2275d15dd5b0f105e8a7af0bf14ba73",
+    "src/research_mcp.py": "5d0021b809e57541b728fe6d8fccc3abc6520ab9afa4cc1e33b0311e4b751a3a"
+  }
+}
